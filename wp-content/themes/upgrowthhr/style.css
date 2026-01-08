@@ -45,3 +45,29 @@ html, body {
 .btn.btn-outline:hover, a.btn.btn-outline:hover, button.btn.btn-outline:hover {
 
 }
+.elementor-element h1, .elementor-element h2, .elementor-element h3, .elementor-element h4, .elementor-element h5, .elementor-element h6 {
+    margin: 0;
+}
+.elementor-widget-icon .elementor-icon {
+    display: block;
+}
+
+@media (max-width: 767px) {
+
+}
+@media (m-width: 768px) {
+
+}
+@media (max-width: 1199px) {
+
+}
+@media (min-width: 1200px) and (max-width: 1300px) and (orientation: landscape) {
+    .e-con-boxed.e-parent > .e-con-inner {
+        max-width: 1120px;
+    }
+}
+@media (m-width: 1200px) {
+    #footer-menus .hfe-nav-menu .menu-item .hfe-menu-item {
+        white-space: nowrap;
+    }
+}
