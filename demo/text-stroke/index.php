@@ -57,13 +57,6 @@
                     -1px -1px 0 #fff,  
                     1px -1px 0 #fff,
                     -1px 1px 0 #fff;
-                
-                    /* -moz-text-fill-color: transparent;
-                -webkit-text-fill-color: transparent;
-                    -moz-text-stroke-color: #333;
-                -webkit-text-stroke-color: #333;
-                    -moz-text-stroke-width: 1px;  
-                -webkit-text-stroke-width: 1px; */
             }
             .hajimi-text-heading.text-shadow {
                 padding: 1rem;
@@ -75,6 +68,42 @@
             .bg-white {
                 background-color: #fff;
             }
+            .hajimi-text-heading.hajimi-outline {
+                padding: 1.5rem 0;
+                perspective: 1000px;
+            }
+            .hajimi-text-heading.hajimi-outline h1 {
+                transform-style: preserve-3d;
+                transform: scaleY(0.98);
+                text-fill-color: #fff;
+                text-stroke: 1px #4F3D95;
+                -webkit-text-fill-color: #fff;
+                -webkit-text-stroke: 1px #4F3D95;
+                /* color: #fff;
+                text-shadow: 1px 1px 0 #4F3D95,
+                    -1px -1px 0 #4F3D95,  
+                    1px -1px 0 #4F3D95,
+                    -1px 1px 0 #4F3D95; */
+            }
+            .hajimi-text-heading.hajimi-outline h1::after {
+                content: attr(data-text);
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                line-height: inherit;
+                transform-origin: center top;
+                transform: scaleY(1.02);
+                text-stroke: 1px rgba(79, 61, 149, 0.75);
+                -webkit-text-stroke: 1px rgba(79, 61, 149, 0.75);
+                text-fill-color: #fff;
+                -webkit-text-fill-color: #fff;
+                -moz-text-fill-color: #fff;
+                z-index: -1;
+            }
         </style>
     </head>
     <body>
@@ -84,6 +113,8 @@
                 <div class="hajimi-text-heading text-outline"><h1>BE UPGROWTH</h1></div>
                 <br/>
                 <div class="hajimi-text-heading text-shadow bg-white"><h1>SUCCESS</h1></div>
+                <br/>
+                <div class="hajimi-text-heading hajimi-outline bg-white"><h1 data-text="SUCCESS">SUCCESS</h1></div>
             </div>
             <footer>
 
