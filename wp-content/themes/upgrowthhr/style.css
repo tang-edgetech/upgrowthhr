@@ -23,7 +23,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
 :root {
-
+    --color-white: #fff;
+    --color-black: #1c1c1c;
 }	
 * {
 	box-sizing: border-box;
@@ -51,23 +52,120 @@ html, body {
 .elementor-widget-icon .elementor-icon {
     display: block;
 }
-
+.site header#masthead {
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+.d-none {
+    display: none!important;
+}
+.d-block {
+    display: block!important;
+}
+.d-inline {
+    display: inline!important;
+}
+.d-inline-block {
+    display: inline-block!important;
+}
+.d-flex {
+    display: flex!important;
+}
+.d-grid {
+    display: grid!important;
+}
 @media (max-width: 767px) {
 
 }
-@media (m-width: 768px) {
-
+@media (min-width: 768px) {
+    .d-md-none {
+        display: none!important;
+    }
+    .d-md-block {
+        display: block!important;
+    }
+    .d-md-inline {
+        display: inline!important;
+    }
+    .d-md-inline-block {
+        display: inline-block!important;
+    }
+    .d-md-flex {
+        display: flex!important;
+    }
+    .d-md-grid {
+        display: grid!important;
+    }
+}
+@media (min-width: 992px) {
+    .d-lg-none {
+        display: none!important;
+    }
+    .d-lg-block {
+        display: block!important;
+    }
+    .d-lg-inline {
+        display: inline!important;
+    }
+    .d-lg-inline-block {
+        display: inline-block!important;
+    }
+    .d-lg-flex {
+        display: flex!important;
+    }
+    .d-lg-grid {
+        display: grid!important;
+    }
 }
 @media (max-width: 1199px) {
 
 }
-@media (min-width: 1200px) and (max-width: 1300px) and (orientation: landscape) {
+@media (min-width: 1200px) and (max-width: 1279px) and (orientation: landscape) {
     .e-con-boxed.e-parent > .e-con-inner {
         max-width: 1120px;
     }
 }
-@media (m-width: 1200px) {
+@media (min-width: 1200px) {
+    .d-xl-none {
+        display: none!important;
+    }
+    .d-xl-block {
+        display: block!important;
+    }
+    .d-xl-inline {
+        display: inline!important;
+    }
+    .d-xl-inline-block {
+        display: inline-block!important;
+    }
+    .d-xl-flex {
+        display: flex!important;
+    }
+    .d-xl-grid {
+        display: grid!important;
+    }
     #footer-menus .hfe-nav-menu .menu-item .hfe-menu-item {
         white-space: nowrap;
+    }
+}
+@media (min-width: 1440px) {
+    .d-xxl-none {
+        display: none!important;
+    }
+    .d-xxl-block {
+        display: block!important;
+    }
+    .d-xxl-inline {
+        display: inline!important;
+    }
+    .d-xxl-inline-block {
+        display: inline-block!important;
+    }
+    .d-xxl-flex {
+        display: flex!important;
+    }
+    .d-xxl-grid {
+        display: grid!important;
     }
 }
