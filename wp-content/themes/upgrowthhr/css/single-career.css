@@ -1,0 +1,91 @@
+.section-single-career {
+    padding: 2.25rem 0 15rem;
+}
+.section-single-career .site-row {
+    gap: 2.5rem;
+}
+.btn.btn-outline.back-button-link {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 0.5rem;
+    color: var(--color-dark);
+    overflow: hidden;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.5rem;
+    border: none;
+}
+.btn.btn-outline.back-button-link:hover {
+    color: var(--color-white);
+}
+.btn.btn-outline.back-button-link::before, .btn.btn-outline.back-button-link::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
+.btn.btn-outline.back-button-link::before {
+    width: calc( 100% - 0.125rem );
+    height: calc( 100% - 0.125rem );
+    background-color: var(--color-white);
+    opacity: 1;
+    visibility: visible;
+    z-index: 0;
+}
+.btn.btn-outline.back-button-link:hover::before {
+    opacity: 0;
+    visibility: hidden;
+}
+.btn.btn-outline.back-button-link::after {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( var(--gradient-angle), var(--gradient-color-start) 0%, var(--gradient-color-end) 100% );
+    z-index: -1;
+}
+.single-career-header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 2.25rem;
+}
+.career-header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.career-header-inner .site-col.col-job-apply .btn-formal {
+    margin-right: 0;
+}
+.site-col.col-header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.career-dep-title {
+    font-weight: 700;
+}
+.single-career .career-title {
+    font-size: 48px;
+    line-height: 52px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #7B11FF;
+}
+@media (max-width: 767px) {
+    .section-single-career {
+        padding: 2.25rem 1.5rem 7.5rem;
+    }
+    .site-col.col-header-info {
+        margin-bottom: 2rem;
+    }
+    .single-career .career-title {
+        font-size: 2rem;
+        line-height: 2.625rem;
+    }
+}

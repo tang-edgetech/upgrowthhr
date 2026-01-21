@@ -14,7 +14,7 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-animation-heading';
+        return 'eicon-heading';
     }
 
     public function get_categories() {
@@ -41,10 +41,10 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
-			'heading_title_Tag',
+			'heading_title_tag',
 			[
 				'label' => esc_html__( 'Heading Tag', 'hajimi' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'h2',
                 'options' => [
                     'h1' => esc_html__( 'H1', 'hajimi' ),
@@ -62,7 +62,7 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
 			'heading_title_style',
 			[
 				'label' => esc_html__( 'Heading Style', 'hajimi' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'solid',
                 'options' => [
                     'solid' => esc_html__( 'Solid', 'hajimi' ),

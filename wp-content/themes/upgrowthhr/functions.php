@@ -140,6 +140,10 @@ add_action( 'widgets_init', 'upgrowthhr_widgets_init' );
 function upgrowthhr_scripts() {
 	wp_enqueue_style( 'upgrowthhr-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'upgrowthhr-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'swiper-css', get_template_directory_uri() . '/css/swiper-bundle.min.css', array(), '12.0.3', 'all' );
+	wp_enqueue_style( 'animations-css', get_template_directory_uri() . '/css/animations.css', array(), _S_VERSION, 'all' );
+	wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css', array(), _S_VERSION, 'all' );
+	wp_enqueue_style( 'media-query', get_template_directory_uri() . '/css/media.css', array(), _S_VERSION, 'all' );
 
 	wp_enqueue_script( 'upgrowthhr-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -147,9 +151,30 @@ function upgrowthhr_scripts() {
    		wp_deregister_script( 'jquery' );
 		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.7.1.min.js', array(), '3.7.1', true );
 	}
+	wp_enqueue_script( 'swiper-js', get_template_directory_uri() . '/js/swiper-bundle.min.js', array('jquery'), '12.0.3', true );
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), _S_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'upgrowthhr_scripts' );
+
+function customize_enqueue_scripts() {
+    if ( ! is_singular() ) {
+        return;
+    }
+	global $post;
+
+    if ( ! $post instanceof WP_Post ) {
+        return;
+    }
+
+    if ( has_shortcode( $post->post_content, 'upgrowthhr_career_listing' ) ) {
+        wp_enqueue_style( 'career-listing-style', get_template_directory_uri() . '/css/career-listing.css', [], _S_VERSION, 'all' );
+        wp_enqueue_script( 'career-listing-script', get_template_directory_uri() . '/js/career-listing.js', [ 'jquery' ], _S_VERSION, true );
+    }
+	if( is_singular('career') ) {
+        wp_enqueue_style( 'single-career', get_template_directory_uri() . '/css/single-career.css', [], _S_VERSION, 'all' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'customize_enqueue_scripts', 20);
 
 /**
  * Implement the Custom Header feature.
@@ -178,3 +203,86 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function upgrowthhr_career_listing() {
+	$args = array(
+		'post_type' => 'career',
+		'post_status' => 'publish',
+	);
+	$get_department = ( isset($_GET['department']) && !empty($_GET['department']) ) ? $_GET['department'] : 'all';
+	$taxonomyArgs = array( 'taxonomy' => 'department', 'hide_empty' => false );
+	$nav_departments = get_terms( $taxonomyArgs );
+	if( !empty($get_department) && $get_department !== 'all' ) {
+		$taxonomyArgs['slug'] = $get_department;
+	}
+	$departments = get_terms( $taxonomyArgs );
+	ob_start();
+	?>
+	<div class="career-listing">
+		<div class="career-nav">
+			<div class="swiper swiper-career-nav" id="swiper-career-nav">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide career-nav-item<?= ( !isset($_GET['department']) || 'all' === $get_department ) ? ' selected' : '';?>" data-department="all">
+						<button type="button" class="career-nav-link" data-filter="all"><span>All</span></button>
+					</div>
+				<?php
+				if( !empty($nav_departments) ) {
+					foreach( $nav_departments as $dep ) {
+					?>
+					<div class="swiper-slide career-nav-item career-nav-item-<?= $dep->term_id;?> <?= ( $get_department === $dep->slug ) ? ' selected' : '';?>" data-department="<?= $dep->slug;?>">
+						<button type="button" class="career-nav-link" data-filter="<?= $dep->slug;?>"><span><?= $dep->name;?></span></button>
+					</div>
+					<?php
+					}
+				}
+				?>
+				</div>
+			</div>
+		</div>
+		<div class="career-body">
+			<div class="career-body-inner">
+			<?php
+			foreach( $departments as $dep ) {
+				$dep_id = $dep->term_id;
+				$dep_slug = $dep->slug;
+				$dep_name = $dep->name;
+				$dep_color = get_field('main_color', 'term_'.$dep_id);
+				$args['tax_query'] = array(
+					array(
+						'taxonomy' => 'department',
+						'field' => 'slug',
+						'terms' => $dep_slug,
+					),
+				);
+				$career = new WP_Query($args);
+				$initial = array(
+					'dep_name' => $dep_name,
+				);
+				?>
+				<div class="career-dep career-dep-<?= $dep_id;?> career-dep-<?= $dep_slug;?>" style="--bg-career-color:<?= $dep_color;?>">
+					<h3 class="career-dep-title"><?= $dep_name;?></h3>
+					<div class="career-dep-inner"><!-- Grid start -->
+					<?php
+					if( $career->have_posts() ) {
+						while( $career->have_posts() ) {
+							$career->the_post();
+							get_template_part('template-parts/loop-career', 'department-row', $initial);
+						}
+						wp_reset_postdata();
+					}
+					?>
+					</div>
+				</div>
+			<?php
+			}
+			?>
+			</div>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode('upgrowthhr_career_listing', 'upgrowthhr_career_listing');
+
+function upgrowthhr_career_listing_deparment_filter() {
+
+}

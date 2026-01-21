@@ -9,6 +9,11 @@
     font-weight: 900;
     letter-spacing: 0.02em;
     color: #4F3D95;
+    text-shadow: 1px 1px 0 #4F3D95, -1px -1px 0 #4F3D95, 1px -1px 0 #4F3D95, -1px 1px 0 #4F3D95;
+}
+.hajimi-fancy-heading.heading-outline .hajimi-heading-title {
+    text-shadow: 1px 1px 0 #4F3D95, -1px -1px 0 #4F3D95, 1px -1px 0 #4F3D95, -1px 1px 0 #4F3D95;
+    color: #fff;
 }
 .hajimi-navigation .hajimi-menu-button {
     display: block;

@@ -24,7 +24,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 :root {
     --color-white: #fff;
+    --color-grey: #DBCCF9;
     --color-black: #1c1c1c;
+    --color-theme: #4A00DF;
+    --gradient-angle: 135deg;
+    --gradient-color-start: #A581FF;
+    --gradient-color-end: #4A00DF;
 }	
 * {
 	box-sizing: border-box;
@@ -36,15 +41,92 @@ html, body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 }
-
+.site a span {
+    display: inline-block;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    transition: inherit;
+}
 .btn, a.btn, button.btn {
-
+    display: inline-block;
+	padding: 0.5rem 1rem;
+    border-radius: 1.25rem;
 }
 .btn.btn-outline, a.btn.btn-outline, button.btn.btn-outline {
-	
+    border: 0.063rem solid #40404080;
 }
-.btn.btn-outline:hover, a.btn.btn-outline:hover, button.btn.btn-outline:hover {
-
+.btn.btn-gradient, a.btn.btn-gradient, button.btn.btn-gradient {
+    overflow: hidden;
+    color: var(--color-white);
+    border: 0.063rem solid transparent;
+}
+.btn.btn-gradient::before, a.btn.btn-gradient::before, button.btn.btn-gradient::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(var(--gradient-angle), var(--gradient-color-start) 0%, var(--gradient-color-end) 100%);
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+.btn.btn-gradient:hover::before, a.btn.btn-gradient:hover::before, button.btn.btn-gradient:hover::before {
+    opacity: 0;
+    visibility: hidden;
+}
+.btn.btn-gradient:hover, a.btn.btn-gradient:hover, button.btn.btn-gradient:hover {
+    color: var(--color-theme);
+    border-color: var(--color-theme);
+}
+.btn.btn-formal, a.btn.btn-formal, button.btn.btn-formal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5.625rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: var(--color-white);
+    text-decoration: none;
+    background: linear-gradient( var(--gradient-angle), var(--gradient-color-start) 0%, var(--gradient-color-end) 100% );
+    box-shadow: 0.125rem 0.125rem 0.5rem 0 #4a00e033, inset 0.125rem 0.25rem 0.25rem #ffffff40;
+}
+.btn.btn-formal::before, a.btn.btn-formal::before, button.btn.btn-formal::before, .btn.btn-formal::after, a.btn.btn-formal::after, button.btn.btn-formal::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    border-radius: 0.5rem;
+    bottom: -0.5rem;
+    left: 0;
+    transition: all 0.3s ease;
+}
+.btn.btn-formal::before, a.btn.btn-formal::before, button.btn.btn-formal::before {
+    opacity: 0;
+    visibility: hidden;
+    background: linear-gradient( var(--gradient-angle), var(--gradient-color-start) 0%, var(--gradient-color-end) 100% );
+    z-index: -1;
+}
+.btn.btn-formal:hover::before, a.btn.btn-formal:hover::before, button.btn.btn-formal:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+.btn.btn-formal::after, a.btn.btn-formal::after, button.btn.btn-formal::after {
+    background: linear-gradient(0deg, #4603CE 0%, #7531FF 100%);
+    z-index: -2;
 }
 .elementor-element h1, .elementor-element h2, .elementor-element h3, .elementor-element h4, .elementor-element h5, .elementor-element h6 {
     margin: 0;
@@ -52,10 +134,40 @@ html, body {
 .elementor-widget-icon .elementor-icon {
     display: block;
 }
+.elementor-widget-text-editor p, .elementor-widget-text-editor ol, .elementor-widget-text-editor ul {
+    margin: 0;
+}
+.elementor-widget-text-editor p+ul, .elementor-widget-text-editor p+ol {
+    margin-top: 0.313rem;
+}
+.site-main {
+    display: flex;
+    flex-wrap: wrap;
+}
+.site-main .primary-content {
+    flex: 1;
+    width: 100%;
+}
 .site header#masthead {
     position: sticky;
     top: 0;
     left: 0;
+}
+.site-container {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+.site-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+}
+.site-col {
+    display: block;
+    flex: 1;
 }
 .d-none {
     display: none!important;
@@ -74,6 +186,12 @@ html, body {
 }
 .d-grid {
     display: grid!important;
+}
+.divider {
+    display: block;
+    width: 100%;
+    height: 0.063rem;
+    background: var(--color-grey);
 }
 @media (max-width: 767px) {
 
@@ -96,6 +214,9 @@ html, body {
     }
     .d-md-grid {
         display: grid!important;
+    }
+    .site-container {
+        max-width: 720px;
     }
 }
 @media (min-width: 992px) {
@@ -122,7 +243,7 @@ html, body {
 
 }
 @media (min-width: 1200px) and (max-width: 1279px) and (orientation: landscape) {
-    .e-con-boxed.e-parent > .e-con-inner {
+    .e-con-boxed.e-parent > .e-con-inner, .site-container {
         max-width: 1120px;
     }
 }
@@ -149,6 +270,11 @@ html, body {
         white-space: nowrap;
     }
 }
+@media (min-width: 1280px) {
+    .site-container {
+        max-width: 1240px;
+    }
+}
 @media (min-width: 1440px) {
     .d-xxl-none {
         display: none!important;
@@ -167,5 +293,10 @@ html, body {
     }
     .d-xxl-grid {
         display: grid!important;
+    }
+}
+@media (min-width: 1600px) {
+    .site-container {
+        max-width: 1440px;
     }
 }
