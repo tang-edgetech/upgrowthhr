@@ -22,6 +22,7 @@ $back_url = ( isset($_GET['back']) && !empty($_GET['back']) ) ? $_GET['back'] : 
                 </div>
                 <div class="career-header-inner">
                     <div class="site-col col-header-info">
+                    <?php if( $job ) { ?> 
                         <div class="career-dep-title btn btn-outline"><?= $departments[0]->name;?></div>
                         <h1 class="career-title"><?= $post_title;?></h1>
                         <div class="career-metas">
@@ -33,10 +34,15 @@ $back_url = ( isset($_GET['back']) && !empty($_GET['back']) ) ? $_GET['back'] : 
                         }
                         ?>
                         </div>
+                    <?php } else {
+
+                    } ?>
                     </div>
                     <div class="site-col col-job-apply">
                         <div class="btn-wrapper">
-                            <a href="<?= $job_application;?>" class="btn btn-formal"><span>Apply Now</span></a>
+                        <?php if( $job ) { ?> 
+                            <button type="button" class="btn btn-formal" id="submit-job-application"><span>Submit Application</span></button>
+                        <?php } ?>
                         </div>
                     </div>
                 </div>
