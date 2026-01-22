@@ -193,6 +193,13 @@ html, body {
     height: 0.063rem;
     background: var(--color-grey);
 }
+.text-editor h1, .text-editor h2, .text-editor h3, .text-editor h4, .text-editor h5, .text-editor h6 {
+    margin: 0 0 1rem;
+}
+.text-editor ul, .text-editor ol {
+    padding-inline-start: 1.5rem;
+    margin: 0;
+}
 @media (max-width: 767px) {
 
 }

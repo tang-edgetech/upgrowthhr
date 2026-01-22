@@ -1,5 +1,5 @@
 .section-single-career {
-    padding: 2.25rem 0 15rem;
+    padding: 2.25rem 0 12.5rem;
 }
 .section-single-career .site-row {
     gap: 2.5rem;
@@ -77,6 +77,14 @@
     margin: 0;
     color: #7B11FF;
 }
+.detail-item {
+    display: block;
+    margin-bottom: 2.25rem;
+}
+.detail-title {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+}
 @media (max-width: 767px) {
     .section-single-career {
         padding: 2.25rem 1.5rem 7.5rem;
@@ -87,5 +95,22 @@
     .single-career .career-title {
         font-size: 2rem;
         line-height: 2.625rem;
+    }
+}
+@media (min-width: 768px) {
+    .career-body-inner {
+        column-count: 2;
+        column-gap: 3.125rem;
+    }
+    .detail-item {
+        break-inside: avoid;
+    }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    
+}
+@media (min-width: 1200px) {
+    .career-body-inner {
+        column-gap: 6.25rem;
     }
 }

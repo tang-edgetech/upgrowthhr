@@ -169,6 +169,10 @@ function customize_enqueue_scripts() {
     if ( has_shortcode( $post->post_content, 'upgrowthhr_career_listing' ) ) {
         wp_enqueue_style( 'career-listing-style', get_template_directory_uri() . '/css/career-listing.css', [], _S_VERSION, 'all' );
         wp_enqueue_script( 'career-listing-script', get_template_directory_uri() . '/js/career-listing.js', [ 'jquery' ], _S_VERSION, true );
+        wp_localize_script( 'career-listing-script', 'career', array(
+            'admin_ajax' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('career-listing-filter'),
+        ) );
     }
 	if( is_singular('career') ) {
         wp_enqueue_style( 'single-career', get_template_directory_uri() . '/css/single-career.css', [], _S_VERSION, 'all' );
@@ -284,5 +288,107 @@ function upgrowthhr_career_listing() {
 add_shortcode('upgrowthhr_career_listing', 'upgrowthhr_career_listing');
 
 function upgrowthhr_career_listing_deparment_filter() {
+    $response = [];
+    $html = '';
+    if ( ! wp_verify_nonce( $_POST['nonce'], 'career-listing-filter' ) ) {
+        $response['status'] = 2000;
+        $response['message'] = 'Unauthorized funciton calling detected!';
+        echo json_encode($response);
+        wp_die();
+    }
+    $current_url = $_POST['current_url'];
+    $dep_slug = ( !empty( $_POST['department'] ) ) ? sanitize_text_field( $_POST['department'] ) : '';
+    $target_dep = $dep_slug;
+    if( $dep_slug !== 'all' ) {
+        $term = term_exists( $dep_slug, 'department' );
+        if ( !$term || is_wp_error( $term ) ) {
+            $response['status'] = 2000;
+            $response['message'] = 'This deparment is invalid!';
+            echo json_encode($response);
+            wp_die();
+        }
+    }
 
+    $args = array(
+        'post_type' => 'career',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+    );
+	$taxonomyArgs = array( 'taxonomy' => 'department', 'hide_empty' => false );
+	if( !empty($dep_slug) && $dep_slug !== 'all' ) {
+		$taxonomyArgs['slug'] = $dep_slug;
+	}
+	$departments = get_terms( $taxonomyArgs );
+
+    ob_start();
+    foreach( $departments as $dep ) {
+        $dep_id = $dep->term_id;
+        $dep_slug = $dep->slug;
+        $dep_name = $dep->name;
+        $dep_color = get_field('main_color', 'term_'.$dep_id);
+
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'department',
+                'field' => 'slug',
+                'terms' => $dep_slug,
+            ),
+        );
+        $career = new WP_Query($args);
+        $initial = array(
+            'target_dep' => $target_dep,
+            'dep_name' => $dep_name,
+            'current_url' => $current_url,
+        );
+        if( $career->have_posts() ) { 
+        ?>
+            <div class="career-dep career-dep-<?= $dep_id;?> career-dep-<?= $dep_slug;?>" style="--bg-career-color:<?= $dep_color;?>">
+                <h3 class="career-dep-title"><?= $dep_name;?></h3>
+                <div class="career-dep-inner"><!-- Grid start -->
+        <?php
+            while( $career->have_posts() ) {
+                $career->the_post();
+                get_template_part('template-parts/loop-career', 'department-row', $initial);
+            } // end of while-have_posts
+            wp_reset_postdata();
+        ?>
+                </div>
+            </div>
+        <?php
+        } // end of if-have_posts
+    }
+    $html = ob_get_clean();
+    $response['status'] = 1000;
+    $response['message'] = 'Successful!';
+    $response['html'] = $html;
+    $response['current_url'] = $current_url;
+
+    echo json_encode($response);
+    wp_die();
 }
+add_action('wp_ajax_upgrowthhr_career_listing_deparment_filter', 'upgrowthhr_career_listing_deparment_filter');
+add_action('wp_ajax_nopriv_upgrowthhr_career_listing_deparment_filter', 'upgrowthhr_career_listing_deparment_filter');
+
+// Generate existing job position into WPCF7 dropdown field __job_application__
+function populate_job_application_dropdown($tag, $unused) {
+    if ($tag->name !== 'job_application') {
+        return $tag;
+    }
+    $args = [
+        'post_type'      => 'career',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+    ];
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        foreach ($query->posts as $post) {
+            $tag->values[] = $post->post_name;
+            $tag->labels[] = $post->post_title;
+        }
+    }
+    wp_reset_postdata();
+    return $tag;
+}
+add_filter('wpcf7_form_tag', 'populate_job_application_dropdown', 10, 2);

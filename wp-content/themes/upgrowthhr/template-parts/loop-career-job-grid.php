@@ -7,6 +7,7 @@ $career_type = $args['career_type'];
 $career_tagging = $args['career_tagging'];
 $career_permalink = $args['career_permalink'];
 $back_url = $args['back_url'];
+
 ?>
 <div class="career-item career-item-<?= $career_id;?> career-item-<?= $career_slug;?>" id="career-id-<?= $career_id;?>">
     <div class="career-item-inner">

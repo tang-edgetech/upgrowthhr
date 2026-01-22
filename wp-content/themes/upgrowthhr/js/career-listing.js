@@ -19,6 +19,7 @@ jQuery(document).ready(function($) {
         });
     }
     
+    let $target = ".career-listing";
     let $size = 150;
     if (params.has('department')) {
         const department = params.get('department');
@@ -30,7 +31,6 @@ jQuery(document).ready(function($) {
                 $career_nav.slideTo(index, 0);
             }
 
-            let $target = ".career-listing";
             
             if (window.location.hash) {
                 const hash = window.location.hash;
@@ -58,4 +58,39 @@ jQuery(document).ready(function($) {
             scrollTop: $($target).offset().top - $size
         });
     }
+
+    $(document).on('click', '.career-listing .career-nav .career-nav-link', function(e) {
+        e.preventDefault();
+        var $button = $(this),
+            $department = $button.attr('data-filter');
+        $.ajax({
+            type: 'POST',
+            url: career.admin_ajax,
+            data: {
+                action: 'upgrowthhr_career_listing_deparment_filter',
+                nonce: career.nonce,
+                department: $department,
+                current_url: window.location.origin + window.location.pathname,
+            },
+            beforeSend: function() {
+
+            },
+            success: function(data) {
+                var $response = JSON.parse(data);
+                console.log($response);
+                $('.career-listing .career-nav .career-nav-item').removeClass('selected');
+                $button.parent().addClass('selected');
+
+                $('.career-listing .career-body-inner').html($response.html);
+
+                const url = new URL(window.location.href);
+                url.searchParams.set('department', $department);
+                window.history.replaceState({}, '', url);
+            },
+            error: function(xhr) {
+                console.log('Error occured!');
+                console.log(xhr);
+            }
+        });
+    });
 });
