@@ -52,11 +52,11 @@ jQuery(document).ready(function($) {
             if ($(hash).length) {
                 $target = hash;
             }
-        }
 
-        $('html, body').animate({
-            scrollTop: $($target).offset().top - $size
-        });
+            $('html, body').animate({
+                scrollTop: $($target).offset().top - $size
+            });
+        }
     }
 
     $(document).on('click', '.career-listing .career-nav .career-nav-link', function(e) {

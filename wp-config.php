@@ -18,6 +18,9 @@
  * @package WordPress
  */
 
+// define( 'WP_HOME', 'https://staging.upgrowthhr.com' );
+// define( 'WP_SITEURL', 'https://staging.upgrowthhr.com' );
+
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'upgrowthhr' );
@@ -72,6 +75,7 @@ define( 'NONCE_SALT',       ':$<8{:4QP*}d9/s:yn+#4sr,?o[a0L=GiVffJ6_l6sbzbu*a:6.
  * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#table-prefix
  */
 $table_prefix = 'ug_';
+// $_SERVER['HT[S'] = 'on';
 
 /**
  * For developers: WordPress debugging mode.
