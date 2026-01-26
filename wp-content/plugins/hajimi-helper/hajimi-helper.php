@@ -16,6 +16,8 @@ define( 'HAJIMI_VERSION', '1.0.'.time() );
 
 // Load widget files
 function hajimi_load_widget_files() {
+    require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_back_to_top_button.php';
+    require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_copyright_label.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_custom_navigation.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_fancy_text.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_template_renderer.php';

@@ -328,6 +328,16 @@
     background-color: #fff;
     color: #FF484B;
 }
+button.hajimi-back2top {
+    background-image: unset;
+    cursor: pointer;
+}
+button.hajimi-back2top.button-rounded {
+    border-radius: 0.625rem;
+}
+button.hajimi-back2top.button-circle {
+    border-radius: 50%;
+}
 @media (max-width: 767px) {
     .hajimi-navigation {
         padding: 1rem 1.25rem;

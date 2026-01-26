@@ -114,13 +114,10 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'heading_outline_color',
 			[
-				'label' => esc_html__( 'Heading Outline Color', 'hajimi' ),
+				'label' => esc_html__( 'Outline Color', 'hajimi' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .hajimi-fancy-heading .hajimi-heading-title' => '1px 1px 0 {{VALUE}},
-                    -1px -1px 0 {{VALUE}},  
-                    1px -1px 0 {{VALUE}},
-                    -1px 1px 0 {{VALUE}}',
+					'{{WRAPPER}} .hajimi-fancy-heading .hajimi-heading-title' => 'text-shadow: 1px 1px 0 {{VALUE}}, -1px -1px 0 {{VALUE}}, 1px -1px 0 {{VALUE}}, -1px 1px 0 {{VALUE}}',
 				],
                 'condition' => [
                     'heading_title_style' => 'outline',
