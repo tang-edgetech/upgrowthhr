@@ -174,8 +174,15 @@ function customize_enqueue_scripts() {
             'nonce' => wp_create_nonce('career-listing-filter'),
         ) );
     }
-	if( is_singular('career') ) {
-        wp_enqueue_style( 'single-career', get_template_directory_uri() . '/css/single-career.css', [], _S_VERSION, 'all' );
+	if( is_singular('career') || ( is_page_template('page-job-application.php') || is_page('job-application') ) ) {
+		wp_enqueue_style( 'single-career', get_template_directory_uri() . '/css/single-career.css', [], _S_VERSION, 'all' );
+	}
+	if( is_page_template('page-job-application.php') || is_page('job-application')  ) {
+		wp_enqueue_script( 'career-job-application', get_template_directory_uri() . '/js/career-job-application.js', [], _S_VERSION, true );
+		wp_localize_script( 'career-job-application', 'job', array(
+			'admin_ajax' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce('job-application'),
+		));
 	}
 }
 add_action( 'wp_enqueue_scripts', 'customize_enqueue_scripts', 20);
@@ -206,6 +213,11 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+add_filter('upload_mimes', function ($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+});
 
 function upgrowthhr_career_listing() {
 	$args = array(
@@ -371,9 +383,14 @@ add_action('wp_ajax_nopriv_upgrowthhr_career_listing_deparment_filter', 'upgrowt
 
 // Generate existing job position into WPCF7 dropdown field __job_application__
 function populate_job_application_dropdown($tag, $unused) {
-    if ($tag->name !== 'job_application') {
+    if (is_array($tag)) {
+        $tag = new WPCF7_FormTag($tag);
+    }
+
+    if ($tag->name !== 'job_position') {
         return $tag;
     }
+
     $args = [
         'post_type'      => 'career',
         'post_status'    => 'publish',
@@ -381,14 +398,74 @@ function populate_job_application_dropdown($tag, $unused) {
         'orderby'        => 'title',
         'order'          => 'ASC',
     ];
+
     $query = new WP_Query($args);
+
     if ($query->have_posts()) {
         foreach ($query->posts as $post) {
-            $tag->values[] = $post->post_name;
+            $tag->values[] = $post->post_title;
             $tag->labels[] = $post->post_title;
         }
     }
+
     wp_reset_postdata();
+
     return $tag;
 }
 add_filter('wpcf7_form_tag', 'populate_job_application_dropdown', 10, 2);
+
+function retrieving_job_position_details() {
+	$response = array();
+	$html = '';
+    if ( ! wp_verify_nonce( $_POST['nonce'], 'job-application' ) ) {
+        $response['status'] = 2000;
+        $response['message'] = 'Unauthorized funciton calling detected!';
+        echo json_encode($response);
+        wp_die();
+    }
+	
+	$job_position = $_POST['job_position'];
+	if( empty($job_position) ) {
+        $response['status'] = 2000;
+        $response['message'] = 'There is no job position selected!';
+        echo json_encode($response);
+        wp_die();
+	}
+
+	$job = get_page_by_path( sanitize_title($job_position), OBJECT, 'career');
+	if( !$job ) {
+        $response['status'] = 2000;
+        $response['message'] = 'Invalid job position!!';
+        echo json_encode($response);
+        wp_die();
+	}
+	ob_start();
+
+    $job_id = $job->ID;
+    $job_title = $job->post_title;
+    $departments = get_the_terms($job_id, 'department');
+    $tagging = get_field('tagging', $job_id);
+	?>
+	<div class="career-dep-title btn btn-outline"><?= $departments[0]->name;?></div>
+	<h1 class="career-title"><?= $job_title;?></h1>
+	<div class="career-metas">
+	<?php
+	if( $tagging ) {
+		foreach( $tagging as $tag ) { ?>
+			<div class="meta-item btn btn-outline"><?= $tag->name;?></div>
+		<?php }
+	}
+	?>
+	</div>
+	<?php
+	$html = ob_get_clean();
+
+	$response['status'] = 1000;
+	$response['message'] = 'Successful!';
+	$response['html'] = $html;
+	$response['back_url'] = get_permalink($job->ID);
+	echo json_encode($response);
+	wp_die();
+}
+add_action('wp_ajax_retrieving_job_position_details', 'retrieving_job_position_details');
+add_action('wp_ajax_nopriv_retrieving_job_position_details', 'retrieving_job_position_details');

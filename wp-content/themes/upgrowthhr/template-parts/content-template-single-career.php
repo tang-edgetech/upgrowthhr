@@ -10,7 +10,7 @@ $back_url = ( isset($_GET['back']) && !empty($_GET['back']) ) ? $_GET['back'] : 
 $back_to_career = ( !isset($_GET['back']) ) ? '?department=' . $departments[0]->slug : '';
 $back_url .= $back_to_career;
 
-$job_application = home_url('job-application') . '?job_position=' . urlencode($post_name);
+$job_application = home_url('job-application') . '?job_position=' . urlencode($post_title);
 ?>
 <section class="section-single-career">
     <div class="site-container">

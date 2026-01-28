@@ -13,15 +13,16 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<section class="error-404 not-found">
-			<div class="section-inner">
-				<div class="page-header">
-					<h1 class="page-title">404</h1>
-					<h2 class="page-subtitle">Page Not Found</h2>
-					<p><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'upgrowthhr' ); ?></p>
+			<div class="site-container">
+				<div class="site-row">
+					<div class="page-header d-block w-100">
+						<h1 class="page-title">404</h1>
+						<h2 class="page-subtitle">Page Not Found</h2>
+						<p><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'upgrowthhr' ); ?></p>
+						<p>Return to <a href="<?= home_url();?>"><strong>Home</strong></a>?</p>
+					</div>
 				</div>
-				<div class="page-content">
-					<?php get_search_form(); ?>
-				</div>
+			</div>
 		</section><!-- .error-404 -->
 
 	</main><!-- #main -->

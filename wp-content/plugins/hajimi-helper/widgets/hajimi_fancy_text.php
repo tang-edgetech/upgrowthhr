@@ -72,6 +72,19 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'heading_title_extra_style',
+			[
+				'label' => esc_html__( 'Additional Style', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'breakline',
+                'options' => [
+                    'breakline' => esc_html__( 'Break Line', 'hajimi' ),
+                    'inline' => esc_html__( 'Inline', 'hajimi' ),
+                ]
+			]
+		);
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -81,6 +94,33 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+
+		$this->add_responsive_control(
+			'fancy_heading_text_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'hajimi' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'hajimi' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'hajimi' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-fancy-heading' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
@@ -144,7 +184,8 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
         $heading_title = $settings['heading_title'];
         $heading_title_tag = $settings['heading_title_tag'];
         $heading_style = $settings['heading_title_style'];
-        echo '<div class="hajimi-fancy-heading heading-'.$heading_style.'"><'.$heading_title_tag.' class="hajimi-heading-title">'.$heading_title.'</'.$heading_title_tag.'></div>';
+		$heading_title_extra_style = $settings['heading_title_extra_style'];
+        echo '<div class="hajimi-fancy-heading heading-'.$heading_style.' type-'.$heading_title_extra_style.'"><'.$heading_title_tag.' class="hajimi-heading-title">'.$heading_title.'</'.$heading_title_tag.'></div>';
     }
 }
 

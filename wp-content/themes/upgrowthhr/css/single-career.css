@@ -4,6 +4,9 @@
 .section-single-career .site-row {
     gap: 2.5rem;
 }
+.page-template-page-job-application .section-single-career {
+    padding-bottom: 7.5rem;
+}
 .btn.btn-outline.back-button-link {
     display: flex;
     align-items: center;
@@ -70,7 +73,7 @@
 .career-dep-title {
     font-weight: 700;
 }
-.single-career .career-title {
+.section-single-career .career-title {
     font-size: 48px;
     line-height: 52px;
     text-transform: uppercase;
@@ -92,7 +95,7 @@
     .site-col.col-header-info {
         margin-bottom: 2rem;
     }
-    .single-career .career-title {
+    .section-single-career .career-title {
         font-size: 2rem;
         line-height: 2.625rem;
     }

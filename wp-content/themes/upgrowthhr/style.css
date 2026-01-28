@@ -54,9 +54,47 @@ html, body {
     display: inline-block;
 	padding: 0.5rem 1rem;
     border-radius: 1.25rem;
+    cursor: pointer;
+}
+.btn, a.btn, button.btn, .btn:hover, a.btn:hover, button.btn:hover {
+    border: none;
 }
 .btn.btn-outline, a.btn.btn-outline, button.btn.btn-outline {
     border: 0.063rem solid #40404080;
+}
+.wpcf7-form .btn.btn-outline {
+    display: block;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    background: none;
+    color: var(--color-black);
+    border-color: var(--gradient-color-start);
+    font-weight: 500;
+    box-shadow: 2px 2px 8px rgba(74, 0, 224, 0.2), inset 2px 4px 4px 0 #ffffff40;
+    overflow: hidden;
+}
+.wpcf7-form .btn.btn-outline:hover {
+    color: var(--color-white);
+}
+.wpcf7-form .btn.btn-outline::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(var(--gradient-angle), var(--gradient-color-start) 0%, var(--gradient-color-end) 100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease;
+}
+.wpcf7-form .btn.btn-outline:hover::before {
+    opacity: 1;
+    visibility: visible;
 }
 .btn.btn-gradient, a.btn.btn-gradient, button.btn.btn-gradient {
     overflow: hidden;
@@ -187,6 +225,12 @@ html, body {
 .d-grid {
     display: grid!important;
 }
+.w-50 {
+    width: 50%!important;
+}
+.w-100 {
+    width: 100%!important;
+}
 .divider {
     display: block;
     width: 100%;
@@ -200,8 +244,232 @@ html, body {
     padding-inline-start: 1.5rem;
     margin: 0;
 }
+.error {
+    display: none;
+    width: 100%;
+    color: #ff0000;
+}
+.error-404.not-found {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3.125rem 0;
+}
+.error-404.not-found .page-header h1, .error-404.not-found .page-header h2 {
+    line-height: 1;
+}
+.error-404.not-found .page-header * {
+    margin: 0;
+}
+.error-404.not-found .page-header h2, .error-404.not-found .page-header p:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+.elementor-widget-image-box .elementor-image-box-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+form[disabled] {
+    pointer-events: none!important;
+    filter: opacity(0.75);
+}
+form[disabled] .input-control {
+    background: #efefef;
+}
+.form-group .form-group-title {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    margin-bottom: 1.5rem!important;
+    color: #7B11FF;
+}
+.form-row, .form-group-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+.form-group-body {
+    gap: 2.5rem;
+}
+.form-row {
+    gap: 5rem;
+}
+.form-group, .form-col, .form-group p, .form-group label, .printing {
+    display: block;
+    width: 100%;
+}
+form.wpcf7-form .form-group .form-col p > label {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+}
+.input-control, .input-control:hover, input.input-control, input.input-control:hover, textarea.input-control, textarea.input-control:hover, select.input-control, select.input-control:hover {
+    box-shadow: none;
+    outline: none;
+}
+.input-control, input.input-control, textarea.input-control, select.input-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.188rem;
+    border: none;
+    border-bottom: 0.063rem solid rgba(74, 1, 223, 0.5);
+}
+input[type="file"], input.input-control[type="file"] {
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+input[type="file"]::file-selector-button {
+    color: #404040;
+    border: 1px solid #404040;
+    background-color: transparent;
+    margin-right: 8px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+input[type="file"]::file-selector-button:hover {
+    border-color: #7B11FF;
+    background-color: #7B11FF;
+    color: #fff;
+}
+.input-control:hover, .input-control:focus, input.input-control:hover, input.input-control:focus, textarea.input-control:hover, textarea.input-control:focus, select.input-control:hover, select.input-control:focus {
+    border-color: #4A01DF;
+}
+.required {
+    color: #ff0000;
+}
+form .intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-3 .selected-flag {
+    width: 88px;
+    padding-left: 0;
+    background: none;
+}
+form input.input-control.wpcf7-phonetext {
+    padding-left: 6.25rem!important;
+}
+#selecting_job_position {
+    background: transparent;
+}
+.single-career-inner::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    background-position: center top;
+    background-size: contain;
+    background-repeat: space;
+    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/01/career_bg_3-scaled.webp);
+}
+.elementor-image-box-content {
+    flex: 1;
+}
+a.eael-creative-button.eael-creative-button--rayen:hover .eael-creative-button-icon-left {
+    transform: translateY(-200%);
+}
+a.eael-creative-button.eael-creative-button--rayen::before {
+    justify-content: flex-end;
+}
+.input-control.wpcf7-checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    border-bottom: none;
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 0.063rem solid rgba(74, 1, 223, 0.5);
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background: linear-gradient(var(--gradient-angle), var(--gradient-color-start) 0%, var(--gradient-color-end) 100%);
+    transition: all 0.35s ease;
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item.selected::before {
+    opacity: 1;
+    visibility: visible;
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item.selected {   
+    color: var(--color-white);
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item label {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    height: 100%;
+    cursor: pointer;
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item, .input-control.wpcf7-checkbox .wpcf7-list-item label {
+    margin: 0;
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item input {
+    position: absolute;
+    display: none;
+}
+.input-control.wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.188rem;
+}
+.hr-services-grid.service-content-expend .elementor-widget-image-box .elementor-image-box-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.hr-services-grid.service-content-expend .elementor-widget-image-box .elementor-image-box-title {
+    padding-right: 3.125rem;
+}
 @media (max-width: 767px) {
-
+    .error-404.not-found {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .error-404.not-found .page-header h2 {
+        font-size: 32px;
+        line-height: 42px;
+    }
+    .site-col {
+        flex: 1 1 auto;
+    }
+    .input-control.wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label {
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+    }
+    .input-control.wpcf7-checkbox .wpcf7-list-item label {
+        padding: 0.625rem 1rem;
+    }
+    .input-control, input.input-control, textarea.input-control, select.input-control {
+        font-size: 0.875rem;
+    }
+    .elementor-widget-image-box.elementor-vertical-align-top .elementor-image-box-wrapper {
+        align-items: flex-start;
+    }
+    .elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper {
+        flex-direction: row-reverse;
+    }
+    .hr-services-grid .elementor-widget-image-box .elementor-image-box-img {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .hr-services-grid .elementor-widget-image-box .elementor-image-box-title {
+        padding-right: 3.125rem;
+    }
 }
 @media (min-width: 768px) {
     .d-md-none {
@@ -222,8 +490,17 @@ html, body {
     .d-md-grid {
         display: grid!important;
     }
+    .w-md-50 {
+        width: 50%!important;
+    }
+    .w-md-100 {
+        width: 100%!important;
+    }
     .site-container {
         max-width: 720px;
+    }
+    .form-col.half {
+        max-width: calc( 50% - 1.25rem );
     }
 }
 @media (min-width: 992px) {
@@ -244,6 +521,12 @@ html, body {
     }
     .d-lg-grid {
         display: grid!important;
+    }
+    .w-lg-50 {
+        width: 50%!important;
+    }
+    .w-lg-100 {
+        width: 100%!important;
     }
 }
 @media (max-width: 1199px) {
@@ -273,8 +556,17 @@ html, body {
     .d-xl-grid {
         display: grid!important;
     }
+    .w-xl-50 {
+        width: 50%!important;
+    }
+    .w-xl-100 {
+        width: 100%!important;
+    }
     #footer-menus .hfe-nav-menu .menu-item .hfe-menu-item {
         white-space: nowrap;
+    }
+    .form-col.half {
+        max-width: calc( 50% - 1.875rem );
     }
 }
 @media (min-width: 1280px) {
@@ -300,6 +592,12 @@ html, body {
     }
     .d-xxl-grid {
         display: grid!important;
+    }
+    .w-xxl-50 {
+        width: 50%!important;
+    }
+    .w-xxl-100 {
+        width: 100%!important;
     }
 }
 @media (min-width: 1600px) {

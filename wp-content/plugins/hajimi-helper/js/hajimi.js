@@ -119,5 +119,41 @@ document.addEventListener('DOMContentLoaded', function() {
             $this.fadeOut();
             $('.hajimi-navigation .hajimi-dropdown-button.submenu-opened').trigger('click');
         });
+
+        $(document).on('click', '.hajimi-back2top', function (e) {
+            e.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: 0
+            }, 1500);
+        });
+
+        $('.hajimi-media-slider').each(function() {
+            var $slider = $(this),
+                $swiper = $slider.find('.swiper');
+            new Swiper($swiper[0], {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                navigation: {
+                    prevEl: '.media-nav-prev',
+                    nextEl: '.media-nav-next',
+                },
+                pagination: {
+                    el: '.hajimi-media-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesOffsetBefore: 24,
+                        slidesOffsetAfter: 24,
+                        slidesPerView: "auto",
+                    },
+                    768: {
+                        slidesPerView: 1,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0,
+                    }
+                }
+            });
+        });
     });
 });
