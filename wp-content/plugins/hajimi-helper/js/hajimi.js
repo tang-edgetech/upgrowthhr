@@ -129,10 +129,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
         $('.hajimi-media-slider').each(function() {
             var $slider = $(this),
-                $swiper = $slider.find('.swiper');
+                $swiper = $slider.find('.swiper'),
+                $loop = $slider.attr('data-loop'),
+                $speed = parseInt($slider.data('speed')) || 500,
+                $autoplay = parseInt($slider.data('autoplay')) === 1,
+                $autoplayTimeout = parseInt($slider.data('autoplay-timeout')) || 5000;
+            
+            var spaceDesktop = parseInt($slider.data('space')) || 0;
+            var pppDesktop   = parseInt($slider.data('ppp')) || 1;
+
+            var spaceLaptop  = parseInt($slider.data('space-laptop')) || spaceDesktop;
+            var spaceTablet  = parseInt($slider.data('space-tablet')) || spaceLaptop;
+            var spaceMobile  = parseInt($slider.data('space-mobile')) || spaceTablet;
+
+            var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
+            var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
+            var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
+
+            if( $slider.hasClass('type-infinite') ) {
+                $autoplay = true;
+                $autoplayTimeout = 0;
+                $speed = 7000;
+            }
             new Swiper($swiper[0], {
-                slidesPerView: 1,
+                slidesPerView: 3.5,
                 spaceBetween: 24,
+                loop: $loop,
+                speed: $speed,
+                autoplay: $autoplay ? {
+                    delay: $autoplayTimeout,
+                    disableOnInteraction: false
+                } : false,
                 navigation: {
                     prevEl: '.media-nav-prev',
                     nextEl: '.media-nav-next',
@@ -143,15 +170,79 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 breakpoints: {
                     0: {
+                        slidesPerView: pppMobile,
+                        spaceBetween: spaceMobile,
                         slidesOffsetBefore: 24,
                         slidesOffsetAfter: 24,
-                        slidesPerView: "auto",
                     },
                     768: {
-                        slidesPerView: 1,
+                        slidesPerView: pppTablet,
+                        spaceBetween: spaceTablet,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0,
+                    },
+                    1200: {
+                        slidesPerView: pppLaptop,
+                        spaceBetween: spaceLaptop,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0,
+                    },
+                    1600: {
+                        slidesPerView: pppDesktop,
+                        spaceBetween: spaceDesktop,
                         slidesOffsetBefore: 0,
                         slidesOffsetAfter: 0,
                     }
+                }
+            });
+        });
+
+        
+        $('.hajimi-fancy-marquee').each(function () {
+            const $marquee = $(this);
+            const $track   = $marquee.find('.marquee-track');
+            const $span    = $track.find('.hajimi-heading-title').first();
+
+            if (!$span.length) return;
+
+            $track.css('animation', 'none');
+            $track.find('.clone').remove();
+            $track.find('.hajimi-heading-title').not(':first').remove();
+
+            const screenWidth = $marquee.width();
+            const spanWidth   = $span.outerWidth(true);
+            const count       = Math.floor(screenWidth / spanWidth) + 1;
+
+            for (let i = 1; i < count; i++) {
+                $track.append($span.clone());
+            }
+
+            $track.children().clone().addClass('clone').appendTo($track);
+
+            requestAnimationFrame(() => {
+                $track[0].offsetHeight;
+                $track.css('animation', '');
+            });
+        });
+
+        $('.hajimi-accordion').each(function() {
+            var $accordion = $(this);
+            $accordion.find('button.hajimi-header-title').on('click', function(e) {
+                e.preventDefault();
+                var $button = $(this),
+                    $parent = $button.closest('.hajimi-accordion-item'),
+                    $body = $parent.find('.hajimi-body');
+                $button.prop('disabled', true);
+                setTimeout(function() {
+                    $button.prop('disabled', false);
+                }, 250);
+                if( $parent.hasClass('opened') ) {
+                    $parent.removeClass('opened');
+                    $body.slideUp();
+                }
+                else {
+                    $parent.addClass('opened');
+                    $body.slideDown();
                 }
             });
         });

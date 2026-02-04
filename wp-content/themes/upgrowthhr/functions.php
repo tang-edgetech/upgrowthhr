@@ -469,3 +469,156 @@ function retrieving_job_position_details() {
 }
 add_action('wp_ajax_retrieving_job_position_details', 'retrieving_job_position_details');
 add_action('wp_ajax_nopriv_retrieving_job_position_details', 'retrieving_job_position_details');
+
+function ug_services_package_shortcode($atts) {
+
+    $atts = shortcode_atts([
+        'package' => '',
+    ], $atts, '	');
+
+    $package = strtolower(trim($atts['package']));
+    $output  = '';
+	ob_start();
+    switch ($package) {
+
+        case 'basic':
+		?>
+			<div class="ug-packages package-<?= $package;?>">
+				<div class="ug-package-header">
+					<div class="ug-package-text">
+						<h4 class="ug-package-title">Basic</h4>
+						<ul>
+							<li>Payroll Processing & Advisory</li>
+							<li>HRMS Support</li>
+							<li>Basic HR Advisory (Remotely)</li>
+							<li>HR Operations Services (Remotely)</li>
+						</ul>
+					</div>
+					<a href="#" class="btn btn-outline btn-arrow-up"><span>Proceed Now</span><i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i></a>
+				</div>
+				<div class="ug-package-body">
+					<div class="table-wrapper">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Headcount</th>
+									<th>Price Per Month</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>20 - 100</td>
+									<td><sub>RM</sub> <strong>70</strong> <sub> / Headcount</sub></td>
+								</tr>
+								<tr>
+									<td>101 - 200</td>
+									<td><sub>RM</sub> <strong>60</strong> <sub> / Headcount</sub></td>
+								</tr>
+								<tr>
+									<td>201 - 300</td>
+									<td><sub>RM</sub> <strong>50</strong> <sub> / Headcount</sub></td>
+								</tr>
+								<tr>
+									<td>301 &amp; Above</td>
+									<td><sub>RM</sub> <strong>40</strong> <sub> / Headcount</sub></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		<?php
+            break;
+
+        case 'workplace': 
+		?>
+			<div class="ug-packages package-<?= $package;?>">
+				<div class="ug-package-header">
+					<div class="ug-package-text">
+						<h4 class="ug-package-title">WORKPLACE SERVICE</h4>
+					</div>
+					<a href="#" class="btn btn-outline btn-arrow-up"><span>Proceed Now</span><i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i></a>
+				</div>
+				<div class="ug-package-body">
+					<div class="table-wrapper">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Headcount</th>
+									<th>Price Per Month</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>1</strong></td>
+									<td><sub>RM</sub> <strong>2,000</strong></td>
+								</tr>
+								<tr>
+									<td><strong>2</strong><br/>(same state / province)</td>
+									<td><sub>RM</sub> <strong>3,500</strong></td>
+								</tr>
+								<tr>
+									<td><strong>3-4</strong><br/>(same state / province)</td>
+									<td><sub>RM</sub> <strong>4,500</strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		<?php
+            break;
+
+        case 'people-culture':
+		?>
+			<div class="ug-packages package-<?= $package;?>">
+				<div class="ug-package-header">
+					<div class="ug-package-text">
+						<h4 class="ug-package-title">PEOPLE & CULTURE ADVISORY</h4>
+					</div>
+					<a href="#" class="btn btn-outline btn-arrow-up"><span>Proceed Now</span><i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i></a>
+				</div>
+				<div class="ug-package-body">
+					<div class="table-wrapper">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Headcount</th>
+									<th>Price Per Month</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>20 &amp; Below</td>
+									<td><sub>Start with RM</sub> <strong>3,000</strong></td>
+								</tr>
+								<tr>
+									<td>21 - 50</td>
+									<td><sub>RM</sub> <strong>4,000 ~ 5,500</strong></td>
+								</tr>
+								<tr>
+									<td>51 - 100</td>
+									<td><sub>RM</sub> <strong>6,000 ~ 7,500</strong></td>
+								</tr>
+								<tr>
+									<td>101 &amp; Above</td>
+									<td><sub>Start with RM</sub> <strong>8,000</strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		<?php
+            break;
+
+        default:
+            $output .= '<div class="ug-package default">';
+            $output .= '<p>Invalid or missing package type.</p>';
+            $output .= '</div>';
+            break;
+    }
+	$output = ob_get_clean();
+    return $output;
+}
+add_shortcode('ug_services_package', 'ug_services_package_shortcode');

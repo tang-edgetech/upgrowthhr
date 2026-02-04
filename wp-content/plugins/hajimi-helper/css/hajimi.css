@@ -1,7 +1,7 @@
 .hajimi-fancy-heading {
     display: block;
 }
-.hajimi-fancy-heading .hajimi-heading-title {
+.hajimi-fancy-heading .hajimi-heading-title, .hajimi-fancy-marquee .hajimi-heading-title {
     display: inline-block;
     max-width: 100%;
     width: max-content;
@@ -11,10 +11,10 @@
     letter-spacing: 0.02em;
     color: #4F3D95;
 }
-.hajimi-fancy-heading:not(.heading-solid) .hajimi-heading-title {
+.hajimi-fancy-heading:not(.heading-solid) .hajimi-heading-title, .hajimi-fancy-marquee .hajimi-heading-title:not(.heading-solid) {
     text-shadow: 1px 1px 0 #4F3D95, -1px -1px 0 #4F3D95, 1px -1px 0 #4F3D95, -1px 1px 0 #4F3D95;
 }
-.hajimi-fancy-heading.heading-outline .hajimi-heading-title {
+.hajimi-fancy-heading.heading-outline .hajimi-heading-title, .hajimi-fancy-marquee .hajimi-heading-title.heading-outline {
     text-shadow: 1px 1px 0 #4F3D95, -1px -1px 0 #4F3D95, 1px -1px 0 #4F3D95, -1px 1px 0 #4F3D95;
     color: #fff;
 }
@@ -423,6 +423,142 @@ button.hajimi-back2top.button-circle {
     top: 0;
     left: 0;
 }
+.hajimi-media-slider.type-infinite .swiper-wrapper {
+    transition-timing-function: linear!important;
+}
+.hajimi-fancy-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #A581FF;
+}
+.hajimi-fancy-marquee .marquee-track {
+    display: flex;
+    width: max-content;
+    padding: 0.625rem 0;
+    animation: hajimi-marquee-scroll 30s linear infinite
+}
+@keyframes hajimi-marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+.hajimi-fancy-marquee .marquee-track span {
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+}
+.hajimi-accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+}
+.hajimi-accordion .hajimi-accordion-item {
+    padding: 2rem;
+    border: 0.063rem solid rgba(74, 1, 223, 0.5);
+    box-shadow: 0.125rem 0.125rem 0.5rem 0 rgba(74, 0, 224, 0.2);
+    border-radius: 0.5rem;
+    background-color: #fff;
+}
+.hajimi-accordion .hajimi-accordion-item-inner {
+
+}
+.hajimi-accordion .hajimi-header-title, .hajimi-accordion .hajimi-header-title-inner {
+    display: flex;
+}
+.hajimi-accordion .hajimi-header-title {
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    gap: 1.5rem;
+}
+.hajimi-accordion .hajimi-header-title:hover {
+    opacity: 0.85;
+}
+.hajimi-accordion .hajimi-header-title, .hajimi-accordion .hajimi-header-title:hover {
+    border: none;
+}
+.hajimi-accordion .hajimi-header-title-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex: 1;
+    text-align: left;
+}
+.hajimi-accordion .hajimi-subtitle {
+    color: #606060;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+.hajimi-accordion .hajimi-title {
+    color: #9933FF;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.hajimi-accordion .accordion-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.hajimi-accordion .accordion-arrow {
+    background-color: #9933FF;
+    color: #fff;
+    transform-origin: center center;
+    transition: all 0.35s ease;
+}
+.hajimi-accordion .accordion-arrow i, .hajimi-accordion .accordion-arrow svg {
+    display: block;
+    font-size: 1rem;
+    line-height: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+.hajimi-accordion .hajimi-accordion-item.opened .accordion-arrow, .hajimi-accordion .hajimi-accordion-item.opened .accordion-arrow {
+    transform: rotate(180deg);
+}
+.hajimi-accordion .hajimi-body {
+    display: none;
+}
+.hajimi-accordion .hajimi-body-inner {
+    border-top: 0.063rem solid #F2EDFE; 
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+.hajimi-accordion .hajimi-body ul {
+    list-style: none;
+    margin: 0;
+    margin-top: 0.5rem;
+    padding-inline-start: 2rem;
+}
+.hajimi-accordion .hajimi-body ul li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+.hajimi-accordion .hajimi-body ul li::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: -2rem;
+    top: 0.125rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-right: 0.5rem;
+    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/02/icon-list-item-ug-packages.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
 @media (max-width: 767px) {
     .hajimi-navigation {
         padding: 1rem 1.25rem;
@@ -458,6 +594,9 @@ button.hajimi-back2top.button-circle {
     }
     .hajimi-magic-button > .btn {
         justify-content: center!important;
+    }
+    .hajimi-accordion .hajimi-accordion-item {
+        padding: 1.5rem;
     }
 }
 @media (min-width: 768px) {
