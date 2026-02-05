@@ -18,6 +18,8 @@ jQuery(document).ready(function($) {
 
     var swiperInstances = [];
     var currentMode = null;
+    var currentMode2 = null;
+    var testimonialSwiper = null;
 
     function handleSwiper() {
         var windowWidth = $(window).width();
@@ -53,11 +55,56 @@ jQuery(document).ready(function($) {
                 currentMode = 'desktop';
                 console.log('Swiper Destroyed');
             }
-        }
+        } 
     }
 
     handleSwiper();
     $(window).on('resize', function() {
         handleSwiper();
+    });
+
+    
+    function handleTestimonialSwiper() {
+        var winWidth = $(window).width();
+        var $container = $('.ug-testimonial-shortcode');
+        var $wrapper = $container.find('.ug-testimonials');
+        var $slides = $wrapper.find('.rev-item');
+        if (winWidth <= 767) {
+            if (currentMode2 !== 'mobile') {
+                currentMode2 = 'mobile';
+
+                $container.addClass('swiper');
+                $wrapper.addClass('swiper-wrapper');
+                $slides.addClass('swiper-slide');
+
+                testimonialSwiper = new Swiper('.ug-testimonial-shortcode', {
+                    slidesPerView: "auto",
+                    spaceBetween: 16,
+                    loop: false,
+                    slidesOffsetBefore: 24,
+                    slidesOffsetAfter: 24,
+                });
+            console.log('Build');
+            }
+        } else {
+            if (currentMode2 !== 'desktop') {
+                currentMode2 = 'desktop';
+
+                if (testimonialSwiper) {
+                    testimonialSwiper.destroy(true, true);
+                    testimonialSwiper = null;
+                }
+
+                $container.removeClass('swiper');
+                $wrapper.removeClass('swiper-wrapper');
+                $slides.removeClass('swiper-slide');
+            }
+            console.log('Destroy');
+        }
+    }
+
+    handleTestimonialSwiper();
+    $(window).on('resize', function(){
+        handleTestimonialSwiper();
     });
 });

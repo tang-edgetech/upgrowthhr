@@ -30,6 +30,19 @@ class Hajimi_Accordion extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
+            'accordion_layout_style',
+            [
+                'label' => __( 'Layout Style', 'hajimi' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => __( 'Default', 'hajimi' ),
+                    'style-1' => __( 'Style 1', 'hajimi' ),
+                ]
+            ]
+        );
+
+        $this->add_control(
             'accordion_subtitle_tag',
             [
                 'label' => __( 'Sub Title Tag', 'hajimi' ),
@@ -232,6 +245,40 @@ class Hajimi_Accordion extends \Elementor\Widget_Base {
             ]
         );
 
+		$this->add_responsive_control(
+			'accordion_item_gap',
+			[
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label' => esc_html__( 'Item Spacing', 'hajimi' ),
+				'range' => [
+					'rem' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'devices' => [ 'desktop', 'laptop', 'tablet', 'mobile' ],
+				'default' => [
+					'size' => 1.5,
+					'unit' => 'rem',
+				],
+				'laptop_default' => [
+					'size' => 1.5,
+					'unit' => 'rem',
+				],
+				'tablet_default' => [
+					'size' => 1.5,
+					'unit' => 'rem',
+				],
+				'mobile_default' => [
+					'size' => 1,
+					'unit' => 'rem',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-accordion' => 'gap: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'padding',
 			[
@@ -247,12 +294,80 @@ class Hajimi_Accordion extends \Elementor\Widget_Base {
 					'isLinked' => true,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .your-class' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .hajimi-accordion .hajimi-accordion-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'accordion_border',
+				'selector' => '{{WRAPPER}} .hajimi-accordion .hajimi-accordion-item',
+			]
+		);
 
+		$this->add_control(
+			'accordion_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 0.5,
+					'right' => 0.5,
+					'bottom' => 0.5,
+					'left' => 0.5,
+					'unit' => 'rem',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-accordion .hajimi-accordion-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'accordion_item_box_shadow',
+				'selector' => '{{WRAPPER}} .hajimi-accordion .hajimi-accordion-item',
+			]
+		);
+
+		$this->add_responsive_control(
+			'accordion_content_gap',
+			[
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label' => esc_html__( 'Content Spacing', 'hajimi' ),
+				'range' => [
+					'rem' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'devices' => [ 'desktop', 'laptop', 'tablet', 'mobile' ],
+				'default' => [
+					'size' => 1.5,
+					'unit' => 'rem',
+				],
+				'laptop_default' => [
+					'size' => 1.5,
+					'unit' => 'rem',
+				],
+				'tablet_default' => [
+					'size' => 1.5,
+					'unit' => 'rem',
+				],
+				'mobile_default' => [
+					'size' => 1,
+					'unit' => 'rem',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-accordion .hajimi-body-inner' => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 
         $this->end_controls_section();
 
@@ -264,7 +379,51 @@ class Hajimi_Accordion extends \Elementor\Widget_Base {
             ]
         );
 
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'accordion_header_border',
+				'selector' => '{{WRAPPER}} .hajimi-accordion .hajimi-header-title',
+			]
+		);
 
+		$this->add_control(
+			'accordion_header_padding',
+			[
+				'label' => esc_html__( 'Padding', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 1.5,
+					'right' => 1.5,
+					'bottom' => 1.5,
+					'left' => 1.5,
+					'unit' => 'rem',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-accordion .hajimi-header-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'label' => esc_html__( 'Title', 'hajimi' ),
+				'name' => 'accordion_title_typography',
+				'selector' => '{{WRAPPER}} .hajimi-accordion .hajimi-title',
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'label' => esc_html__( 'Sub Title', 'hajimi' ),
+				'name' => 'accordion_subtitle_typography',
+				'selector' => '{{WRAPPER}} .hajimi-accordion .hajimi-subtitle',
+			]
+		);
 
         $this->end_controls_section();
 
@@ -276,19 +435,46 @@ class Hajimi_Accordion extends \Elementor\Widget_Base {
             ]
         );
 
+		$this->add_control(
+			'accordion_body_padding',
+			[
+				'label' => esc_html__( 'Padding', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'default' => [
+					'top' => 1.5,
+					'right' => 1.5,
+					'bottom' => 1.5,
+					'left' => 1.5,
+					'unit' => 'rem',
+					'isLinked' => true,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-accordion .hajimi-body-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'accordion_bottom_border',
+				'selector' => '{{WRAPPER}} .hajimi-accordion .hajimi-body-inner',
+			]
+		);
 
         $this->end_controls_section();
     }
 
     protected function render() {
         $settings = $this->get_settings_for_display();
+        $layout_style = $settings['accordion_layout_style'];
         $accordion_subtitle_tag = $settings['accordion_subtitle_tag'];
         $accordion_title_tag = $settings['accordion_title_tag'];
         $icon_open = $settings['accordion_icon_open'];
         $icon_close = $settings['accordion_icon_close'];
     ?>
-    <div class="hajimi-accordion">
+    <div class="hajimi-accordion layout-<?= $layout_style;?>">
     <?php $index = 1;
     foreach( $settings['accordions'] as $item ) {
         $accordion_subtitle = $item['accordion_subtitle'];

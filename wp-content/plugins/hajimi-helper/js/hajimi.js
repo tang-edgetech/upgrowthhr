@@ -231,16 +231,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 var $button = $(this),
                     $parent = $button.closest('.hajimi-accordion-item'),
+                    $siblings = $button.parents('.hajimi-accordion').find('.hajimi-accordion-item'),
                     $body = $parent.find('.hajimi-body');
                 $button.prop('disabled', true);
                 setTimeout(function() {
                     $button.prop('disabled', false);
                 }, 250);
+
                 if( $parent.hasClass('opened') ) {
                     $parent.removeClass('opened');
                     $body.slideUp();
                 }
                 else {
+                    $siblings.removeClass('opened');
+                    $siblings.find('.hajimi-body').slideUp();
                     $parent.addClass('opened');
                     $body.slideDown();
                 }

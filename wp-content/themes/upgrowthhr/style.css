@@ -41,6 +41,9 @@ html, body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 }
+.elementor p {
+    margin-top: 0;
+}
 .site a span {
     display: inline-block;
     font-family: inherit;
@@ -61,6 +64,10 @@ html, body {
 }
 .btn.btn-outline, a.btn.btn-outline, button.btn.btn-outline {
     border: 0.063rem solid #40404080;
+}
+.btn.btn-text {
+    font-weight: 700;
+    padding: 0;
 }
 .wpcf7-form .btn.btn-outline {
     display: block;
@@ -532,6 +539,82 @@ table, .table {
 .custom-card-swiper.swiper .swiper-slide:nth-child(even) {
     transform: rotate(5deg);
 }
+.ug-testimonial-shortcode {
+    padding-bottom: 0.5rem!important;
+}
+.ug-testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 1.25rem;
+}
+.ug-testimonials .rev-item {
+    border-top-right-radius: 3.75rem;
+    box-shadow: 0.125rem 0.125rem 0.5rem rgba(74, 0, 224, 0.2);
+    background-color: var(--color-white);
+}
+.ug-testimonials .rev-item-inner {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 1.5rem;
+    gap: 3.125rem;
+    min-height: 25rem;
+}
+.ug-testimonials .rev-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+.ug-testimonials .rev-thumbnail {
+    border: 0.063rem solid rgba(0, 0, 0, 0.5);
+    width: 5.75rem;
+    height: 5.75rem;
+    border-radius: 3.125rem;
+}
+.ug-testimonials .rev-pic {
+    flex: 1;
+}
+.ug-testimonials .rev-body {
+    padding-top: 1.75rem;
+}
+.ug-testimonials .rev-body::before, .ug-testimonials .rev-body::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.25rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.ug-testimonials .rev-body::before {
+    left: 0;
+    top: -0.25rem;
+    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/02/icon-review-quote-start.png);
+}
+.ug-testimonials .rev-body::after {
+    right: 0;
+    bottom: 0.25rem;
+    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/02/icon-review-quote-end.png);
+}
+.ug-testimonials .rev-content {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.ug-testimonials .rev-item.rev-special-card .rev-header h4{
+    color: #7B11FF;
+    font-size: 2.5rem;
+    line-height: 3.25rem;
+    font-weight: 700;
+    padding-right: 2.5rem;
+}
+.ug-testimonials .rev-item.rev-special-card:not(:last-child) .rev-header h4 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding-right: 0;
+}
 @media (max-width: 767px) {
     .error-404.not-found {
         padding-left: 1.5rem;
@@ -614,6 +697,26 @@ table, .table {
     .bg-text-title.elementor-widget-hajimi_fancy_heading {
         top: 30% !important;
         transform: translateY(-50%);
+    }
+    .ug-testimonials {
+        gap: 0;
+    }
+    .ug-testimonials .rev-item {
+        width: 280px;
+        border-top-right-radius: 1.5rem;
+        height: auto;
+    }
+    .ug-testimonials .rev-item-inner {
+        height: 100%;
+    }
+    .ug-testimonials .rev-thumbnail {
+        width: 5rem;
+        height: 5rem;
+    }
+    .floating-title.elementor-widget-hajimi_fancy_heading .hajimi-heading-title {
+        left: 50%;
+        transform:translateX(-50%);
+        min-width: fit-content;
     }
 }
 @media (min-width: 768px) {
@@ -708,6 +811,12 @@ table, .table {
 }
 @media (max-width: 1199px) {
 
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .ug-testimonials {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 }
 @media (min-width: 1200px) and (max-width: 1279px) and (orientation: landscape) {
     .e-con-boxed.e-parent > .e-con-inner, .site-container {

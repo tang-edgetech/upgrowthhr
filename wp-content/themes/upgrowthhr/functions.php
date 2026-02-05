@@ -622,3 +622,81 @@ function ug_services_package_shortcode($atts) {
     return $output;
 }
 add_shortcode('ug_services_package', 'ug_services_package_shortcode');
+
+function ug_testimonial_listing($atts) {
+    $atts = shortcode_atts([
+        'ppp' => 7,
+		'order' => 'desc',
+		'orderby' => 'date',
+    ], $atts, 'ug_testimonial_listing');
+
+    $ppp     = intval( $atts['ppp'] );
+    $order   = strtoupper( $atts['order'] ) === 'ASC' ? 'ASC' : 'DESC';
+    $orderby = sanitize_key( $atts['orderby'] );
+
+    $args = array(
+        'post_type'      => 'testimonial',
+        'posts_per_page' => $ppp,
+        'order'          => $order,
+        'orderby'        => $orderby,
+        'post_status'    => 'publish',
+    );
+
+    $query = new WP_Query( $args );
+
+    ob_start();
+	?>
+	<div class="ug-testimonial-shortcode">
+		<div class="ug-testimonials">
+		<?php
+		if( $query->have_posts() ) {
+		?>
+		<?php
+			while( $query->have_posts() ) {
+				$query->the_post();
+				$rev_id = get_the_ID();
+				$rev_title = get_the_title();
+				$rev_designation = get_field('designation');
+				$rev_content = get_field('content');
+				$rev_permalink = get_permalink();
+			?>
+				<div class="rev-item rev-item-<?= $rev_id;?>" id="rev-item-<?= $rev_id;?>">
+					<div class="rev-item-inner">
+						<div class="rev-header">
+							<div class="rev-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'" class="img-fluid w-100 h-100"/>'; } ?></div>
+							<div class="rev-pic">
+								<h3 class="rev-title"><?= $rev_title;?></h3>
+								<div class="rev-designation"><?= $rev_designation;?></div>
+							</div>
+						</div>
+						<div class="rev-body">
+							<div class="rev-content"><?= $rev_content;?></div>
+							<div class="rev-cta"><a href="#" class="btn btn-text"><span>View More</span></a></div>
+						</div>
+					</div>
+				</div>
+			<?php
+			}
+			wp_reset_postdata();
+		}
+		else {
+		?>
+			<div class="rev-item rev-special-card">
+				<div class="rev-item-inner">
+					<div class="rev-header"><h4>No testimonial at the moment...</h4></div>
+				</div>
+			</div>
+		<?php
+		}
+		?>
+			<div class="rev-item rev-special-card">
+				<div class="rev-item-inner">
+					<div class="rev-header"><h4>More in future...</h4></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'ug_testimonial_listing', 'ug_testimonial_listing' );
