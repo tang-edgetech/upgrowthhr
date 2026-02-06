@@ -374,7 +374,7 @@ form input.input-control.wpcf7-phonetext {
     background-position: center top;
     background-size: contain;
     background-repeat: space;
-    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/01/career_bg_3-scaled.webp);
+    background-image: url(https://staging.upgrowthhr.com/wp-content/uploads/2026/01/career_bg_3-scaled.webp);
 }
 .elementor-image-box-content {
     flex: 1;
@@ -528,7 +528,7 @@ table, .table {
     width: 1.125rem;
     height: 1.125rem;
     margin-right: 0.5rem;
-    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/02/icon-list-item-ug-packages.png);
+    background-image: url(https://staging.upgrowthhr.com/wp-content/uploads/2026/02/icon-list-item-ug-packages.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -591,12 +591,12 @@ table, .table {
 .ug-testimonials .rev-body::before {
     left: 0;
     top: -0.25rem;
-    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/02/icon-review-quote-start.png);
+    background-image: url(https://staging.upgrowthhr.com/wp-content/uploads/2026/02/icon-review-quote-start.png);
 }
 .ug-testimonials .rev-body::after {
     right: 0;
     bottom: 0.25rem;
-    background-image: url(http://localhost:8080/upgrowthhr/wp-content/uploads/2026/02/icon-review-quote-end.png);
+    background-image: url(https://staging.upgrowthhr.com/wp-content/uploads/2026/02/icon-review-quote-end.png);
 }
 .ug-testimonials .rev-content {
     display: block;
