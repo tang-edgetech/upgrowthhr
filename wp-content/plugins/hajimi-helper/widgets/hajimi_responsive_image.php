@@ -258,7 +258,7 @@ class Hajimi_Responsive_Image extends \Elementor\Widget_Base {
     ?>
         <div class="hajimi-magic-image">
             <picture>
-                <?php if( $responsive == 'mobile' || $responsive == 'tablet' ) { ?><source media="<?= $media_type;?>" srcset="<?= $image['alt'];?>"/><?php } ?>
+                <?php if( $responsive == 'mobile' || $responsive == 'tablet' ) { ?><source media="<?= $media_type;?>" srcset="<?= $image['url'];?>"/><?php } ?>
                 <img src="<?= $image_mobile['url'];?>"<?= ( !empty($image_mobile['alt']) ) ? ' alt="'.$image_mobile['alt'].'"' : '';?>/>
             </picture>
         </div>
