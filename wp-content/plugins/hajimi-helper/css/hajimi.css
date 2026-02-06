@@ -272,6 +272,9 @@
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(4px);
 }
+.hajimi-glass-effect.base-theme {
+    background: rgba(123, 17, 255, 0.1);
+}
 .hajimi-pll {
     display: flex;
     flex-direction: row;
