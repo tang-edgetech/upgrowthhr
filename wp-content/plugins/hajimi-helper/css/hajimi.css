@@ -591,6 +591,9 @@ button.hajimi-back2top.button-circle {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+.hajimi-magic-gallery.type-slider .swiper.swiper-motion-smooth-infinite .swiper-wrapper {
+    transition-timing-function: linear!important;
+}
 @media (max-width: 767px) {
     .hajimi-navigation {
         padding: 1rem 1.25rem;
