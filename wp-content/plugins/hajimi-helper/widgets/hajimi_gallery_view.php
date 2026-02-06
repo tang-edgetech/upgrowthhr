@@ -201,7 +201,7 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 				'label_on' => esc_html__( 'Show', 'hajimi' ),
 				'label_off' => esc_html__( 'Hide', 'hajimi' ),
 				'return_value' => 'yes',
-				'default' => 'yes',,
+				'default' => 'yes',
                 'condition' => [
                     'gallery_type' => 'slider'
                 ]
@@ -216,7 +216,7 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 				'label_on' => esc_html__( 'Show', 'hajimi' ),
 				'label_off' => esc_html__( 'Hide', 'hajimi' ),
 				'return_value' => 'yes',
-				'default' => 'yes',,
+				'default' => 'yes',
                 'condition' => [
                     'gallery_type' => 'slider'
                 ]
@@ -231,7 +231,7 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 				'min' => 0,
 				'max' => 100000,
 				'step' => 100,
-				'default' => 5000,,
+				'default' => 5000,
                 'condition' => [
                     'gallery_type' => 'slider'
                 ]
@@ -246,7 +246,7 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 				'min' => 300,
 				'max' => 100000,
 				'step' => 50,
-				'default' => 300,,
+				'default' => 300,
                 'condition' => [
                     'gallery_type' => 'slider'
                 ]
