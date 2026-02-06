@@ -1,6 +1,22 @@
 .animation-point-downward {
     animation: pointingDown 2.5s ease infinite;
 }
+.animation-loading-downward svg path {
+    opacity: 0;
+    animation: loading-opacity 0.25s linear;
+}
+.animation-loading-downward svg path:nth-child(1) {
+    animation-delay: 0s;
+}
+.animation-loading-downward svg path:nth-child(2) {
+    animation-delay: 0.875s;
+}
+.animation-loading-downward svg path:nth-child(3) {
+    animation-delay: 1.75s;
+}
+.animation-loading-downward svg path:nth-child(4) {
+    animation-delay: 2.625s;
+}
 @keyframes pointingDown {
     0%, 100% {
         transform: translateY(0);
@@ -8,4 +24,11 @@
     50% {
         transform: translateY(25%);
     }
+}
+@keyframes loading-opacity {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    40%  { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 0; }
 }
