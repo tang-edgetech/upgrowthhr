@@ -88,7 +88,7 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 					'size' => 1,
 				],
                 'selectors' => [
-                    '{{WRAPPER}} .hajimi-magic-gallery' => 'grid-template-columns: {{SIZE}}'
+                    '{{WRAPPER}} .hajimi-magic-gallery' => 'grid-template-columns: repeat({{SIZE}}, 1fr)'
                 ],
                 'condition' => [
                     'gallery_type' => 'grid'
