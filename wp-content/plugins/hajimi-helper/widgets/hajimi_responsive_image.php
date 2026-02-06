@@ -252,7 +252,7 @@ class Hajimi_Responsive_Image extends \Elementor\Widget_Base {
         if( $responsive == 'tablet' ) {
             $media_type = '(min-width: 1200px)';
         }
-        if( empty($settings['image_mobile']) || ( $responsive !== 'mobile' || $responsive !== 'tablet' ) ) {
+        if( empty($settings['image_mobile']['url']) || ( $responsive !== 'mobile' || $responsive !== 'tablet' ) ) {
             $image_mobile = $image;
         }
     ?>
