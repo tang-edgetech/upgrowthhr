@@ -180,3 +180,11 @@ function hajimi_render_settings_page() {
     </div>
     <?php
 }
+
+function my_custom_elementor_css() {
+    wp_enqueue_style(
+        'my-elementor-editor-css',
+        get_stylesheet_directory_uri() . '/page-editor.css'
+    );
+}
+add_action('elementor/editor/after_enqueue_styles', 'my_custom_elementor_css');
