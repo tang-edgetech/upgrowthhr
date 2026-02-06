@@ -247,12 +247,12 @@ class Hajimi_Responsive_Image extends \Elementor\Widget_Base {
         $settings = $this->get_settings();
         $responsive = $settings['media_responsive'];
         $image = $settings['image'];
-        $image_mobile = null;
+        $image_mobile = $settings['image_mobile'];
         $media_type = '(min-width: 768px)';
         if( $responsive == 'tablet' ) {
             $media_type = '(min-width: 1200px)';
         }
-        if( empty($settings['image_mobile']['url']) || ( $responsive !== 'mobile' || $responsive !== 'tablet' ) ) {
+        if( empty($image_mobile['url']) ) {
             $image_mobile = $image;
         }
     ?>
