@@ -138,12 +138,9 @@ __( 'Heads up!', 'elementor' );
 __( 'Before applying a new template, we recommend backing up your site so you can roll back any undesired changes.', 'elementor' );
 __( 'Choose a file to import', 'elementor' );
 __( 'Drag & drop the .zip file with your website template', 'elementor' );
-__( 'Import from files' ) }
-						/>
-
-						{ dialog.isOpen &&
-							<Dialog
-								title={ __( 'Warning: JSON or ZIP files may be unsafe', 'elementor' );
+__( 'Or', 'elementor' );
+__( 'Import from files', 'elementor' );
+__( 'Warning: JSON or ZIP files may be unsafe', 'elementor' );
 __( 'Uploading JSON or ZIP files from unknown sources can be harmful and put your site at risk. For maximum safety, upload only JSON or ZIP files from trusted sources.', 'elementor' );
 __( 'Continue', 'elementor' );
 __( 'Cancel', 'elementor' );
@@ -197,6 +194,8 @@ __( 'Go Back', 'elementor' );
 __( 'Required plugins are still missing.', 'elementor' );
 __( "If you don't include them, this kit may not work properly.", 'elementor' );
 __( 'Go Back', 'elementor' );
+__( 'See It Live', 'elementor' );
+__( 'Got It', 'elementor' );
 __( 'Learn more', 'elementor' );
 __( 'Important:', 'elementor' );
 __( "There are few plugins that we couldn't install:", 'elementor' );
@@ -208,8 +207,6 @@ __( 'Save to library', 'elementor' );
 __( 'Save to library', 'elementor' );
 __( 'Back', 'elementor' );
 __( 'Export as .zip', 'elementor' );
-__( 'See It Live', 'elementor' );
-__( 'Got It', 'elementor' );
 __( 'Must add a name', 'elementor' );
 __( 'Name', 'elementor' );
 __( 'Type name here...', 'elementor' );
