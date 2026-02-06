@@ -1,6 +1,9 @@
 .animation-point-downward {
     animation: pointingDown 2.5s ease infinite;
 }
+.animation-loading-downward svg {
+    
+}
 .animation-loading-downward svg path {
     opacity: 0;
     animation: loading-opacity 0.25s linear;
