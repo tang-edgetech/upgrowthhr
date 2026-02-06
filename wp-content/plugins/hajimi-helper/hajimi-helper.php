@@ -21,6 +21,7 @@ function hajimi_load_widget_files() {
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_copyright_label.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_custom_navigation.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_fancy_text.php';
+    require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_gallery_view.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_marquee.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_magic_button.php';
     require_once HAJIMI_WIDGET_PATH . 'widgets/hajimi_media_slider.php';
