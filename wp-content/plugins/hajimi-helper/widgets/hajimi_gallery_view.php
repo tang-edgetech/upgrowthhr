@@ -291,7 +291,7 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 				}
 			}
 			else {
-				echo '<div class="swiper">';
+				echo '<div class="swiper swiper-motion-'.$setting['gallery_slider_motion'].'">';
 					echo '<div class="swiper-wrapper">';
 					foreach ( $settings['gallery'] as $item ) {
 					?>
