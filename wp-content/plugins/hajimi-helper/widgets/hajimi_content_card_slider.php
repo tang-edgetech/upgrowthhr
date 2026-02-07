@@ -152,7 +152,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 		$this->add_control(
 			'show_pagination',
 			[
-				'label' => esc_html__( 'Pagination', 'hajimi' ),
+				'label' => esc_html__( 'Show Pagination', 'hajimi' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'hajimi' ),
 				'label_off' => esc_html__( 'Hide', 'hajimi' ),
@@ -164,7 +164,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 		$this->add_control(
 			'show_navigation',
 			[
-				'label' => esc_html__( 'Navigation', 'hajimi' ),
+				'label' => esc_html__( 'Show Navigation', 'hajimi' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'hajimi' ),
 				'label_off' => esc_html__( 'Hide', 'hajimi' ),
@@ -391,7 +391,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         $speed = $settings['speed'];
         $settings_speed = ' data-autoplay="'.$autoplay.'" data-autoplay-timeout="'.$autoplayTimeout.'" data-speed="'.$speed.'"';
         echo '<div class="hajimi-content-column-slider"'.$setting_loop.$setting_space_between.$settings_slidesperview.$settings_speed.'>';
-        if ( ! empty( $settings['slides'] ) ) {
+        if ( !empty( $settings['columns'] ) ) {
             echo '<div class="swiper">';
                 echo '<div class="swiper-wrapper">';
                 foreach ( $settings['columns'] as $slide ) {
