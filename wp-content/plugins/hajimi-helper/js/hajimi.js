@@ -197,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 $swiper = $slider.find('.swiper'),
                 $loop = $slider.attr('data-loop'),
                 $speed = parseInt($slider.data('speed')) || 500,
+                $reverse = ($slider.data('reverse-direction')) ? true : false,
                 $autoplay = parseInt($slider.data('autoplay')) === 1,
                 $autoplayTimeout = parseInt($slider.data('autoplay-timeout'));
             var spaceDesktop = parseInt($slider.data('space')) || 0;
@@ -209,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
             var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
             var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
-
+            console.log('Reverse Dir', $reverse);
             new Swiper($swiper[0], {
                 slidesPerView: 3.5,
                 spaceBetween: 24,
@@ -217,7 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 speed: $speed,
                 autoplay: $autoplay ? {
                     delay: $autoplayTimeout,
-                    disableOnInteraction: false
+                    disableOnInteraction: false,
+                    reverseDirection: $reverse
                 } : false,
                 navigation: {
                     prevEl: '.gallery-nav-prev',
