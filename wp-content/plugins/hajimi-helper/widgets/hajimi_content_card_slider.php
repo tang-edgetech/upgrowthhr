@@ -395,21 +395,9 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
             echo '<div class="swiper">';
                 echo '<div class="swiper-wrapper">';
                 foreach ( $settings['columns'] as $slide ) {
+                    echo json.encode($slide)."\r\n---\r\n"
                 ?>
-                    <div class="swiper-slide column-item">
-                        <div class="column-item-inner">
-                            <div class="column-header"><<?= $column_title_tag;?> class="column-title"><?= $slide['column_title'];?></<?= $column_title_tag;?>></div>
-                            <div class="column-body"><?= $slide['column_description'];?></div>
-                        </div>
-                    </div>
                 <?php
-                }
-                echo '</div>';
-                if( $settings['show_navigation'] ) {
-                    echo '<div class="hajimi-column-navigation"><button type="button" class="hajimi-column-nav column-nav-prev"><i class="fa fa-chevron-left"></i></button><button type="button" class="hajimi-column-nav column-nav-next"><i class="fa fa-chevron-right"></i></button></div>';
-                }
-                if( $settings['show_pagination'] ) {
-                    echo '<div class="hajimi-column-pagination"></div>';
                 }
             echo '</div>';
         }
