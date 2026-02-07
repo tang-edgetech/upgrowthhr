@@ -220,11 +220,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     disableOnInteraction: false
                 } : false,
                 navigation: {
-                    prevEl: '.media-nav-prev',
-                    nextEl: '.media-nav-next',
+                    prevEl: '.gallery-nav-prev',
+                    nextEl: '.gallery-nav-next',
                 },
                 pagination: {
-                    el: '.hajimi-media-pagination',
+                    el: '.hajimi-gallery-pagination',
                     clickable: true,
                 },
                 breakpoints: {
@@ -284,11 +284,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     disableOnInteraction: false
                 } : false,
                 navigation: {
-                    prevEl: '.media-nav-prev',
-                    nextEl: '.media-nav-next',
+                    prevEl: '.column-nav-prev',
+                    nextEl: '.column-nav-next',
                 },
                 pagination: {
-                    el: '.hajimi-media-pagination',
+                    el: '.hajimi-column-pagination',
                     clickable: true,
                 },
                 breakpoints: {
