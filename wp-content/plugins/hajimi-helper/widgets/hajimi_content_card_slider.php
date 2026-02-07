@@ -175,52 +175,52 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         
         $this->end_controls_section();
 
-        $this->start_controls_section(
-            'section_column_items',
-            [
-                'label' => __( 'Items', 'hajimi' ),
-            ]
-        );
+        // $this->start_controls_section(
+        //     'section_column_items',
+        //     [
+        //         'label' => __( 'Items', 'hajimi' ),
+        //     ]
+        // );
         
-        $repeater = new \Elementor\Repeater();
+        // $repeater = new \Elementor\Repeater();
 
-        $repeater->add_control(
-            'column_title',
-            [
-                'label' => __( 'Title', 'hajimi' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => __( 'Title', 'hajimi' ),
-				'placeholder' => esc_html__( 'Type your title here', 'hajimi' ),
-            ]
-        );
+        // $repeater->add_control(
+        //     'column_title',
+        //     [
+        //         'label' => __( 'Title', 'hajimi' ),
+        //         'type' => Controls_Manager::TEXT,
+        //         'default' => __( 'Title', 'hajimi' ),
+		// 		'placeholder' => esc_html__( 'Type your title here', 'hajimi' ),
+        //     ]
+        // );
 
-		$repeater->add_control(
-			'column_description',
-			[
-				'label' => esc_html__( 'Description', 'hajimi' ),
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Default description', 'hajimi' ),
-				'placeholder' => esc_html__( 'Type your description here', 'hajimi' ),
-			]
-		);
+		// $repeater->add_control(
+		// 	'column_description',
+		// 	[
+		// 		'label' => esc_html__( 'Description', 'hajimi' ),
+		// 		'type' => \Elementor\Controls_Manager::WYSIWYG,
+		// 		'default' => esc_html__( 'Default description', 'hajimi' ),
+		// 		'placeholder' => esc_html__( 'Type your description here', 'hajimi' ),
+		// 	]
+		// );
 
-        $this->add_control(
-            'columns',
-            [
-                'label' => __( 'Columns', 'hajimi' ),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'column_title' => esc_html__( 'Title #1', 'hajimi' ),
-                        'column_description' => esc_html__( 'Lorem ipsum dolor sit amet.', 'hajimi' ),
-                    ]
-                ],
-				'title_field' => '{{{ column_title }}}',
-            ]
-        );
+        // $this->add_control(
+        //     'columns',
+        //     [
+        //         'label' => __( 'Columns', 'hajimi' ),
+        //         'type' => Controls_Manager::REPEATER,
+        //         'fields' => $repeater->get_controls(),
+        //         'default' => [
+        //             [
+        //                 'column_title' => esc_html__( 'Title #1', 'hajimi' ),
+        //                 'column_description' => esc_html__( 'Lorem ipsum dolor sit amet.', 'hajimi' ),
+        //             ]
+        //         ],
+		// 		'title_field' => '{{{ column_title }}}',
+        //     ]
+        // );
 
-        $this->end_controls_section();
+        // $this->end_controls_section();
 
         $this->start_controls_section(
             'column_style',
