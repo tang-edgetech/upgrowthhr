@@ -390,7 +390,7 @@ button.hajimi-back2top.button-circle {
     align-items: center;
     gap: 1.5rem;
     bottom: 0 !important;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 .swiper-pagination-bullets .swiper-pagination-bullet {
     display: block;
