@@ -392,10 +392,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         $settings_speed = ' data-autoplay="'.$autoplay.'" data-autoplay-timeout="'.$autoplayTimeout.'" data-speed="'.$speed.'"';
         echo '<div class="hajimi-content-column-slider"'.$setting_loop.$setting_space_between.$settings_slidesperview.$settings_speed.'>';
         if ( !empty( $settings['columns'] ) ) {
-            echo '<div class="swiper">';
-                echo '<div class="swiper-wrapper">';
-                echo '</div>';
-            echo '</div>';
+            echo json_encode($settings['columns'])."\r\n--\r\n";
         }
         echo '</div>';
     }
