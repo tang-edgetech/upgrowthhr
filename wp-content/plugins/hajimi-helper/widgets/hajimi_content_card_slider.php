@@ -14,7 +14,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-slider-devicee';
+        return 'eicon-slider-device';
     }
 
     public function get_categories() {
@@ -207,7 +207,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         $this->add_control(
             'columns',
             [
-                'label' => __( 'Accordion', 'hajimi' ),
+                'label' => __( 'Columns', 'hajimi' ),
                 'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
