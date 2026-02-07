@@ -597,6 +597,18 @@ button.hajimi-back2top.button-circle {
 .hajimi-magic-gallery.type-slider .swiper.swiper-motion-smooth-infinite .swiper-wrapper {
     transition-timing-function: linear!important;
 }
+.hajimi-content-column-slider .column-item {
+    background-color: #fff;
+    box-shadow: 0.125rem 0.125rem 0.5rem rgba(74, 0, 224, 0.2);
+    border-radius: 1rem;
+    height: auto;
+}
+.hajimi-content-column-slider .column-item-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3.125rem;
+    height: 100%;
+}
 @media (max-width: 767px) {
     .hajimi-navigation {
         padding: 1rem 1.25rem;
