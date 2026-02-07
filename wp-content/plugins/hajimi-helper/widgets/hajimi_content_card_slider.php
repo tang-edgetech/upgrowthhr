@@ -394,11 +394,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         if ( !empty( $settings['columns'] ) ) {
             echo '<div class="swiper">';
                 echo '<div class="swiper-wrapper">';
-                foreach ( $settings['columns'] as $slide ) {
-                    echo json.encode($slide)."\r\n---\r\n"
-                ?>
-                <?php
-                }
+                echo '</div>';
             echo '</div>';
         }
         echo '</div>';
