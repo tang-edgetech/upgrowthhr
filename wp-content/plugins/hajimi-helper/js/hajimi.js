@@ -146,11 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
             var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
 
-            if( $slider.hasClass('type-infinite') ) {
-                $autoplay = true;
-                $autoplayTimeout = 0;
-                $speed = 7000;
-            }
             new Swiper($swiper[0], {
                 slidesPerView: 3.5,
                 spaceBetween: 24,
@@ -216,11 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
             var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
 
-            if( $slider.hasClass('type-infinite') ) {
-                $autoplay = true;
-                $autoplayTimeout = 0;
-                $speed = 7000;
-            }
             new Swiper($swiper[0], {
                 slidesPerView: 3.5,
                 spaceBetween: 24,
