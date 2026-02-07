@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 $autoplayTimeout = parseInt($slider.data('autoplay-timeout')) || 5000;
             console.log('Speed', $speed);
             console.log('Autoplay', $autoplay);
-            console.log('Timeput', $autoplayTimeout);
+            console.log('Timeiut', parseInt($slider.data('autoplay-timeout')));
             var spaceDesktop = parseInt($slider.data('space')) || 0;
             var pppDesktop   = parseInt($slider.data('ppp')) || 1;
 
