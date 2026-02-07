@@ -256,6 +256,70 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+        $('.hajimi-content-column-slider').each(function() {
+            var $slider = $(this),
+                $swiper = $slider.find('.swiper'),
+                $loop = $slider.attr('data-loop'),
+                $speed = parseInt($slider.data('speed')) || 500,
+                $autoplay = parseInt($slider.data('autoplay')) === 1,
+                $autoplayTimeout = parseInt($slider.data('autoplay-timeout'));
+            var spaceDesktop = parseInt($slider.data('space')) || 0;
+            var pppDesktop   = parseInt($slider.data('ppp')) || 1;
+
+            var spaceLaptop  = parseInt($slider.data('space-laptop')) || spaceDesktop;
+            var spaceTablet  = parseInt($slider.data('space-tablet')) || spaceLaptop;
+            var spaceMobile  = parseInt($slider.data('space-mobile')) || spaceTablet;
+
+            var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
+            var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
+            var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
+
+            new Swiper($swiper[0], {
+                slidesPerView: 3.5,
+                spaceBetween: 24,
+                loop: $loop,
+                speed: $speed,
+                autoplay: $autoplay ? {
+                    delay: $autoplayTimeout,
+                    disableOnInteraction: false
+                } : false,
+                navigation: {
+                    prevEl: '.media-nav-prev',
+                    nextEl: '.media-nav-next',
+                },
+                pagination: {
+                    el: '.hajimi-media-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: pppMobile,
+                        spaceBetween: spaceMobile,
+                        slidesOffsetBefore: 24,
+                        slidesOffsetAfter: 24,
+                    },
+                    768: {
+                        slidesPerView: pppTablet,
+                        spaceBetween: spaceTablet,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0,
+                    },
+                    1200: {
+                        slidesPerView: pppLaptop,
+                        spaceBetween: spaceLaptop,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0,
+                    },
+                    1600: {
+                        slidesPerView: pppDesktop,
+                        spaceBetween: spaceDesktop,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0,
+                    }
+                }
+            });
+        });
+
         
         $('.hajimi-fancy-marquee').each(function () {
             const $marquee = $(this);
