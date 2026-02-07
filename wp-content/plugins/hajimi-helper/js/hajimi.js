@@ -199,7 +199,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 $speed = parseInt($slider.data('speed')) || 500,
                 $autoplay = parseInt($slider.data('autoplay')) === 1,
                 $autoplayTimeout = parseInt($slider.data('autoplay-timeout')) || 5000;
-            
+            console.log('Speed', $speed);
+            console.log('Autoplay', $autoplay);
+            console.log('Timeput', $autoplayTimeout);
             var spaceDesktop = parseInt($slider.data('space')) || 0;
             var pppDesktop   = parseInt($slider.data('ppp')) || 1;
 
