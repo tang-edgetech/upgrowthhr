@@ -384,7 +384,7 @@ button.hajimi-back2top.button-circle {
 .hajimi-media-navigation .hajimi-media-nav:not(:hover) {
     opacity: 0.7;
 }
-.hajimi-media-pagination {
+.swiper-pagination-bullets {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -392,7 +392,7 @@ button.hajimi-back2top.button-circle {
     bottom: 0 !important;
     margin-top: 0.5rem;
 }
-.hajimi-media-pagination .swiper-pagination-bullet {
+.swiper-pagination-bullets .swiper-pagination-bullet {
     display: block;
     width: 1.25rem;
     height: 1.25rem;
@@ -402,13 +402,13 @@ button.hajimi-back2top.button-circle {
     margin-left: 0;
     margin-right: 0;
 }
-.hajimi-media-pagination .swiper-pagination-bullet:hover, .hajimi-media-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.swiper-pagination-bullets .swiper-pagination-bullet:hover, .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
     background-color: #4A00DF;
 }
-.hajimi-media-pagination .swiper-pagination-bullet:hover {
+.swiper-pagination-bullets .swiper-pagination-bullet:hover {
     opacity: 0.8;
 }
-.hajimi-media-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
     pointer-events: none;
 }
 .hajimi-magic-button > .btn {
@@ -635,11 +635,11 @@ button.hajimi-back2top.button-circle {
     .hajimi-media-slider .swiper-slide {
         width: 280px;
     }
-    .hajimi-media-pagination .swiper-pagination-bullet {
+    .swiper-pagination-bullets .swiper-pagination-bullet {
         width: 1rem;
         height: 1rem;
     }
-    .hajimi-media-pagination {
+    .swiper-pagination-bullets {
         gap: 1rem;
     }
     .hajimi-magic-button > .btn {
