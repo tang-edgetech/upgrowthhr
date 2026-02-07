@@ -209,6 +209,18 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
+			'reverse_direction',
+			[
+				'label' => esc_html__( 'Reverse Direction', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Reverse', 'hajimi' ),
+				'label_off' => esc_html__( 'Normal', 'hajimi' ),
+				'return_value' => 'yes',
+				'default' => '',
+			]
+		);
+
+		$this->add_control(
 			'autoplay',
 			[
 				'label' => esc_html__( 'Autoplay', 'hajimi' ),
@@ -263,9 +275,10 @@ class Hajimi_Gallery_View extends \Elementor\Widget_Base {
 		$setting_space_between = '';
 		$settings_slidesperview = '';
 		$settings_speed = '';
+        $reverse_direction = ( $settings['reverse_direction'] ) ? true : false;
 		if( $type==='slider') {
 			$loop = ( $settings['slider_loop'] ) ? true : false;
-			$setting_loop = ' data-loop="'.$loop.'"';
+			$setting_loop = ' data-loop="'.$loop.'" data-reverse-direction="'.$reverse_direction.'"';
 			$space_between = ( !empty($settings['space_between'] ) ) ? $settings['space_between']['size'] : 20;
 			$space_between_laptop = ( !empty($settings['space_between_laptop'] ) ) ? $settings['space_between_laptop']['size'] : 20;
 			$space_between_tablet = ( !empty($settings['space_between_tablet'] ) ) ? $settings['space_between_tablet']['size'] : 20;
