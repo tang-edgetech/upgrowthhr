@@ -213,7 +213,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
                 'default' => [
                     [
                         'column_title' => esc_html__( 'Title #1', 'hajimi' ),
-                        'column_description' => esc_html__( 'Lorem ipsum dolor sit amet..', 'hajimi' ),
+                        'column_description' => esc_html__( 'Lorem ipsum dolor sit amet.', 'hajimi' ),
                     ]
                 ],
 				'title_field' => '{{{ column_title }}}',
@@ -332,6 +332,22 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 					],
 				],
 				'devices' => [ 'desktop', 'laptop', 'tablet', 'mobile' ],
+                'default' => [
+                    'size' => 6.25,
+                    'unit' => 'rem',
+                ],
+                'laptop_default' => [
+                    'size' => 6.25,
+                    'unit' => 'rem',
+                ],
+                'tablet_default' => [
+                    'size' => 6.25,
+                    'unit' => 'rem',
+                ],
+                'mobile_default' => [
+                    'size' => 6.25,
+                    'unit' => 'rem',
+                ],
 				'selectors' => [
 					'{{WRAPPER}} .hajimi-content-column-slider .column-item' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
@@ -353,7 +369,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 			[
 				'label' => esc_html__( 'Title', 'hajimi' ),
 				'name' => 'column_title_typography',
-				'selector' => '{{WRAPPER}} ..hajimi-content-column-slider .column-title',
+				'selector' => '{{WRAPPER}} .hajimi-content-column-slider .column-title',
 			]
 		);
 
@@ -362,7 +378,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 			[
 				'label' => esc_html__( 'Sub Title', 'hajimi' ),
 				'name' => 'column_subtitle_typography',
-				'selector' => '{{WRAPPER}} ..hajimi-content-column-slider .column-body',
+				'selector' => '{{WRAPPER}} .hajimi-content-column-slider .column-body',
 			]
 		);
 
@@ -392,7 +408,26 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         $settings_speed = ' data-autoplay="'.$autoplay.'" data-autoplay-timeout="'.$autoplayTimeout.'" data-speed="'.$speed.'"';
         echo '<div class="hajimi-content-column-slider"'.$setting_loop.$setting_space_between.$settings_slidesperview.$settings_speed.'>';
         if ( !empty( $settings['columns'] ) ) {
-            echo json_encode($settings['columns'])."\r\n--\r\n";
+            echo '<div class="swiper">';
+                echo '<div class="swiper-wrapper">';
+                foreach ( $settings['columns'] as $slide ) {
+                ?>
+                    <div class="swiper-slide column-item">
+                        <div class="column-item-inner">
+                            <div class="column-header"><<?= $column_title_tag;?> class="column-title"><?= $slide['column_title'];?></<?= $column_title_tag;?>></div>
+                            <div class="column-body"><?= $slide['column_description'];?></div>
+                        </div>
+                    </div>
+                <?php
+                }
+                echo '</div>';
+                if( $settings['show_navigation'] ) {
+                    echo '<div class="hajimi-column-navigation"><button type="button" class="hajimi-column-nav column-nav-prev"><i class="fa fa-chevron-left"></i></button><button type="button" class="hajimi-column-nav column-nav-next"><i class="fa fa-chevron-right"></i></button></div>';
+                }
+                if( $settings['show_pagination'] ) {
+                    echo '<div class="hajimi-column-pagination"></div>';
+                }
+            echo '</div>';
         }
         echo '</div>';
     }
