@@ -670,10 +670,33 @@ table, .table {
     margin-right: 0;
     font-size: 12px;
     line-height: 12px;
+    font-weight: 400;
     color: #A581FF;
 }
 .text-editor-expansion .btn.btn-text i {
     margin-left: 0.5rem;
+}
+.text-editor-expansion .btn.btn-text i {
+    transform-origin: center center;
+}
+.text-editor-expansion .text-editor-inner.expanded .btn.btn-text i {
+    transform: rotate(180deg);
+}
+.team-title {
+    font-size: 48px;
+    line-height: 52px;
+    font-weight: 900;
+    color: #7B11FF;
+    margin-bottom: 2rem;
+}
+.team-designation {
+    font-size: 20px;
+    line-height: 24px;
+    color: #404040;
+    margin-bottom: 4.5rem;
+}
+.ug-team-listing.style-style-2 .team-item > div {
+    flex: 1;
 }
 @media (max-width: 767px) {
     .error-404.not-found {
