@@ -705,6 +705,7 @@ function ug_team_slider($atts) {
     $atts = shortcode_atts([
         'category' => 'main',
         'layout' => 'full-width',
+        'style' => 'default',
     ], $atts, 'ug_team_slider');
     
     $category = ( $atts['category'] ) ? $atts['category'] : 'main';

@@ -107,4 +107,46 @@ jQuery(document).ready(function($) {
     $(window).on('resize', function(){
         handleTestimonialSwiper();
     });
+
+    $('.ug-team-swiper').each(function() {
+        var $slider = $(this),
+            $swiper = $slider.find('.swiper');
+
+        new Swiper($swiper[0], {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            speed: 300,
+            autoplay: {
+                delay: 7500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                prevEl: '.team-nav-prev',
+                nextEl: '.team-nav-next',
+            },
+            pagination: {
+                el: '.ug-team-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                0: {
+                    slidesOffsetBefore: 24,
+                    slidesOffsetAfter: 24,
+                },
+                768: {
+                    slidesOffsetBefore: 0,
+                    slidesOffsetAfter: 0,
+                },
+                1200: {
+                    slidesOffsetBefore: 0,
+                    slidesOffsetAfter: 0,
+                },
+                1600: {
+                    slidesOffsetBefore: 0,
+                    slidesOffsetAfter: 0,
+                }
+            }
+        });
+    });
 });
