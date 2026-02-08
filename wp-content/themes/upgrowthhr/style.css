@@ -695,7 +695,7 @@ table, .table {
     color: #404040;
     margin-bottom: 4.5rem;
 }
-.ug-team-listing.style-style-2 .team-item > div {
+.ug-team-listing.style-style-2 .team-item-inner > div {
     display: block;
     width: 100%;
 }
@@ -802,7 +802,7 @@ table, .table {
         transform:translateX(-50%);
         min-width: fit-content;
     }
-    .ug-team-listing.style-style-2 .team-item > div { 
+    .ug-team-listing.style-style-2 .team-item-inner > div { 
         max-width: calc( 50% - 1.563rem );
     }
 }
