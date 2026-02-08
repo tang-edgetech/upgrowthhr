@@ -724,6 +724,7 @@ table, .table {
 }
 .ug-team-listing.style-style-2 .ug-team-nav {
     display: flex;
+    margin-left: auto;
     justify-content: center;
     gap: 1.5rem;
     width: 50%;
@@ -738,8 +739,9 @@ table, .table {
     border: none;
     color: #4A00DF;
     border-radius: 2rem;
-    margin-left: auto;
     cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     z-index: 1;
 }
 .ug-team-listing.style-style-2 .ug-team-pagination {
@@ -860,7 +862,24 @@ table, .table {
         min-width: fit-content;
     }
     .ug-team-listing.style-style-2 .team-item-inner > div { 
-        max-width: calc( 50% - 1.563rem );
+        width: 100%;
+    }
+    .ug-team-swiper .team-item-inner {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    .ug-team-listing.style-style-2 .team-additional {
+        font-size: 48px!important;
+        line-height: 52px!important;
+        text-align: center;
+    }
+    .ug-team-listing.style-style-2 .team-header {
+        padding-top: 8rem;
+    }
+    .ug-team-listing.style-style-2 .ug-team-nav {
+        margin-top: 2.5rem;
+        margin-left: 0;
+        width: 100%;
     }
 }
 @media (min-width: 768px) {
