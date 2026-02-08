@@ -696,7 +696,7 @@ table, .table {
     margin-bottom: 4.5rem;
 }
 .ug-team-listing.style-style-2 .team-header {
-    padding-top: 22.5rem;
+    padding-top: 12.5rem;
 }
 .ug-team-listing.style-style-2 .team-additional {
     display: block;
@@ -709,10 +709,43 @@ table, .table {
     position: absolute;
     top: 2.5rem;
     right: 0;
+    text-transform: uppercase;
+    color: #FBEAFF;
+    text-shadow: 1px 1px 0 #4F3D95, -1px -1px 0 #4F3D95, 1px -1px 0 #4F3D95, -1px 1px 0 #4F3D95;
 }
 .ug-team-listing.style-style-2 .team-item-inner > div {
     display: block;
     width: 100%;
+}
+.ug-team-listing.style-style-2 .ug-team-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 50%;
+}
+.ug-team-listing.style-style-2 .ug-team-nav button.ug-team-nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: #fff;
+    color: #4A00DF;
+    border-radius: 2rem;
+}
+.ug-team-listing.style-style-2 .ug-team-pagination {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 1.5rem;
+    right: 0;
+    left: auto;
+    bottom: 2.5rem !important;
+    top: auto;
+    z-index: 1;
+}
+.ug-team-listing.style-style-2 .ug-team-pagination .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    background-color: #fff;
 }
 @media (max-width: 767px) {
     .error-404.not-found {
@@ -878,7 +911,7 @@ table, .table {
         transform: translateY(-50%);
     }
     .ug-team-listing.style-style-2 .team-additional {
-        max-width: 75%;
+        max-width: 55vw;
     }
 }
 @media (max-width: 991px) {
@@ -1005,5 +1038,8 @@ table, .table {
 @media (min-width: 1600px) {
     .site-container, .ug-container {
         max-width: 1440px;
+    }
+    .ug-team-listing.style-style-2 .team-additional {
+        max-width: 50vw;
     }
 }
