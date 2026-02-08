@@ -868,6 +868,9 @@ table, .table {
         flex-direction: column;
         gap: 2.5rem;
     }
+    .ug-team-listing.style-style-2 .ug-team-swiper .team-item-inner {
+        flex-direction: column-reverse;
+    }
     .ug-team-listing.style-style-2 .team-additional {
         font-size: 48px!important;
         line-height: 52px!important;
@@ -880,6 +883,11 @@ table, .table {
         margin-top: 2.5rem;
         margin-left: 0;
         width: 100%;
+    }
+    .ug-team-listing.style-style-2 .ug-team-pagination {
+        bottom: 50%!important;
+        right: 1.5rem;
+        transform: translateY(-50%);
     }
 }
 @media (min-width: 768px) {
