@@ -650,8 +650,12 @@ table, .table {
     padding-bottom: 1.5rem;
     border-bottom: 0.063rem solid #4A00E0;
 }
-.text-editor-expansion .text-editor-inner, .text-editor-expansion .text-editor-inner * {
-    
+.text-editor-expansion .text-editor-wrapper {
+    overflow: hidden;
+    height: 5lh;
+}
+.text-editor-expansion .text-editor-cta {
+    text-align: right;
 }
 .text-editor-expansion .btn.btn-text {
     background: none;

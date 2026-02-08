@@ -153,16 +153,17 @@ jQuery(document).ready(function($) {
     $('.text-editor-expansion').each(function() {
         var $expansion = $(this),
             $text_editor = $expansion.find('.text-editor-inner'),
+            $text_editor_wrapper = $expansion.find('.text-editor-inner-wrapper'),
             $button = $expansion.find('.btn-text');
         $button.on('click', function(e) {
             e.preventDefault();
             if( $text_editor.hasClass('expended') ) {
                 $text_editor.removeClass('expended');
-                $text_editor.css({ 'height': 'auto' });
+                $text_editor_wrapper.css({ 'height': 'auto' });
             }
             else {
                 $text_editor.css({ 'height': '5lh' });
-                $text_editor.addClass('expended');
+                $text_editor_wrapper.addClass('expended');
             }
         });
     });
