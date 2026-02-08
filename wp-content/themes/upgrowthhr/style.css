@@ -695,6 +695,9 @@ table, .table {
     color: #404040;
     margin-bottom: 4.5rem;
 }
+.ug-team-listing.style-style-2 .team-header {
+    padding-top: 22.5rem;
+}
 .ug-team-listing.style-style-2 .team-additional {
     display: block;
     width: 100%;
@@ -703,6 +706,9 @@ table, .table {
     font-size: 120px;
     line-height: 120px;
     text-align: right;
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
 }
 .ug-team-listing.style-style-2 .team-item-inner > div {
     display: block;
@@ -814,9 +820,6 @@ table, .table {
     .ug-team-listing.style-style-2 .team-item-inner > div { 
         max-width: calc( 50% - 1.563rem );
     }
-    .ug-team-listing.style-style-2 .team-additional {
-        max-width: 66.66666667%;
-    }
 }
 @media (min-width: 768px) {
     .d-md-none {
@@ -873,6 +876,9 @@ table, .table {
     .bg-text-title.elementor-widget-hajimi_fancy_heading {
         top: 40% !important;
         transform: translateY(-50%);
+    }
+    .ug-team-listing.style-style-2 .team-additional {
+        max-width: 75%;
     }
 }
 @media (max-width: 991px) {
