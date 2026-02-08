@@ -153,7 +153,7 @@ jQuery(document).ready(function($) {
     $('.text-editor-expansion').each(function() {
         var $expansion = $(this),
             $text_editor = $expansion.find('.text-editor-inner'),
-            $text_editor_wrapper = $expansion.find('.text-editor-inner-wrapper'),
+            $text_editor_wrapper = $expansion.find('.text-editor-wrapper'),
             $button = $expansion.find('.btn-text');
         $button.on('click', function(e) {
             e.preventDefault();
