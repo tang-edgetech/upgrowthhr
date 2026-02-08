@@ -775,7 +775,7 @@ function ug_team_slider($atts) {
                                     </div>
                                 </div>
                                 <div class="team-header">
-                                    <div class="team-designation"><?= $team_designation;?></div>
+                                    <div class="team-additional"><?= $team_add;?></div>
                                     <div class="team-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>'; } ?></div>
                                 </div>
                             <?php
