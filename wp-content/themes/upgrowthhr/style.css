@@ -729,9 +729,13 @@ table, .table {
     align-items: center;
     width: 4rem;
     height: 4rem;
-    background-color: #fff;
+    background: #fff!important;
+    border: none;
     color: #4A00DF;
     border-radius: 2rem;
+    margin-left: auto;
+    cursor: pointer;
+    z-index: 1;
 }
 .ug-team-listing.style-style-2 .ug-team-pagination {
     display: flex;
