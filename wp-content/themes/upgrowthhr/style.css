@@ -642,7 +642,7 @@ table, .table {
     object-fit: cover;
     object-position: center center;
 }
-.ug-team-swiper .team-body {
+.ug-team-listing.style-style-1 .ug-team-swiper .team-body {
     flex: 1;
 }
 .text-editor-expansion .text-editor-inner {
@@ -682,7 +682,7 @@ table, .table {
 .text-editor-expansion .text-editor-inner.expanded .btn.btn-text i {
     transform: rotate(180deg);
 }
-.team-title {
+.ug-team-listing .team-title {
     font-size: 48px;
     line-height: 52px;
     font-weight: 900;
@@ -694,6 +694,15 @@ table, .table {
     line-height: 24px;
     color: #404040;
     margin-bottom: 4.5rem;
+}
+.ug-team-listing.style-style-2 .team-designation {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    font-size: 120px;
+    line-height: 120px;
+    text-align: right;
 }
 .ug-team-listing.style-style-2 .team-item-inner > div {
     display: block;
@@ -804,6 +813,9 @@ table, .table {
     }
     .ug-team-listing.style-style-2 .team-item-inner > div { 
         max-width: calc( 50% - 1.563rem );
+    }
+    .ug-team-listing.style-style-2 .team-designation {
+        max-width: 66.66666667%;
     }
 }
 @media (min-width: 768px) {
