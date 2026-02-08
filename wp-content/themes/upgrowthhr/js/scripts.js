@@ -157,13 +157,13 @@ jQuery(document).ready(function($) {
             $button = $expansion.find('.btn-text');
         $button.on('click', function(e) {
             e.preventDefault();
-            if( $text_editor.hasClass('expended') ) {
-                $text_editor.removeClass('expended');
+            if( $text_editor.hasClass('expanded') ) {
+                $text_editor.removeClass('expanded');
                 $text_editor_wrapper.css({ 'height': 'auto' });
             }
             else {
-                $text_editor.css({ 'height': '5lh' });
-                $text_editor_wrapper.addClass('expended');
+                $text_editor_wrapper.css({ 'height': '5lh' });
+                $text_editor.addClass('expanded');
             }
         });
     });
