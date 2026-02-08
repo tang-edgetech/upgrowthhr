@@ -700,3 +700,93 @@ function ug_testimonial_listing($atts) {
 	return ob_get_clean();
 }
 add_shortcode( 'ug_testimonial_listing', 'ug_testimonial_listing' );
+
+function ug_team_slider($atts) {
+    $atts = shortcode_atts([
+        'category' => 'main',
+        'layout' => 'full-width',
+    ], $atts, 'ug_team_slider');
+    
+    $category = ( $atts['category'] ) ? $atts['category'] : 'main';
+    $layout = ( $atts['layout'] ) ? $atts['layout'] : 'full-width';
+    $style = ( $atts['style'] ) ? $atts['style'] : 'default';
+    
+    $args = array(
+        'post_type' => 'team',
+        'post_status' => 'publish',
+        'order' => 'asc',
+        'orderby' => 'menu_order',
+        'posts_per_page' => -1,
+    );
+    $teams = new WP_Query($args);
+    ob_start();
+    ?>
+    <div class="ug-team-listing style-<?= $style;?>">
+        <div class="ug-team-swiper">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                <?php
+                if( $teams->have_posts() ) {
+                    while( $teams->have_posts() ) {
+                        $teams->the_post();
+                        $team_id = get_the_ID();
+                        $team_title = get_the_title();
+                        $team_name = get_post_field('post_name', $team_id);
+                        $team_designation = get_field('designation');
+                        $team_add = get_field('additional');
+                        $team_description = get_field('description');
+                    ?>
+                        <div class="swiper-slide team-item team-item-<?= $team_id;?>" data-team-name="<?= $team_name;?>">
+                            <div class="team-item-inner<?= ( $layout == 'container' ) ? ' ug-container' : '';?>">
+                            <?php
+                            if( $style == 'default' || $style == 'style-1' ) {
+                            ?>
+                                <div class="team-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>'; } ?></div>
+                                <div class="team-body">
+                                    <h4 class="team-title"><?= $team_title;?></h4>
+                                    <div class="text-editor-expansion">
+                                        <div class="text-editor-inner"><?= $team_description;?></div>
+                                        <div class="text-editor-cta">
+                                            <button type="button" class="btn btn-text"><span>Read Full</span><i class="fa fa-chevron-down"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            else {
+                            ?>
+                                <div class="team-body">
+                                    <h4 class="team-title"><?= $team_title;?></h4>
+                                    <div class="text-editor-expansion">
+                                        <div class="text-editor-inner"><?= $team_description;?></div>
+                                        <div class="text-editor-cta">
+                                            <button type="button" class="btn btn-text"><span>Read Full</span><i class="fa fa-chevron-down"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-header">
+                                    <div class="team-designation"><?= $team_designation;?></div>
+                                    <div class="team-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>'; } ?></div>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    wp_reset_postdata();
+                }
+                ?>
+                </div>
+                <?php if( $style == 'style-2' ) { ?>
+                <div class="ug-team-nav"><button type="button" class="ug-team-nav-button team-nav-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></button><button type="button" class="ug-team-nav-button team-nav-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button></div>
+                <?php } ?>
+                <div class="ug-team-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'ug_team_slider', 'ug_team_slider');
