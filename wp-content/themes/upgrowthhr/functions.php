@@ -755,7 +755,7 @@ function ug_team_slider($atts) {
                                 <div class="team-body">
                                     <h4 class="team-title"><?= $team_title;?></h4>
                                     <div class="text-editor-expansion">
-                                        <div class="text-editor-inner" style="height: 5lh;"><?= $team_description;?></div>
+                                        <div class="text-editor-inner"><div class="text-editor-wrapper" style="height: 5lh;"><?= $team_description;?></div></div>
                                         <div class="text-editor-cta">
                                             <button type="button" class="btn btn-text"><span>Read Full</span><i class="fa fa-chevron-down"></i></button>
                                         </div>
@@ -768,7 +768,7 @@ function ug_team_slider($atts) {
                                 <div class="team-body">
                                     <h4 class="team-title"><?= $team_title;?></h4>
                                     <div class="text-editor-expansion">
-                                        <div class="text-editor-inner"><div class="text-editor-wrapper"><?= $team_description;?></div></div>
+                                        <div class="text-editor-inner"><div class="text-editor-wrapper" style="height: 5lh;"><?= $team_description;?></div></div>
                                         <div class="text-editor-cta">
                                             <button type="button" class="btn btn-text"><span>Read Full</span><i class="fa fa-chevron-down"></i></button>
                                         </div>
