@@ -159,11 +159,11 @@ jQuery(document).ready(function($) {
             e.preventDefault();
             if( $text_editor.hasClass('expanded') ) {
                 $text_editor.removeClass('expanded');
-                $text_editor_wrapper.stop().animate({ height: '5lh' });
+                $text_editor_wrapper.stop().animate({ height: '5lh' }, 300);
             }
             else {
                 $text_editor.addClass('expanded');
-                $text_editor_wrapper.stop().animate({ height: '100%' });
+                $text_editor_wrapper.stop().animate({ height: '100%' }, 300);
             }
         });
     });
