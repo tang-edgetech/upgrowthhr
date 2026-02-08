@@ -696,7 +696,8 @@ table, .table {
     margin-bottom: 4.5rem;
 }
 .ug-team-listing.style-style-2 .team-item > div {
-    flex: 1;
+    display: block;
+    width: 100%;
 }
 @media (max-width: 767px) {
     .error-404.not-found {
@@ -800,6 +801,9 @@ table, .table {
         left: 50%;
         transform:translateX(-50%);
         min-width: fit-content;
+    }
+    .ug-team-listing.style-style-2 .team-item > div { 
+        max-width: calc( 50% - 1.563rem );
     }
 }
 @media (min-width: 768px) {
