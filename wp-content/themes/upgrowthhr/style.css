@@ -705,6 +705,7 @@ table, .table {
     margin-right: 0;
     font-size: 120px;
     line-height: 120px;
+    font-weight: 900;
     text-align: right;
     position: absolute;
     top: 2.5rem;
@@ -712,6 +713,10 @@ table, .table {
     text-transform: uppercase;
     color: #FBEAFF;
     text-shadow: 1px 1px 0 #4F3D95, -1px -1px 0 #4F3D95, 1px -1px 0 #4F3D95, -1px 1px 0 #4F3D95;
+}
+.ug-team-listing.style-style-2 .team-item-1645 .team-additional {
+    font-size: 90px;
+    line-height: 90px;
 }
 .ug-team-listing.style-style-2 .team-item-inner > div {
     display: block;
@@ -915,7 +920,7 @@ table, .table {
         transform: translateY(-50%);
     }
     .ug-team-listing.style-style-2 .team-additional {
-        max-width: 55vw;
+        min-width: 60vw;
     }
 }
 @media (max-width: 991px) {
@@ -1044,6 +1049,6 @@ table, .table {
         max-width: 1440px;
     }
     .ug-team-listing.style-style-2 .team-additional {
-        max-width: 50vw;
+        min-width: 50vw;
     }
 }
