@@ -625,13 +625,15 @@ table, .table {
 .ug-team-swiper .team-item-inner {
     gap: 3.125rem;
 }
+.ug-team-listing.style-default .team-item-inner, .ug-team-listing.style-style-1 .team-item-inner {
+    align-items: flex-start;
+    gap: 1.25rem;
+}
 .ug-team-listing.style-default .team-thumbnail, .ug-team-listing.style-style-1 .team-thumbnail {
     display: block;
     width: 190px;
     height: auto;
-}
-.ug-team-listing.style-default .team-item-inner, .ug-team-listing.style-style-1 .team-item-inner {
-    gap: 1.25rem;
+    margin-top: 2.125rem;
 }
 .ug-team-swiper .team-thumbnail {
     display: block;
@@ -642,6 +644,22 @@ table, .table {
 }
 .ug-team-swiper .team-body {
     flex: 1;
+}
+.text-editor-expansion .text-editor-inner {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 0;
+    font-size: 12px;
+    line-height: 12px;
+    color: #A581FF;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.063rem solid #4A00E0;
+}
+.text-editor-expansion .btn.btn-text {
+    background: none;
+}
+.text-editor-expansion .btn.btn-text i {
+    margin-left: 0.5rem;
 }
 @media (max-width: 767px) {
     .error-404.not-found {
