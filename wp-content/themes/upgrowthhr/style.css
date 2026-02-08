@@ -654,6 +654,12 @@ table, .table {
     overflow: hidden;
     height: 5lh;
 }
+.text-editor-expansion .text-editor-inner .text-editor-wrapper  {
+    transition: height 0.4s ease;
+}
+.text-editor-expansion .text-editor-inner.expanded .text-editor-wrapper  {
+    height: 100%;
+}
 .text-editor-expansion .text-editor-cta {
     text-align: right;
 }

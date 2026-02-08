@@ -162,8 +162,8 @@ jQuery(document).ready(function($) {
                 $text_editor_wrapper.css({ 'height': 'auto' });
             }
             else {
-                $text_editor_wrapper.css({ 'height': '5lh' });
                 $text_editor.addClass('expanded');
+                $text_editor_wrapper.css({ 'height': '5lh' });
             }
         });
     });
