@@ -6,11 +6,11 @@ use Elementor\Controls_Manager;
 class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'hajimi_fancy_heading';
+        return 'hajimi_animated_fancytext';
     }
 
     public function get_title() {
-        return __( 'Hajimi Fancy Heading', 'hajimi' );
+        return __( 'Hajimi Animated Fancy Text', 'hajimi' );
     }
 
     public function get_icon() {
