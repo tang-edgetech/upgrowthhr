@@ -189,7 +189,6 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'heading_typography',
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title',
 			]
 		);
@@ -353,8 +352,8 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
         $heading_title_tag = $settings['heading_title_tag'];
         $heading_style = $settings['heading_style'];
         $loop = !empty($settings['loop']) ? 'true' : 'false';
-        $typing_speed = empty($settings['typing_speed']) ? (int) $settings['typing_speed'] : 50;
-        $delay = !empty($settings['delay']) ? (int) $settings['delay'] : 50;
+        $typing_speed = $settings['typing_speed'];
+        $delay = $settings['delay'];
     ?>
         <div class="hajimi-animated-fancytext heading-<?= $heading_style;?>">
             <<?= $heading_title_tag;?> class="fancytext-title" 
