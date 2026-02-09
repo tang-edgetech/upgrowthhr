@@ -226,7 +226,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 				'label' => esc_html__( 'Text Color', 'hajimi' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .hajimi-animated-fancytext .heading-cursor' => 'color: {{VALUE}}',
 				],
                 'condition' => [
                     'typing_cursor' => 'yes'
@@ -339,6 +339,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
                 data-typing-speed="<?= $typing_speed;?>"
                 data-delay="<?= $delay;?>"
             ></<?= $heading_title_tag;?>>
+            <div class="heading-cursor">|</div>
         </div>
     <?php
     }

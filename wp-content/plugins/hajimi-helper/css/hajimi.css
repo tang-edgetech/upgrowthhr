@@ -606,8 +606,14 @@ button.hajimi-back2top.button-circle {
 .hajimi-content-column-slider .column-item-inner {
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     gap: 3.125rem;
     height: 100%;
+}
+.hajimi-animated-fancytext .fancytext-title, .hajimi-animated-fancytext .heading-cursor {
+    font-size: 48px;
+    line-height: 52px;
+    color: #404040;
 }
 .hajimi-animated-fancytext .fancytext-title {
     color: #4F3D95;
@@ -643,6 +649,8 @@ button.hajimi-back2top.button-circle {
     color: #fff;
     text-shadow: 1px 1px 0 #4f3d95bf, -1px -1px 0 #4f3d95bf, 1px -1px 0 #4f3d95bf, -1px 1px 0 #4f3d95bf;
     z-index: -1;
+}
+.heading-cursor {
 }
 @media (max-width: 767px) {
     .hajimi-navigation {

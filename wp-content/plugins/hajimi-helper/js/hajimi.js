@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if(!deleting){
                     if(c <= current.length){
-                        $el.text(current.substring(0, c++));
+                        $el.html('<span title="' + current + '">' + current.substring(0, c++) + '</span>');
                         setTimeout(run, speed);
                     }else{
                         if(!loop && t === texts.length - 1) return;
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }else{
                     if(c >= 0){
-                        $el.text(current.substring(0, c--));
+                        $el.html('<span title="' + current + '">' + current.substring(0, c--) + '</span>');
                         setTimeout(run, speed);
                     }else{
                         deleting = false;
