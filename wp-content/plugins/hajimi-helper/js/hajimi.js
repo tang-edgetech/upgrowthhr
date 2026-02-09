@@ -375,5 +375,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+
+        $('.hajimi-animated-fancytext .fancytext-title').each(function(){
+            const $el = $(this);
+            const texts = ($el.data('text') + '').split('|');
+            const loop = ['1','true'].includes(($el.data('loop')+'').toLowerCase());
+            const speed = parseInt($el.data('typing-speed')) || 150;
+            const delay = parseInt($el.data('delay')) || 1000;
+
+            let t = 0, c = 0, deleting = false;
+
+            function run(){
+                const current = texts[t];
+
+                if(!deleting){
+                    if(c <= current.length){
+                        $el.text(current.substring(0, c++));
+                        setTimeout(run, speed);
+                    }else{
+                        if(!loop && t === texts.length - 1) return;
+                        setTimeout(()=> deleting = true, delay);
+                        setTimeout(run, delay);
+                    }
+                }else{
+                    if(c >= 0){
+                        $el.text(current.substring(0, c--));
+                        setTimeout(run, speed);
+                    }else{
+                        deleting = false;
+                        t = (t + 1) % texts.length;
+                        setTimeout(run, speed);
+                    }
+                }
+            }
+
+            run();
+        });
     });
 });

@@ -645,6 +645,48 @@ table, .table {
 .ug-team-listing.style-style-1 .ug-team-swiper .team-body {
     flex: 1;
 }
+/** Animation start */
+.ug-team-swiper .team-body,
+.ug-team-swiper .team-additional,
+.ug-team-swiper .team-thumbnail {
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+.swiper-slide-active .team-body.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+.team-body {
+    transform: translateX(-40px);
+}
+.swiper-slide-active .team-additional.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+.team-additional {
+    transform: translateY(-40px);
+}
+.swiper-slide-active .team-thumbnail.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+.team-thumbnail {
+    transform: translateX(40px);
+}
+.animate-out-left {
+    opacity: 0 !important;
+    transform: translateX(-40px) !important;
+}
+
+.animate-out-right {
+    opacity: 0 !important;
+    transform: translateX(40px) !important;
+}
+.animate-out-up {
+    opacity: 0 !important;
+    transform: translateY(-40px) !important;
+}
+/** Animation end*/
 .text-editor-expansion .text-editor-inner {
     display: block;
     padding-bottom: 1.5rem;

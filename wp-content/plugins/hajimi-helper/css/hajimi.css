@@ -609,6 +609,41 @@ button.hajimi-back2top.button-circle {
     gap: 3.125rem;
     height: 100%;
 }
+.hajimi-animated-fancytext .fancytext-title {
+    color: #4F3D95;
+    display: flex;
+}
+.hajimi-animated-fancytext.heading-hollow .fancytext-title, .hajimi-animated-fancytext.heading-hollow-shade .fancytext-title {
+    perspective: 1000px;
+}
+.hajimi-animated-fancytext .fancytext-title span {
+    display: inline-block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+.hajimi-animated-fancytext.heading-hollow .fancytext-title span, .hajimi-animated-fancytext.heading-hollow-shade .fancytext-title span {
+    color: #fff;
+    text-shadow: 1px 1px 0 #4f3d95bf, -1px -1px 0 #4f3d95bf, 1px -1px 0 #4f3d95bf, -1px 1px 0 #4f3d95bf;
+}
+.hajimi-animated-fancytext.heading-hollow-shade .fancytext-title {
+    transform-style: preserve-3d;
+}
+.hajimi-animated-fancytext.heading-hollow-shade .fancytext-title span::after {
+    content: attr('title');
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: center top;
+    transform: scaleY(1.02);
+    color: #fff;
+    text-shadow: 1px 1px 0 #4f3d95bf, -1px -1px 0 #4f3d95bf, 1px -1px 0 #4f3d95bf, -1px 1px 0 #4f3d95bf;
+    z-index: -1;
+}
 @media (max-width: 767px) {
     .hajimi-navigation {
         padding: 1rem 1.25rem;

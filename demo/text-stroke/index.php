@@ -52,11 +52,7 @@
             }
             .hajimi-text-heading.text-outline h1 {
                 color: #4F3D95;
-                text-shadow:
-                    1px 1px 0 #fff,
-                    -1px -1px 0 #fff,  
-                    1px -1px 0 #fff,
-                    -1px 1px 0 #fff;
+                text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
             }
             .hajimi-text-heading.text-shadow {
                 padding: 1rem;

@@ -146,6 +146,36 @@ jQuery(document).ready(function($) {
                     slidesOffsetBefore: 0,
                     slidesOffsetAfter: 0,
                 }
+            },
+            on: {
+                slideChangeTransitionStart: function () {
+
+                    var $prev = $('.swiper-slide').eq(this.previousIndex);
+
+                    $prev.find('.team-body')
+                        .removeClass('animate-in')
+                        .addClass('animate-out-left');
+
+                    $prev.find('.team-additional')
+                        .removeClass('animate-in')
+                        .addClass('animate-out-up');
+
+                    $prev.find('.team-thumbnail')
+                        .removeClass('animate-in')
+                        .addClass('animate-out-right');
+                },
+
+                slideChangeTransitionEnd: function () {
+
+                    $('.swiper-slide .team-body, .swiper-slide .team-additional, .swiper-slide .team-thumbnail')
+                        .removeClass('animate-out-left animate-out-right animate-out-up');
+
+                    var $active = $('.swiper-slide-active');
+
+                    $active.find('.team-body').addClass('animate-in');
+                    $active.find('.team-additional').addClass('animate-in');
+                    $active.find('.team-thumbnail').addClass('animate-in');
+                }
             }
         });
     });
