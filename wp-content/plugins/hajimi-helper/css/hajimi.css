@@ -609,6 +609,10 @@ button.hajimi-back2top.button-circle {
     gap: 3.125rem;
     height: 100%;
 }
+.elementor-widget-hajimi_animated_fancytext .hajimi-animated-fancytext {
+    left: 50%;
+    transform: translateX(-50%);
+}
 .hajimi-animated-fancytext {
     display: flex;
     flex-wrap: nowrap;
