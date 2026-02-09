@@ -241,12 +241,12 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 2,
+					'top' => 0,
 					'right' => 0,
-					'bottom' => 2,
+					'bottom' => 0,
 					'left' => 0,
 					'unit' => 'em',
-					'isLinked' => false,
+					'isLinked' => true,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -261,12 +261,12 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 2,
+					'top' => 0,
 					'right' => 0,
-					'bottom' => 2,
+					'bottom' => 0,
 					'left' => 0,
 					'unit' => 'em',
-					'isLinked' => false,
+					'isLinked' => true,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -289,12 +289,12 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'default' => [
-					'top' => 2,
+					'top' => 0,
 					'right' => 0,
-					'bottom' => 2,
+					'bottom' => 0,
 					'left' => 0,
 					'unit' => 'em',
-					'isLinked' => false,
+					'isLinked' => true,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

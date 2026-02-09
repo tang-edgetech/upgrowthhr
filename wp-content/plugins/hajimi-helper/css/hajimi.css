@@ -615,16 +615,25 @@ button.hajimi-back2top.button-circle {
     align-items: center;
     min-height: 52px;
 }
-.hajimi-animated-fancytext .fancytext-title, .hajimi-animated-fancytext .heading-cursor {
+.hajimi-animated-fancytext .fancytext-title {
     font-size: 48px;
     line-height: 52px;
     color: #404040;
 }
 .hajimi-animated-fancytext .heading-cursor {
+    display: block;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: -1rem;
+    width: 0.313rem;
+    height: 100%;
+    background: #404040;
+    animation: blinking .6s infinite alternate;
+}
+@keyframes blinking {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 .hajimi-animated-fancytext .fancytext-title {
     color: #4F3D95;
