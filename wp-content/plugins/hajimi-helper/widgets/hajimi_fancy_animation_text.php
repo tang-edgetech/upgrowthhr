@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
-class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
+class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
         return 'hajimi_fancy_heading';
@@ -344,4 +344,4 @@ class Hajimi_Fancy_Heading_Widget extends \Elementor\Widget_Base {
     }
 }
 
-\Elementor\Plugin::instance()->widgets_manager->register( new Hajimi_Fancy_Heading_Widget() );
+\Elementor\Plugin::instance()->widgets_manager->register( new Hajimi_Animated_Fancytext_Widget() );
