@@ -189,6 +189,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'heading_typography',
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title',
 			]
 		);
