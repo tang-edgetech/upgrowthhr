@@ -189,7 +189,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'heading_typography',
-				'selector' => '{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title, {{WRAPPER}} .hajimi-animated-fancytext .heading-cursor',
+				'selector' => '{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title',
 			]
 		);
 
@@ -231,6 +231,29 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
                 'condition' => [
                     'typing_cursor' => 'yes'
                 ]
+			]
+		);
+
+		$this->add_control(
+			'cursor_width',
+			[
+				'label' => esc_html__( 'Cursor Size', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 1000,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px]',
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-animated-fancytext .heading-cursor' => 'width: {{SIZE}}{{UNIT}};',
+				],
 			]
 		);
 
