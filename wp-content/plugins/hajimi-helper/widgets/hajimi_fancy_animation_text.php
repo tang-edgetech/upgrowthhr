@@ -362,7 +362,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
                 data-typing-speed="<?= $typing_speed;?>"
                 data-delay="<?= $delay;?>"
             ></<?= $heading_title_tag;?>>
-            <div class="heading-cursor">|</div>
+            <div class="heading-cursor"></div>
         </div>
         <p style="display: none;"><?= json_encode($settings['heading_typography']);?></p>
     <?php
