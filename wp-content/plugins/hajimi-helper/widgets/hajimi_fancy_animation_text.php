@@ -194,6 +194,41 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
+			'fancytext_min_height',
+			[
+				'label' => esc_html__( 'Minimum Height', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 1000,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 58,
+				],
+                'laptop_default' => [
+					'unit' => 'px',
+					'size' => 58,
+				],
+                'tablet_default' => [
+					'unit' => 'px',
+					'size' => 58,
+				],
+                'mobile_default' => [
+					'unit' => 'px',
+					'size' => 58,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-animated-fancytext' => 'min-height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
 			'heading_color',
 			[
 				'label' => esc_html__( 'Heading Color', 'hajimi' ),
@@ -248,7 +283,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 					],
 				],
 				'default' => [
-					'unit' => 'px]',
+					'unit' => 'px',
 					'size' => 5,
 				],
 				'selectors' => [
@@ -364,7 +399,6 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
             ></<?= $heading_title_tag;?>>
             <div class="heading-cursor"></div>
         </div>
-        <p style="display: none;"><?php var_dump($settings['heading_typography'])?></p>
     <?php
     }
 }
