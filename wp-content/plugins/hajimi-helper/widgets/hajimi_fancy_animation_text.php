@@ -364,7 +364,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
             ></<?= $heading_title_tag;?>>
             <div class="heading-cursor"></div>
         </div>
-        <p style="display: none;"><?= json_encode($settings['heading_typography']);?></p>
+        <p style="display: none;"><?= var_dump($settings['heading_typography'];)?></p>
     <?php
     }
 }
