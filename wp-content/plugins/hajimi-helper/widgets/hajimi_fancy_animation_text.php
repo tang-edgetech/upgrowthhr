@@ -189,7 +189,7 @@ class Hajimi_Animated_Fancytext_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'heading_typography',
-				'selector' => '{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title',
+				'selector' => '{{WRAPPER}} .hajimi-animated-fancytext .fancytext-title, {{WRAPPER}} .hajimi-animated-fancytext .heading-cursor',
 			]
 		);
 
