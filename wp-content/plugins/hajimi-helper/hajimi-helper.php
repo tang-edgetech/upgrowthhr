@@ -190,3 +190,54 @@ function my_custom_elementor_css() {
     }
 }
 add_action('wp_enqueue_scripts', 'my_custom_elementor_css');
+
+add_action('acf/init', function() {
+    if (function_exists('acf_add_local_field_group')) {
+        acf_add_local_field_group(array(
+            'key' => 'group_hajimi_settings',
+            'title' => 'Hajimi Menu Dialogues',
+            'fields' => array(
+                array(
+                    'key' => 'field_menu_dialogues',
+                    'label' => 'Menu Dialogues',
+                    'name' => 'menu_dialogues',
+                    'type' => 'repeater',
+                    'layout' => 'row',
+                    'button_label' => 'Add Dialogue',
+                    'sub_fields' => array(
+
+                        array(
+                            'key' => 'field_menu_page',
+                            'label' => 'Page',
+                            'name' => 'page',
+                            'type' => 'post_object',
+                            'post_type' => array('page'),
+                            'return_format' => 'object',
+                            'ui' => 1,
+                        ),
+
+                        array(
+                            'key' => 'field_menu_content',
+                            'label' => 'Content',
+                            'name' => 'content',
+                            'type' => 'wysiwyg',
+                            'tabs' => 'all',
+                            'toolbar' => 'full',
+                            'media_upload' => 1,
+                        ),
+
+                    ),
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'options_page',
+                        'operator' => '==',
+                        'value' => 'hajimi-settings',
+                    ),
+                ),
+            ),
+        ));
+    }
+});
