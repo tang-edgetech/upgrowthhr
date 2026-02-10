@@ -124,7 +124,13 @@ jQuery(document).ready(function($) {
             $isFade = 'fade';
             $crossFade = true;
         }
-
+        console.log('Layout -- ', $layout);
+        console.log('autoplay',$autoplay);
+        console.log('autoplayTimeout',$autoplayTimeout);
+        console.log('speed',$speed);
+        console.log('isFade',$isFade);
+        console.log('crossFade',$crossFade);
+        console.log('---');
         new Swiper($swiper[0], {
             slidesPerView: 1,
             spaceBetween: 24,
