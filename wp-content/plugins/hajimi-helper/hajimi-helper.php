@@ -246,13 +246,10 @@ function hajimi_settings_page() {
             <?php submit_button(); ?>
         </form>
     </div>
-    <script>
+    <script type="text/javascript">
     jQuery(document).ready(function($){
-
         let rowIndex = <?php echo !empty($items) ? count($items) : 0; ?>;
-
         $('#add-row').on('click', function(){
-
             let row = `
             <tr>
                 <td>
@@ -277,10 +274,36 @@ function hajimi_settings_page() {
 
             $('#hajimi-repeater-table tbody').append(row);
 
+            if (typeof tinymce !== "undefined") {
+
+                tinymce.init({
+                    selector: '#' + editorID,
+                    height: 200,
+                    menubar: false,
+                    plugins: 'lists link paste',
+                    toolbar: 'formatselect bold italic underline | bullist numlist | link unlink | undo redo'
+                });
+
+                if (typeof quicktags !== "undefined") {
+                    quicktags({ id: editorID });
+                }
+            }
+
             rowIndex++;
         });
 
         $(document).on('click', '.remove-row', function(){
+
+            let textarea = $(this).closest('tr').find('textarea');
+            let id = textarea.attr('id');
+
+            if (typeof tinymce !== "undefined") {
+                let editor = tinymce.get(id);
+                if (editor) {
+                    editor.remove();
+                }
+            }
+
             $(this).closest('tr').remove();
         });
 
