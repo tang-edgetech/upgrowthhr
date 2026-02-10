@@ -273,7 +273,7 @@ class Hajimi_Custom_Navigation_Widget extends \Elementor\Widget_Base {
 
             echo '<li class="' . esc_attr( implode( ' ', $classes ) ) . '" data-ids="'.$current_page_id.'-'.$item->object_id.'">';
 
-            echo '<a href="' . esc_url( $item->url ) . '" class="hajimi-nav-link">';
+            echo '<a href="' . esc_url( $item->url ) . '" class="hajimi-nav-link nav-link-'.$item->ID.'" data-dialogue-target="dialogue-'.$item->ID.'">';
             echo '<span>'.esc_html( $item->title ).'</span>';
             if( $depth > 0 ) {
                 echo '<i class="fa fa-arrow-right" aria-hidden="true"></i>';
@@ -294,7 +294,8 @@ class Hajimi_Custom_Navigation_Widget extends \Elementor\Widget_Base {
                         if ($dialogues) {
                             echo '<div class="hajimi-col-inner">';
                             echo json_encode($dialogues)."\r\n";
-                            foreach ($dialogues as $item) {
+                            foreach ($dialogues as $page) {
+                                echo '<div class="hajimi-menu-dialogue" id="dialogue-'.$page->page.'">'.$page->content.'</div>';
                             }
                             echo '</div>';
                         }
@@ -328,7 +329,7 @@ class Hajimi_Custom_Navigation_Widget extends \Elementor\Widget_Base {
 
             echo '<li class="' . esc_attr( implode( ' ', $classes ) ) . '">';
 
-            echo '<a href="' . esc_url( $item->url ) . '" class="hajimi-nav-link">';
+            echo '<a href="' . esc_url( $item->url ) . '" class="hajimi-nav-link nav-link-'.$item->ID.'" data-dialogue-target="dialogue-'.$item->ID.'">';
             echo '<span>'.esc_html( $item->title ).'</span>';
             echo '<i class="fa fa-arrow-right" aria-hidden="true"></i>';
             echo '</a>';
