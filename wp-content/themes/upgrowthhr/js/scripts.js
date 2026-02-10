@@ -114,11 +114,15 @@ jQuery(document).ready(function($) {
             $swiper = $slider.find('.swiper'),
             $autoplay = false,
             $autoplayTimeout = 5000,
-            $speed = 300;
+            $speed = 300,
+            $isFade = 'slide',
+            $crossFade = false;
         if( $layout == 'style-2' ) {
             $autoplay = true;
             $autoplayTimeout = 7500,
             $speed = 750;
+            $isFade = 'fade';
+            $crossFade = true;
         }
 
         new Swiper($swiper[0], {
@@ -126,6 +130,10 @@ jQuery(document).ready(function($) {
             spaceBetween: 24,
             loop: true,
             speed: $speed,
+            effect: $isFade,
+            fadeEffect: {
+                crossFade: $crossFade
+            },
             autoplay: $autoplay ? {
                 delay: $autoplayTimeout,
                 disableOnInteraction: false
