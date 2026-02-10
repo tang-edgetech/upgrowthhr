@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentMode3 !== 'desktop') {
                     currentMode3 = 'desktop';
                     // Desktop code here
-                    $('.hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link').on('mouseenter', function() {
+                    $('.hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link:not(.mouseentered)').on('mouseenter', function() {
                         var $item = $(this);
                         $('.hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link').removeClass('mouseentered');
                         $item.addClass('mouseentered');
