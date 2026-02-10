@@ -85,10 +85,7 @@ add_action( 'admin_menu', function () {
 add_action( 'admin_init', function () {    
     register_setting(
         'hajimi_settings_group', 
-        'hajimi_menu_dialogues',
-        [
-            'sanitize_callback' => 'wp_kses_post',
-        ]
+        'hajimi_menu_dialogues'
     );
 });
 

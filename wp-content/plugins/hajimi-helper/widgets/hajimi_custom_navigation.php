@@ -290,7 +290,7 @@ class Hajimi_Custom_Navigation_Widget extends \Elementor\Widget_Base {
                             echo '</ul>';
                         echo '</div>';
                         echo '<div class="hajimi-col hajimi-col-description">';
-                        $dialogues = get_field('hajimi_menu_dialogues', 'option');
+                        $dialogues = get_option('hajimi_menu_dialogues');
                         if ($dialogues) {
                             echo '<div class="hajimi-col-inner">';
                             echo json_encode($dialogues)."\r\n";
