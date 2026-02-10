@@ -277,7 +277,7 @@
     -webkit-backdrop-filter: blur(4px) saturate(160%) brightness(110%);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4)!important;
     overflow: hidden;
 }
 .hajimi-glass-effect.base-theme {
