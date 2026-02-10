@@ -245,6 +245,9 @@
     opacity: 1;
     visibility: visible;
 }
+.hajimi-menu-dialogue p+ul, .hajimi-menu-dialogue p+ol {
+    margin-top: 0.313rem;
+}
 .hajimi-nav {
 	scrollbar-gutter: stable;
     scrollbar-width: thin;
