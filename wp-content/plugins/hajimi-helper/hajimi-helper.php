@@ -110,6 +110,7 @@ function my_custom_elementor_css() {
 add_action('wp_enqueue_scripts', 'my_custom_elementor_css');
 
 function hajimi_settings_page() {
+    wp_enqueue_editor();
     $items = get_option('hajimi_menu_dialogues', []);
     $service_content  = get_option( 'service_content', '' );
     $selected_page_id = get_option( 'service_page_id', 0 );
