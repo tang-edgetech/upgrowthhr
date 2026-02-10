@@ -1082,10 +1082,19 @@ table, .table {
         top: 50% !important;
         transform: translateY(-50%);
     }
+    .ug-team-listing.style-style-2 .ug-team-pagination {
+        bottom: 5rem;
+        right: 1.895vw;
+    }
 }
 @media (min-width: 1280px) {
     .site-container, .ug-container {
         max-width: 1240px;
+    }
+}
+@media (min-width: 1400px) {
+    .ug-team-listing.style-style-2 .ug-team-pagination {
+        right: 3.5714vw;
     }
 }
 @media (min-width: 1440px) {
@@ -1120,5 +1129,10 @@ table, .table {
     }
     .ug-team-listing.style-style-2 .team-additional {
         min-width: 50vw;
+    }
+}
+@media (min-width: 1900px) {
+    .ug-team-listing.style-style-2 .ug-team-pagination {
+        right: 10.417vw;
     }
 }
