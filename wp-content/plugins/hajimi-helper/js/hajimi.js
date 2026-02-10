@@ -51,14 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             $target = $this.attr('data-dialogue-target');
                         $('.hajimi-menu-dialogue.show').removeClass('show');
                         setTimeout(function() {
-                            $('#'+$target).addClass('active');
-                        }, 50);
-                        setTimeout(function() {
                             $('.hajimi-menu-dialogue.active').removeClass('active');
-                        }, 250);
+                            $('#'+$target).addClass('active');
+                        }, 150);
                         setTimeout(function() {
                             $('#'+$target).addClass('show');
-                        }, 350);
+                        }, 250);
                     });
                 }
             }
