@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentMode3 = 'desktop';
                     // Desktop code here
 
-                    $('.hajimi-menu-popup .sub-menu .hajimi-nav-link').on('mouseenter', function() {
+                    $('.hajimi-menu-popup .sub-menu .hajimi-nav-link:not(.mouseentered)').on('mouseenter', function() {
                         var $this = $(this),
                             $target = $this.attr('data-dialogue-target');
                         $('.hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link').removeClass('mouseentered');
