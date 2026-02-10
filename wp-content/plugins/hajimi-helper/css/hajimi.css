@@ -834,6 +834,9 @@ button.hajimi-back2top.button-circle {
         background: linear-gradient(90deg, #A581FF, #A581FF );
         opacity: 1;
     }
+    .hajimi-navigation .hajimi-nav .sub-menu .menu-item a:hover::before, .hajimi-navigation .hajimi-nav .sub-menu .menu-item.current-page-item > a::before {
+        background: linear-gradient(90deg, #A581FF, #4A00DF );
+    }
     .hajimi-navigation {
         height: 100px;
     }
