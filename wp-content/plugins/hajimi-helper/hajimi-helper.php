@@ -76,7 +76,7 @@ add_action( 'admin_menu', function () {
         __( 'Hajimi Settings', 'hajimi' ),
         'manage_options',
         'hajimi-settings',
-        'hajimi_render_settings_page',
+        'hajimi_settings_page',
         'dashicons-admin-generic',
         61
     );
