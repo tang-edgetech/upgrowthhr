@@ -1034,6 +1034,17 @@ table, .table {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
+    .ug-team-listing.style-style-2 .team-header {
+        padding-top: 8rem;
+    }
+    .ug-team-listing.style-style-2 .team-additional, .ug-team-listing.style-style-2 .team-item-1645 .team-additional {
+        font-size: 60px;
+        line-height: 60px;
+    }
+    .ug-team-listing.style-style-2 .ug-team-pagination {
+        bottom: 5rem!important;
+        right: 1rem;
+    }
 }
 @media (min-width: 1200px) and (max-width: 1279px) and (orientation: landscape) {
     .e-con-boxed.e-parent > .e-con-inner, .site-container, .ug-container {
@@ -1083,7 +1094,7 @@ table, .table {
         transform: translateY(-50%);
     }
     .ug-team-listing.style-style-2 .ug-team-pagination {
-        bottom: 5rem;
+        bottom: 5rem!important;
         right: 1.895vw;
     }
 }
