@@ -736,6 +736,7 @@ function ug_team_slider($atts) {
             <div class="swiper">
                 <div class="swiper-wrapper">
                 <?php
+				$index = 0;
                 if( $teams->have_posts() ) {
                     while( $teams->have_posts() ) {
                         $teams->the_post();
@@ -764,8 +765,9 @@ function ug_team_slider($atts) {
                             <?php
                             }
                             else {
+								$first_item_class = ($index==0) ? ' animate-in' : '';
                             ?>
-                                <div class="team-body">
+                                <div class="team-body<?= $first_item_class;?>">
                                     <h4 class="team-title"><?= $team_title;?></h4>
                                     <div class="text-editor-expansion">
                                         <div class="text-editor-inner"><div class="text-editor-wrapper"><?= $team_description;?></div></div>
@@ -775,8 +777,8 @@ function ug_team_slider($atts) {
                                     </div>
                                 </div>
                                 <div class="team-header">
-                                    <div class="team-additional"><?= $team_add;?></div>
-                                    <div class="team-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>'; } ?></div>
+                                    <div class="team-additional<?= $first_item_class;?>"><?= $team_add;?></div>
+                                    <div class="team-thumbnail<?= $first_item_class;?>"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>'; } ?></div>
                                 </div>
                             <?php
                             }
@@ -784,6 +786,7 @@ function ug_team_slider($atts) {
                             </div>
                         </div>
                     <?php
+						$index++;
                     }
                     wp_reset_postdata();
                 }
