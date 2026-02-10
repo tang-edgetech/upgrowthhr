@@ -119,7 +119,7 @@ jQuery(document).ready(function($) {
             $crossFade = false;
         if( $layout == 'style-2' ) {
             $autoplay = true;
-            $autoplayTimeout = 7500,
+            $autoplayTimeout = 9000,
             $speed = 750;
             $isFade = 'fade';
             $crossFade = true;

@@ -642,6 +642,7 @@ table, .table {
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    z-index: 2;
 }
 .ug-team-listing.style-style-1 .ug-team-swiper .team-body {
     flex: 1;
