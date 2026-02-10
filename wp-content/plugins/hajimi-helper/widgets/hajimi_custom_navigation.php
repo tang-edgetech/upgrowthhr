@@ -294,6 +294,7 @@ class Hajimi_Custom_Navigation_Widget extends \Elementor\Widget_Base {
                         if ($dialogues) {
                             echo '<div class="hajimi-col-inner">';
                             foreach ($dialogues as $page) {
+                                echo json_encode($page)."\r\n";
                                 echo '<div class="hajimi-menu-dialogue" id="dialogue-'.$page->page.'">';
                                 echo apply_filters('the_content', $page->content);
                                 echo '</div>';
