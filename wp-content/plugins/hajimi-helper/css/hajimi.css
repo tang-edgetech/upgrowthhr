@@ -829,6 +829,7 @@ button.hajimi-back2top.button-circle {
     }
     .hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link.mouseentered::before {
         background: linear-gradient(90deg, #A581FF, #A581FF );
+        opacity: 1;
     }
     .hajimi-navigation {
         height: 100px;
