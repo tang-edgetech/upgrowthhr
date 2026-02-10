@@ -110,17 +110,26 @@ jQuery(document).ready(function($) {
 
     $('.ug-team-swiper').each(function() {
         var $slider = $(this),
-            $swiper = $slider.find('.swiper');
+            $layout = $slider.attr('data-layout'),
+            $swiper = $slider.find('.swiper'),
+            $autoplay = false,
+            $autoplayTimeout = 5000,
+            $speed = 300;
+        if( $layout == 'style-2' ) {
+            $autoplay = true;
+            $autoplayTimeout = 7500,
+            $speed = 750;
+        }
 
         new Swiper($swiper[0], {
             slidesPerView: 1,
             spaceBetween: 24,
             loop: true,
-            speed: 300,
-            autoplay: {
-                delay: 7500,
-                disableOnInteraction: false,
-            },
+            speed: $speed,
+            autoplay: $autoplay ? {
+                delay: $autoplayTimeout,
+                disableOnInteraction: false
+            } : false,
             navigation: {
                 prevEl: '.team-nav-prev',
                 nextEl: '.team-nav-next',

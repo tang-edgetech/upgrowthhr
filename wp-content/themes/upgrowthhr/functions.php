@@ -731,7 +731,7 @@ function ug_team_slider($atts) {
     $teams = new WP_Query($args);
     ob_start();
     ?>
-    <div class="ug-team-listing style-<?= $style;?>">
+    <div class="ug-team-listing style-<?= $style;?>" data-layout="<?= $style;?>">
         <div class="ug-team-swiper">
             <div class="swiper">
                 <div class="swiper-wrapper">
