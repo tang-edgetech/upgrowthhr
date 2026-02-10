@@ -788,6 +788,9 @@ table, .table {
     line-height: 1.5rem;
     z-index: 1;
 }
+.ug-team-listing.style-style-2 .ug-team-nav button.ug-team-nav-button:hover {
+    background: #4a00df33!important;
+}
 .ug-team-listing.style-style-2 .ug-team-pagination {
     display: flex;
     flex-direction: column;
