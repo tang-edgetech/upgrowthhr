@@ -232,6 +232,19 @@
     box-shadow: 2px 2px 8px 0 rgba(74, 0, 224, 0.2);
     text-align: center;
 }
+.hajimi-menu-dialogue {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease;
+}
+.hajimi-menu-dialogue.active {
+    display: block;
+}
+.hajimi-menu-dialogue.show {
+    opacity: 1;
+    visibility: visible;
+}
 .hajimi-nav {
 	scrollbar-gutter: stable;
     scrollbar-width: thin;

@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
-
         hajimiCheckBreakpoint();
 
         var resizeTimer;
@@ -31,6 +30,43 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(hajimiCheckBreakpoint, 120);
         });
+
+
+        const breakpoint = window.matchMedia('(max-width: 767px)');
+        let currentMode = null;
+
+        function checkMode() {
+            if (breakpoint.matches) {
+                if (currentMode !== 'mobile') {
+                    currentMode = 'mobile';
+                    // Mobile code here
+                    $('.hajimi-menu-dialogue').removeClass('active show');
+                }
+            } else {
+                if (currentMode !== 'desktop') {
+                    currentMode = 'desktop';
+                    // Desktop code here
+                    $('.hajimi-menu-popup .hajimi-nav-link').on('mouseenter', function() {
+                        var $this = $(this),
+                            $target = $this.attr('data-dialogue-target');
+                        $('.hajimi-menu-dialogue.show').removeClass('show');
+                        setTimeout(function() {
+                            $('#'+$target).addClass('active');
+                        }, 50);
+                        setTimeout(function() {
+                            $('.hajimi-menu-dialogue.active').removeClass('active');
+                        }, 250);
+                        setTimeout(function() {
+                            $('#'+$target).addClass('show');
+                        }, 350);
+                    });
+                }
+            }
+        }
+
+        checkMode();
+        breakpoint.addEventListener('change', checkMode);
+
 
         if( !$('.hajimi-menu-overlay')[0] ) {
             $('body').append(`<div class="hajimi-menu-overlay"></div>`);
@@ -411,5 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             run();
         });
+
+
     });
 });
