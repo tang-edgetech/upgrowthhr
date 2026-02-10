@@ -82,24 +82,14 @@ add_action( 'admin_menu', function () {
     );
 });
 
-add_action( 'admin_init', function () {
+add_action( 'admin_init', function () {    
     register_setting(
-        'hajimi_settings_group',
-        'service_page_id',
-        [
-            'sanitize_callback' => 'absint',
-        ]
-    );
-
-    register_setting(
-        'hajimi_settings_group',
-        'service_content',
+        'hajimi_settings_group', 
+        'hajimi_menu_dialogues',
         [
             'sanitize_callback' => 'wp_kses_post',
         ]
     );
-    
-    register_setting('hajimi_settings_group', 'hajimi_menu_dialogues');
 });
 
 function my_custom_elementor_css() {
@@ -112,8 +102,6 @@ add_action('wp_enqueue_scripts', 'my_custom_elementor_css');
 function hajimi_settings_page() {
     wp_enqueue_editor();
     $items = get_option('hajimi_menu_dialogues', []);
-    $service_content  = get_option( 'service_content', '' );
-    $selected_page_id = get_option( 'service_page_id', 0 );
     $pages = get_pages( [
         'sort_column' => 'post_title',
         'sort_order'  => 'asc',
@@ -128,64 +116,6 @@ function hajimi_settings_page() {
                 settings_fields( 'hajimi_settings_group' );
                 do_settings_sections( 'hajimi_settings_group' );
             ?>
-
-            <div class="table-group">
-                <table class="form-table">
-                    <tr>
-                        <th scope="row">
-                            <label for="service_page_id">
-                                <?php esc_html_e( 'Service Page', 'hajimi' ); ?>
-                            </label>
-                        </th>
-                        <td>
-                            <select name="service_page_id" id="service_page_id">
-                                <option value="0">
-                                    <?php esc_html_e( '-- Select a page --', 'hajimi' ); ?>
-                                </option>
-
-                                <?php foreach ( $pages as $page ) : ?>
-                                    <option value="<?php echo esc_attr( $page->ID ); ?>"
-                                        <?php selected( $selected_page_id, $page->ID ); ?>>
-                                        <?php echo esc_html( $page->post_title ); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-
-                            <p class="description">
-                                <?php esc_html_e( 'Choose a page related to the service section.', 'hajimi' ); ?>
-                            </p>
-                        </td>
-                    </tr>
-
-                    <!-- WYSIWYG -->
-                    <tr>
-                        <th scope="row">
-                            <label for="service_content">
-                                <?php esc_html_e( 'Service Content', 'hajimi' ); ?>
-                            </label>
-                        </th>
-                        <td>
-                            <?php
-                            wp_editor(
-                                $service_content,
-                                'service_content',
-                                [
-                                    'textarea_name' => 'service_content',
-                                    'textarea_rows' => 12,
-                                    'media_buttons' => true,
-                                    'teeny'         => false,
-                                    'editor_height' => 260,
-                                ]
-                            );
-                            ?>
-                            <p class="description">
-                                <?php esc_html_e( 'This content can be displayed inside Elementor widgets or templates.', 'hajimi' ); ?>
-                            </p>
-                        </td>
-                    </tr>
-
-                </table>
-            </div>
 
             <div class="table-group">
                 <table class="widefat" id="hajimi-repeater-table">

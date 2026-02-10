@@ -290,10 +290,13 @@ class Hajimi_Custom_Navigation_Widget extends \Elementor\Widget_Base {
                             echo '</ul>';
                         echo '</div>';
                         echo '<div class="hajimi-col hajimi-col-description">';
-                        $service_page_id = get_option('service_page_id');
-                        $service_description = get_option('service_content');
-                        if( intval($service_page_id) == intval($item->object_id) && !empty($service_description) ) {
-                            echo '<div class="hajimi-col-inner">'.$service_description.'</div>';
+                        $dialogue = get_field('hajimi_menu_dialogues', 'option');
+                        if ($dialogues) {
+                            echo '<div class="hajimi-col-inner">';
+                            echo json_encode($dialogues)."\r\n";
+                            foreach ($dialogues as $item) {
+                            }
+                            echo '</div>';
                         }
                         echo '</div>';
                     echo '</div>';
