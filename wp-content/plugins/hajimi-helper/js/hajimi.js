@@ -46,15 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentMode3 !== 'desktop') {
                     currentMode3 = 'desktop';
                     // Desktop code here
-                    $('.hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link:not(.mouseentered)').on('mouseenter', function() {
-                        var $item = $(this);
-                        $('.hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link').removeClass('mouseentered');
-                        $item.addClass('mouseentered');
-                    });
 
-                    $('.hajimi-menu-popup .hajimi-nav-link').on('mouseenter', function() {
+                    $('.hajimi-menu-popup .sub-menu .hajimi-nav-link').on('mouseenter', function() {
                         var $this = $(this),
                             $target = $this.attr('data-dialogue-target');
+                        $('.hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link').removeClass('mouseentered');
+                        $this.addClass('mouseentered');
                         $('.hajimi-menu-dialogue.show').removeClass('show');
                         setTimeout(function() {
                             $('.hajimi-menu-dialogue.active').removeClass('active');
