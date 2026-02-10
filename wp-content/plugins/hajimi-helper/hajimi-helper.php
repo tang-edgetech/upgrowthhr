@@ -98,6 +98,8 @@ add_action( 'admin_init', function () {
             'sanitize_callback' => 'wp_kses_post',
         ]
     );
+    
+    register_setting('hajimi_settings_group', 'hajimi_menu_dialogues');
 });
 function hajimi_render_settings_page() {
 
@@ -191,53 +193,107 @@ function my_custom_elementor_css() {
 }
 add_action('wp_enqueue_scripts', 'my_custom_elementor_css');
 
-add_action('acf/init', function() {
-    if (function_exists('acf_add_local_field_group')) {
-        acf_add_local_field_group(array(
-            'key' => 'group_hajimi_settings',
-            'title' => 'Hajimi Menu Dialogues',
-            'fields' => array(
-                array(
-                    'key' => 'field_menu_dialogues',
-                    'label' => 'Menu Dialogues',
-                    'name' => 'menu_dialogues',
-                    'type' => 'repeater',
-                    'layout' => 'row',
-                    'button_label' => 'Add Dialogue',
-                    'sub_fields' => array(
+function hajimi_settings_page() {
+    $items = get_option('hajimi_menu_dialogues', []);
+    ?>
 
-                        array(
-                            'key' => 'field_menu_page',
-                            'label' => 'Page',
-                            'name' => 'page',
-                            'type' => 'post_object',
-                            'post_type' => array('page'),
-                            'return_format' => 'object',
-                            'ui' => 1,
-                        ),
+    <div class="wrap">
+        <h1>Hajimi Settings</h1>
 
-                        array(
-                            'key' => 'field_menu_content',
-                            'label' => 'Content',
-                            'name' => 'content',
-                            'type' => 'wysiwyg',
-                            'tabs' => 'all',
-                            'toolbar' => 'full',
-                            'media_upload' => 1,
-                        ),
+        <form method="post" action="options.php">
+            <?php settings_fields('hajimi_settings_group'); ?>
 
-                    ),
-                ),
-            ),
-            'location' => array(
-                array(
-                    array(
-                        'param' => 'options_page',
-                        'operator' => '==',
-                        'value' => 'hajimi-settings',
-                    ),
-                ),
-            ),
-        ));
-    }
-});
+            <table class="widefat" id="hajimi-repeater-table">
+                <thead>
+                    <tr>
+                        <th width="30%">Page</th>
+                        <th width="60%">Content</th>
+                        <th width="10%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <?php if (!empty($items)) : ?>
+                    <?php foreach ($items as $index => $item) : ?>
+                        <tr>
+                            <td>
+                                <?php
+                                wp_dropdown_pages([
+                                    'name' => "hajimi_menu_dialogues[$index][page]",
+                                    'selected' => $item['page'] ?? '',
+                                    'show_option_none' => 'Select Page',
+                                ]);
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                wp_editor(
+                                    $item['content'] ?? '',
+                                    "hajimi_editor_$index",
+                                    [
+                                        'textarea_name' => "hajimi_menu_dialogues[$index][content]",
+                                        'textarea_rows' => 5,
+                                    ]
+                                );
+                                ?>
+                            </td>
+                            <td>
+                                <button type="button" class="button remove-row">Remove</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+                </tbody>
+            </table>
+
+            <p>
+                <button type="button" class="button button-primary" id="add-row">Add Dialogue</button>
+            </p>
+
+            <?php submit_button(); ?>
+        </form>
+    </div>
+    <script>
+    jQuery(document).ready(function($){
+
+        let rowIndex = <?php echo !empty($items) ? count($items) : 0; ?>;
+
+        $('#add-row').on('click', function(){
+
+            let row = `
+            <tr>
+                <td>
+                    <?php
+                    $dropdown = wp_dropdown_pages([
+                        'echo' => 0,
+                        'name' => '__name__',
+                        'show_option_none' => 'Select Page',
+                    ]);
+                    echo str_replace('__name__', 'hajimi_menu_dialogues[__index__][page]', $dropdown);
+                    ?>
+                </td>
+                <td>
+                    <textarea name="hajimi_menu_dialogues[__index__][content]" rows="5" style="width:100%;"></textarea>
+                </td>
+                <td>
+                    <button type="button" class="button remove-row">Remove</button>
+                </td>
+            </tr>`;
+
+            row = row.replace(/__index__/g, rowIndex);
+
+            $('#hajimi-repeater-table tbody').append(row);
+
+            rowIndex++;
+        });
+
+        $(document).on('click', '.remove-row', function(){
+            $(this).closest('tr').remove();
+        });
+
+    });
+    </script>
+
+    <?php
+}
