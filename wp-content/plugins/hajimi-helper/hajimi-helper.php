@@ -101,90 +101,6 @@ add_action( 'admin_init', function () {
     
     register_setting('hajimi_settings_group', 'hajimi_menu_dialogues');
 });
-function hajimi_render_settings_page() {
-
-    // Get saved options
-    $service_content  = get_option( 'service_content', '' );
-    $selected_page_id = get_option( 'service_page_id', 0 );
-
-    // Get all pages
-    $pages = get_pages( [
-        'sort_column' => 'post_title',
-        'sort_order'  => 'asc',
-    ] );
-    ?>
-    <div class="wrap">
-        <h1><?php esc_html_e( 'Hajimi Settings', 'hajimi' ); ?></h1>
-
-        <form method="post" action="options.php">
-            <?php
-                settings_fields( 'hajimi_settings_group' );
-                do_settings_sections( 'hajimi_settings_group' );
-            ?>
-
-            <table class="form-table">
-
-                <!-- Page Select -->
-                <tr>
-                    <th scope="row">
-                        <label for="service_page_id">
-                            <?php esc_html_e( 'Service Page', 'hajimi' ); ?>
-                        </label>
-                    </th>
-                    <td>
-                        <select name="service_page_id" id="service_page_id">
-                            <option value="0">
-                                <?php esc_html_e( '-- Select a page --', 'hajimi' ); ?>
-                            </option>
-
-                            <?php foreach ( $pages as $page ) : ?>
-                                <option value="<?php echo esc_attr( $page->ID ); ?>"
-                                    <?php selected( $selected_page_id, $page->ID ); ?>>
-                                    <?php echo esc_html( $page->post_title ); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <p class="description">
-                            <?php esc_html_e( 'Choose a page related to the service section.', 'hajimi' ); ?>
-                        </p>
-                    </td>
-                </tr>
-
-                <!-- WYSIWYG -->
-                <tr>
-                    <th scope="row">
-                        <label for="service_content">
-                            <?php esc_html_e( 'Service Content', 'hajimi' ); ?>
-                        </label>
-                    </th>
-                    <td>
-                        <?php
-                        wp_editor(
-                            $service_content,
-                            'service_content',
-                            [
-                                'textarea_name' => 'service_content',
-                                'textarea_rows' => 12,
-                                'media_buttons' => true,
-                                'teeny'         => false,
-                                'editor_height' => 260,
-                            ]
-                        );
-                        ?>
-                        <p class="description">
-                            <?php esc_html_e( 'This content can be displayed inside Elementor widgets or templates.', 'hajimi' ); ?>
-                        </p>
-                    </td>
-                </tr>
-
-            </table>
-
-            <?php submit_button(); ?>
-        </form>
-    </div>
-    <?php
-}
 
 function my_custom_elementor_css() {
     if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
@@ -195,57 +111,133 @@ add_action('wp_enqueue_scripts', 'my_custom_elementor_css');
 
 function hajimi_settings_page() {
     $items = get_option('hajimi_menu_dialogues', []);
+    $service_content  = get_option( 'service_content', '' );
+    $selected_page_id = get_option( 'service_page_id', 0 );
+    $pages = get_pages( [
+        'sort_column' => 'post_title',
+        'sort_order'  => 'asc',
+    ] );
     ?>
 
     <div class="wrap">
         <h1>Hajimi Settings</h1>
 
         <form method="post" action="options.php">
-            <?php settings_fields('hajimi_settings_group'); ?>
+            <?php 
+                settings_fields( 'hajimi_settings_group' );
+                do_settings_sections( 'hajimi_settings_group' );
+            ?>
 
-            <table class="widefat" id="hajimi-repeater-table">
-                <thead>
+            <div class="table-group">
+                <table class="form-table">
                     <tr>
-                        <th width="30%">Page</th>
-                        <th width="60%">Content</th>
-                        <th width="10%">Action</th>
+                        <th scope="row">
+                            <label for="service_page_id">
+                                <?php esc_html_e( 'Service Page', 'hajimi' ); ?>
+                            </label>
+                        </th>
+                        <td>
+                            <select name="service_page_id" id="service_page_id">
+                                <option value="0">
+                                    <?php esc_html_e( '-- Select a page --', 'hajimi' ); ?>
+                                </option>
+
+                                <?php foreach ( $pages as $page ) : ?>
+                                    <option value="<?php echo esc_attr( $page->ID ); ?>"
+                                        <?php selected( $selected_page_id, $page->ID ); ?>>
+                                        <?php echo esc_html( $page->post_title ); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+
+                            <p class="description">
+                                <?php esc_html_e( 'Choose a page related to the service section.', 'hajimi' ); ?>
+                            </p>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
 
-                <?php if (!empty($items)) : ?>
-                    <?php foreach ($items as $index => $item) : ?>
+                    <!-- WYSIWYG -->
+                    <tr>
+                        <th scope="row">
+                            <label for="service_content">
+                                <?php esc_html_e( 'Service Content', 'hajimi' ); ?>
+                            </label>
+                        </th>
+                        <td>
+                            <?php
+                            wp_editor(
+                                $service_content,
+                                'service_content',
+                                [
+                                    'textarea_name' => 'service_content',
+                                    'textarea_rows' => 12,
+                                    'media_buttons' => true,
+                                    'teeny'         => false,
+                                    'editor_height' => 260,
+                                ]
+                            );
+                            ?>
+                            <p class="description">
+                                <?php esc_html_e( 'This content can be displayed inside Elementor widgets or templates.', 'hajimi' ); ?>
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div class="table-group">
+                <table class="widefat" id="hajimi-repeater-table">
+                    <thead>
                         <tr>
-                            <td>
-                                <?php
-                                wp_dropdown_pages([
-                                    'name' => "hajimi_menu_dialogues[$index][page]",
-                                    'selected' => $item['page'] ?? '',
-                                    'show_option_none' => 'Select Page',
-                                ]);
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                wp_editor(
-                                    $item['content'] ?? '',
-                                    "hajimi_editor_$index",
-                                    [
-                                        'textarea_name' => "hajimi_menu_dialogues[$index][content]",
-                                        'textarea_rows' => 5,
-                                    ]
-                                );
-                                ?>
-                            </td>
-                            <td>
-                                <button type="button" class="button remove-row">Remove</button>
-                            </td>
+                            <th width="30%">Page</th>
+                            <th width="60%">Content</th>
+                            <th width="10%">Action</th>
                         </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                    <?php if (!empty($items)) : ?>
+                        <?php foreach ($items as $index => $item) : ?>
+                            <tr>
+                                <td>
+                                    <?php
+                                    wp_dropdown_pages([
+                                        'name' => "hajimi_menu_dialogues[$index][page]",
+                                        'selected' => $item['page'] ?? '',
+                                        'show_option_none' => 'Select Page',
+                                    ]);
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    wp_editor(
+                                        $item['content'] ?? '',
+                                        "hajimi_editor_$index",
+                                        [
+                                            'textarea_name' => "hajimi_menu_dialogues[$index][content]",
+                                            'textarea_rows' => 5,
+                                            'media_buttons' => true,
+                                            'teeny' => false,
+                                            'quicktags' => true,
+                                            'tinymce' => [
+                                                'toolbar1' => 'formatselect,bold,italic,underline,bullist,numlist,link,unlink,undo,redo',
+                                                'toolbar2' => '',
+                                            ],
+                                        ]
+                                    );
+                                    ?>
+                                </td>
+                                <td>
+                                    <button type="button" class="button remove-row">Remove</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    </tbody>
+                </table>
+            </div>
 
             <p>
                 <button type="button" class="button button-primary" id="add-row">Add Dialogue</button>
