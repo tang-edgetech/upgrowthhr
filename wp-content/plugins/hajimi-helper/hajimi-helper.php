@@ -251,6 +251,7 @@ function hajimi_settings_page() {
     jQuery(document).ready(function($){
         let rowIndex = <?php echo !empty($items) ? count($items) : 0; ?>;
         $('#add-row').on('click', function(){
+            let editorID = 'hajimi_editor_' + rowIndex;
             let row = `
             <tr>
                 <td>
@@ -264,7 +265,9 @@ function hajimi_settings_page() {
                     ?>
                 </td>
                 <td>
-                    <textarea name="hajimi_menu_dialogues[__index__][content]" rows="5" style="width:100%;"></textarea>
+                    <textarea id="` + editorID + `" 
+                        name="hajimi_menu_dialogues[` + rowIndex + `][content]" 
+                        rows="5"></textarea>
                 </td>
                 <td>
                     <button type="button" class="button remove-row">Remove</button>
