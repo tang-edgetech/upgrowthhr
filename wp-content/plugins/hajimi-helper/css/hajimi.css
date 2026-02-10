@@ -824,6 +824,12 @@ button.hajimi-back2top.button-circle {
     }
 }
 @media (min-width: 1200px) {
+    .hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link.mouseentered {
+        color: #fff;
+    }
+    .hajimi-menu-popup .sub-menu > .menu-item > .hajimi-nav-link.mouseentered::before {
+        background: linear-gradient(90deg, #A581FF, #A581FF );
+    }
     .hajimi-navigation {
         height: 100px;
     }
