@@ -33,18 +33,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         const breakpoint = window.matchMedia('(max-width: 767px)');
-        let currentMode = null;
+        let currentMode3 = null;
 
         function checkMode() {
             if (breakpoint.matches) {
-                if (currentMode !== 'mobile') {
-                    currentMode = 'mobile';
+                if (currentMode3 !== 'mobile') {
+                    currentMode3 = 'mobile';
                     // Mobile code here
                     $('.hajimi-menu-dialogue').removeClass('active show');
                 }
             } else {
-                if (currentMode !== 'desktop') {
-                    currentMode = 'desktop';
+                if (currentMode3 !== 'desktop') {
+                    currentMode3 = 'desktop';
                     // Desktop code here
                     $('.hajimi-menu-popup .hajimi-nav-link').on('mouseenter', function() {
                         var $this = $(this),
