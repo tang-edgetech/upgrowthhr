@@ -96,6 +96,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         }
+        $(document).on('click', '.menu-main-page.menu-has-children > a', function(e) {
+            var $this = $(this),
+                $href = ($this.attr('href') || '').trim().toLowerCase();
+
+            if( $href === '#' || $href === 'javascript:void(0)' || $href === 'javascript:void(0);') {
+                e.preventDefault();
+                var $dropdown = $this.siblings('.hajimi-dropdown-button');
+                $dropdown.trigger('click');
+            }
+        });
 
         $(document).on('click', '.menu-main-page .hajimi-dropdown-button', function(e) {
             e.preventDefault();
