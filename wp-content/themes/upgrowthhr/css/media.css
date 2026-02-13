@@ -3,3 +3,8 @@
         padding: 0 1.5rem;
     }
 }
+@media (max-width: 991px) {
+    .custom-card-swiper .swiper-slide {
+        width: 300px;
+    }
+}
