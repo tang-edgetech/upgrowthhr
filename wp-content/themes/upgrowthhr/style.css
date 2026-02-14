@@ -751,8 +751,8 @@ table, .table {
     width: 100%;
     margin-left: auto;
     margin-right: 0;
-    font-size: 120px;
-    line-height: 120px;
+    font-size: 85px;
+    line-height: 85px;
     font-weight: 900;
     text-align: right;
     position: absolute;
@@ -763,8 +763,8 @@ table, .table {
     text-shadow: 1px 1px 0 #4F3D95, -1px -1px 0 #4F3D95, 1px -1px 0 #4F3D95, -1px 1px 0 #4F3D95;
 }
 .ug-team-listing.style-style-2 .team-item-1645 .team-additional {
-    font-size: 90px;
-    line-height: 90px;
+    font-size: 65px;
+    line-height: 65px;
 }
 .ug-team-listing.style-style-2 .team-item-inner > div {
     display: block;
@@ -923,8 +923,8 @@ table, .table {
         flex-direction: column-reverse;
     }
     .ug-team-listing.style-style-2 .team-additional {
-        font-size: 48px!important;
-        line-height: 52px!important;
+        font-size: 36px!important;
+        line-height: 42px!important;
         text-align: center;
     }
     .ug-team-listing.style-style-2 .team-header {
@@ -998,7 +998,7 @@ table, .table {
         transform: translateY(-50%);
     }
     .ug-team-listing.style-style-2 .team-additional {
-        min-width: 60vw;
+        min-width: 45vw;
     }
     .founder-profile-picture {
         position: sticky!important;
@@ -1050,7 +1050,7 @@ table, .table {
         padding-top: 8rem;
     }
     .ug-team-listing.style-style-2 .team-additional, .ug-team-listing.style-style-2 .team-item-1645 .team-additional {
-        font-size: 60px;
+        font-size: 54px;
         line-height: 60px;
     }
     .ug-team-listing.style-style-2 .ug-team-pagination {
@@ -1059,8 +1059,11 @@ table, .table {
     }
 }
 @media (min-width: 1200px) and (max-width: 1279px) and (orientation: landscape) {
-    .e-con-boxed.e-parent > .e-con-inner, .site-container, .ug-container {
+    .e-con-boxed.e-parent > .e-con-inner, .site-container {
         max-width: 1120px;
+    }
+    .ug-container {
+        max-width: 1033px;
     }
 }
 @media (min-width: 1200px) and (max-width: 1300px) {
@@ -1111,8 +1114,11 @@ table, .table {
     }
 }
 @media (min-width: 1280px) {
-    .site-container, .ug-container {
+    .site-container {
         max-width: 1240px;
+    }
+    .ug-container {
+        max-width: 1033px;
     }
 }
 @media (min-width: 1400px) {
@@ -1147,8 +1153,11 @@ table, .table {
     }
 }
 @media (min-width: 1600px) {
-    .site-container, .ug-container {
+    .site-container {
         max-width: 1440px;
+    }
+    .ug-container {
+        max-width: 1200px;
     }
     .ug-team-listing.style-style-2 .team-additional {
         min-width: 50vw;
