@@ -188,6 +188,9 @@ html, body {
 .elementor-widget-text-editor p+ul, .elementor-widget-text-editor p+ol {
     margin-top: 0.313rem;
 }
+nav.hfe-nav-menu__layout-vertical .hfe-nav-menu .menu-item > a:hover { 
+    text-decoration: underline; 
+}
 .site-main {
     display: flex;
     flex-wrap: wrap;
