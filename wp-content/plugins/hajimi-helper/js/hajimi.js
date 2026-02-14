@@ -243,10 +243,10 @@ document.addEventListener('DOMContentLoaded', function() {
             var $slider = $(this),
                 $swiper = $slider.find('.swiper'),
                 $loop = $slider.attr('data-loop'),
-                $speed = parseInt($slider.data('speed')) || 500,
+                $speed = $slider.data('speed'),
                 $reverse = ($slider.data('reverse-direction')) ? true : false,
                 $autoplay = parseInt($slider.data('autoplay')) === 1,
-                $autoplayTimeout = parseInt($slider.data('autoplay-timeout'));
+                $autoplayTimeout = $slider.data('autoplay-timeout');
             var spaceDesktop = parseInt($slider.data('space')) || 0;
             var pppDesktop   = parseInt($slider.data('ppp')) || 1;
 
@@ -309,9 +309,9 @@ document.addEventListener('DOMContentLoaded', function() {
             var $slider = $(this),
                 $swiper = $slider.find('.swiper'),
                 $loop = $slider.attr('data-loop'),
-                $speed = parseInt($slider.data('speed')) || 500,
+                $speed = $slider.data('speed'),
                 $autoplay = parseInt($slider.data('autoplay')) === 1,
-                $autoplayTimeout = parseInt($slider.data('autoplay-timeout'));
+                $autoplayTimeout = $slider.data('autoplay-timeout');
             var spaceDesktop = parseInt($slider.data('space')) || 0;
             var pppDesktop   = parseInt($slider.data('ppp')) || 1;
 
