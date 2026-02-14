@@ -453,6 +453,13 @@ button.hajimi-back2top.button-circle {
 .hajimi-media-slider.type-infinite .swiper-wrapper {
     transition-timing-function: linear!important;
 }
+.hajimi-media-slider .swiper-slide {
+    height: auto;
+}
+.hajimi-media-slider .swiper-slide iframe {
+    width: 100%;
+    height: 100%;
+}
 .hajimi-fancy-marquee {
     width: 100%;
     overflow: hidden;
