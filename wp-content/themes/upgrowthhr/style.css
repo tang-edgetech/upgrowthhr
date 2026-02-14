@@ -744,7 +744,7 @@ table, .table {
     margin-bottom: 4.5rem;
 }
 .ug-team-listing.style-style-2 .team-header {
-    padding-top: 12.5rem;
+    padding-top: 8.75rem;
 }
 .ug-team-listing.style-style-2 .team-additional {
     display: block;
@@ -928,7 +928,7 @@ table, .table {
         text-align: center;
     }
     .ug-team-listing.style-style-2 .team-header {
-        padding-top: 8rem;
+        padding-top: 6.25rem;
     }
     .ug-team-listing.style-style-2 .ug-team-nav {
         margin-top: 2.5rem;
@@ -1047,7 +1047,7 @@ table, .table {
         gap: 1.5rem;
     }
     .ug-team-listing.style-style-2 .team-header {
-        padding-top: 8rem;
+        padding-top: 6.25rem;
     }
     .ug-team-listing.style-style-2 .team-additional, .ug-team-listing.style-style-2 .team-item-1645 .team-additional {
         font-size: 54px;
