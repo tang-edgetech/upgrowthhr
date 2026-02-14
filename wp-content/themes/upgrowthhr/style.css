@@ -561,6 +561,7 @@ table, .table {
 .ug-testimonials .rev-item-inner {
     display: flex;
     flex-direction: column-reverse;
+    justify-content: space-between;
     padding: 1.5rem;
     gap: 3.125rem;
     min-height: 25rem;
