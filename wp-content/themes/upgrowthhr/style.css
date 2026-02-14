@@ -743,10 +743,6 @@ table, .table {
     color: #404040;
     margin-bottom: 4.5rem;
 }
-.founder-profile-picture {
-    position: sticky!important;
-    top: 3.125rem;
-}
 .ug-team-listing.style-style-2 .team-header {
     padding-top: 12.5rem;
 }
@@ -1003,6 +999,10 @@ table, .table {
     }
     .ug-team-listing.style-style-2 .team-additional {
         min-width: 60vw;
+    }
+    .founder-profile-picture {
+        position: sticky!important;
+        top: 3.125rem;
     }
 }
 @media (max-width: 991px) {
