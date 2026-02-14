@@ -743,6 +743,10 @@ table, .table {
     color: #404040;
     margin-bottom: 4.5rem;
 }
+.founder-profile-picture {
+    position: sticky;
+    top: 3.125rem;
+}
 .ug-team-listing.style-style-2 .team-header {
     padding-top: 12.5rem;
 }
