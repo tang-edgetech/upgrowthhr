@@ -1160,7 +1160,7 @@ table, .table {
         max-width: 1200px;
     }
     .ug-team-listing.style-style-2 .team-additional {
-        min-width: 50vw;
+        min-width: 45vw;
     }
 }
 @media (min-width: 1900px) {
