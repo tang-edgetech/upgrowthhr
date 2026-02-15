@@ -504,14 +504,4 @@ document.addEventListener('DOMContentLoaded', function() {
         initHajimiColumnSlider($(document));
     });
 
-    // Elementor support
-    if (window.elementorFrontend) {
-        elementorFrontend.hooks.addAction(
-            'frontend/element_ready/global',
-            function ($scope) {
-                initHajimiColumnSlider($scope);
-            }
-        );
-    }
-
 })(jQuery);
