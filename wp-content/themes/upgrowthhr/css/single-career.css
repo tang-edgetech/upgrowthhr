@@ -88,6 +88,9 @@
     font-size: 1.5rem;
     line-height: 1.75rem;
 }
+.career-metas .btn.btn-outline, .career-type .btn.btn-outline {
+    cursor: default;
+}
 @media (max-width: 767px) {
     .section-single-career {
         padding: 2.25rem 1.5rem 7.5rem;

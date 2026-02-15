@@ -241,6 +241,7 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
                 'options' => [
                     'library' => 'Media Library',
                     'youtube' => 'YouTube Link',
+                    'custom' => 'Embed',
                 ],
                 'default' => 'library',
             ]
@@ -270,6 +271,19 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
                 ],
             ]
         );
+
+		$repeater->add_control(
+			'embed_code',
+			[
+				'label' => esc_html__( 'Custom HTML', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::CODE,
+				'language' => 'html',
+				'rows' => 20,
+                'condition' => [
+                    'media_type' => 'youtube',
+                ],
+			]
+		);
 
         $this->add_control(
             'slides',
