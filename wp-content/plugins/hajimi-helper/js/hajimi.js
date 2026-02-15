@@ -398,99 +398,92 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 (function ($) {
     var $index = 0;
-    function initHajimiColumnSlider($scope) {
+    $('.hajimi-content-column-slider').each(function (index) {
+        console.log($index);
+        $index = $index + 1;
+        var $slider = $(this);
+        var $swiperEl = $slider.find('.swiper')[0];
 
-        $scope.find('.hajimi-content-column-slider').each(function (index) {
-            console.log($index);
-            $index = $index + 1;
-            var $slider = $(this);
-            var $swiperEl = $slider.find('.swiper')[0];
+        if (!$swiperEl) return;
 
-            if (!$swiperEl) return;
+        if ($swiperEl.swiper) {
+            $swiperEl.swiper.destroy(true, true);
+        }
 
-            if ($swiperEl.swiper) {
-                $swiperEl.swiper.destroy(true, true);
+        var loop = String($slider.data('loop')) === 'true';
+        var speed = parseInt($slider.data('speed')) || 600;
+
+        var autoplayEnabled = parseInt($slider.data('autoplay')) === 1;
+        var autoplayDelay = parseInt($slider.data('autoplay-timeout')) || 3000;
+
+        var spaceDesktop = parseInt($slider.data('space')) || 0;
+        var pppDesktop   = parseInt($slider.data('ppp')) || 1;
+
+        var spaceLaptop  = parseInt($slider.data('space-laptop')) || spaceDesktop;
+        var spaceTablet  = parseInt($slider.data('space-tablet')) || spaceLaptop;
+        var spaceMobile  = parseInt($slider.data('space-mobile')) || spaceTablet;
+
+        var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
+        var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
+        var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
+
+        var swiperInstance = new Swiper($swiperEl, {
+
+            slidesPerView: pppDesktop,
+            spaceBetween: spaceDesktop,
+            loop: loop,
+            speed: speed,
+
+            autoplay: autoplayEnabled ? {
+                delay: autoplayDelay,
+                disableOnInteraction: false
+            } : false,
+
+            navigation: {
+                prevEl: $slider.find('.column-nav-prev')[0],
+                nextEl: $slider.find('.column-nav-next')[0],
+            },
+
+            pagination: {
+                el: $slider.find('.hajimi-column-pagination')[0],
+                clickable: true,
+            },
+
+            observer: true,
+            observeParents: true,
+            observeSlideChildren: true,
+
+            breakpoints: {
+                0: {
+                    slidesPerView: pppMobile,
+                    spaceBetween: spaceMobile,
+                },
+                768: {
+                    slidesPerView: pppTablet,
+                    spaceBetween: spaceTablet,
+                },
+                1200: {
+                    slidesPerView: pppLaptop,
+                    spaceBetween: spaceLaptop,
+                },
+                1600: {
+                    slidesPerView: pppDesktop,
+                    spaceBetween: spaceDesktop,
+                }
+            },
+
+            on: {
+                init: function () {
+                    setTimeout(() => {
+                        this.update();
+                    }, 100);
+                }
             }
 
-            var loop = String($slider.data('loop')) === 'true';
-            var speed = parseInt($slider.data('speed')) || 600;
-
-            var autoplayEnabled = parseInt($slider.data('autoplay')) === 1;
-            var autoplayDelay = parseInt($slider.data('autoplay-timeout')) || 3000;
-
-            var spaceDesktop = parseInt($slider.data('space')) || 0;
-            var pppDesktop   = parseInt($slider.data('ppp')) || 1;
-
-            var spaceLaptop  = parseInt($slider.data('space-laptop')) || spaceDesktop;
-            var spaceTablet  = parseInt($slider.data('space-tablet')) || spaceLaptop;
-            var spaceMobile  = parseInt($slider.data('space-mobile')) || spaceTablet;
-
-            var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
-            var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
-            var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
-
-            var swiperInstance = new Swiper($swiperEl, {
-
-                slidesPerView: pppDesktop,
-                spaceBetween: spaceDesktop,
-                loop: loop,
-                speed: speed,
-
-                autoplay: autoplayEnabled ? {
-                    delay: autoplayDelay,
-                    disableOnInteraction: false
-                } : false,
-
-                navigation: {
-                    prevEl: $slider.find('.column-nav-prev')[0],
-                    nextEl: $slider.find('.column-nav-next')[0],
-                },
-
-                pagination: {
-                    el: $slider.find('.hajimi-column-pagination')[0],
-                    clickable: true,
-                },
-
-                observer: true,
-                observeParents: true,
-                observeSlideChildren: true,
-
-                breakpoints: {
-                    0: {
-                        slidesPerView: pppMobile,
-                        spaceBetween: spaceMobile,
-                    },
-                    768: {
-                        slidesPerView: pppTablet,
-                        spaceBetween: spaceTablet,
-                    },
-                    1200: {
-                        slidesPerView: pppLaptop,
-                        spaceBetween: spaceLaptop,
-                    },
-                    1600: {
-                        slidesPerView: pppDesktop,
-                        spaceBetween: spaceDesktop,
-                    }
-                },
-
-                on: {
-                    init: function () {
-                        setTimeout(() => {
-                            this.update();
-                        }, 100);
-                    }
-                }
-
-            });
-
-            $swiperEl.swiperInstance = swiperInstance;
-
         });
-    }
 
-    $(window).on('load', function () {
-        initHajimiColumnSlider($(document));
+        $swiperEl.swiperInstance = swiperInstance;
+
     });
 
 })(jQuery);
