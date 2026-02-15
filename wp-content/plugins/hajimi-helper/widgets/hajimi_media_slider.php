@@ -365,7 +365,7 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
                             echo '<div class="swiper-slide"><iframe width="560" height="315" src="https://www.youtube.com/embed/'. $video_id .'" frameborder="0" allowfullscreen></iframe></div>';
                         }
                     } elseif ( $slide['media_type'] === 'embed' && ! empty( $slide['embed_code'] ) ) {
-                        $embed_code = esc_url( $slide['embed_code'] );
+                        $embed_code = $slide['embed_code'];
                         echo '<div class="swiper-slide"><div class="swiper-slide-inner">'.$embed_code.'</div></div>';
                     }
 
