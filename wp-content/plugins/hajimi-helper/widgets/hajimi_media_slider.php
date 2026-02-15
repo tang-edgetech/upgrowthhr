@@ -241,7 +241,7 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
                 'options' => [
                     'library' => 'Media Library',
                     'youtube' => 'YouTube Link',
-                    'custom' => 'Embed',
+                    'embed' => 'Embed',
                 ],
                 'default' => 'library',
             ]
@@ -364,6 +364,9 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
                             $video_id = $matches[1];
                             echo '<div class="swiper-slide"><iframe width="560" height="315" src="https://www.youtube.com/embed/'. $video_id .'" frameborder="0" allowfullscreen></iframe></div>';
                         }
+                    } elseif ( $slide['media_type'] === 'embed' && ! empty( $slide['embed_code'] ) ) {
+                        $embed_code = esc_url( $slide['embed_code'] );
+                        echo '<div class="swiper-slide">'.$embed_code.'</div>';
                     }
 
                 }
