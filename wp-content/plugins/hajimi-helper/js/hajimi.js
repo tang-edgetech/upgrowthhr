@@ -428,6 +428,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
         var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
 
+        console.log($unique_id);
+        console.log('.nav-'+$unique_id+'-prev', '.nav-'+$unique_id+'-next');
+        console.log('.hajimi-pagination-'+$unique_id);
         var swiperInstance = new Swiper($swiperEl, {
 
             slidesPerView: pppDesktop,
