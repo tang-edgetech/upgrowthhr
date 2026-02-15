@@ -387,6 +387,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();
+    	$unique_id = $this->get_id();
         $column_title_tag = $settings['column_title_tag'];
         $setting_space_between = '';
         $settings_slidesperview = '';
@@ -406,7 +407,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         $autoplayTimeout = $settings['autoplay_timeout'];
         $speed = $settings['speed'];
         $settings_speed = ' data-autoplay="'.$autoplay.'" data-autoplay-timeout="'.$autoplayTimeout.'" data-speed="'.$speed.'"';
-        echo '<div class="hajimi-content-column-slider"'.$setting_loop.$setting_space_between.$settings_slidesperview.$settings_speed.'>';
+        echo '<div class="hajimi-content-column-slider"'.$setting_loop.$setting_space_between.$settings_slidesperview.$settings_speed.' data-element-id="'.$unique_id.'" id="slider-'.$unique_id.'">';
         if ( !empty( $settings['columns'] ) ) {
             echo '<div class="swiper">';
                 echo '<div class="swiper-wrapper">';
@@ -422,10 +423,10 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
                 }
                 echo '</div>';
                 if( $settings['show_navigation'] ) {
-                    echo '<div class="hajimi-column-navigation"><button type="button" class="hajimi-column-nav column-nav-prev"><i class="fa fa-chevron-left"></i></button><button type="button" class="hajimi-column-nav column-nav-next"><i class="fa fa-chevron-right"></i></button></div>';
+                    echo '<div class="hajimi-column-navigation"><button type="button" class="hajimi-column-nav column-nav-prev nav-'.$unique_id.'-prev"><i class="fa fa-chevron-left"></i></button><button type="button" class="hajimi-column-nav column-nav-next nav-'.$unique_id.'-next"><i class="fa fa-chevron-right"></i></button></div>';
                 }
                 if( $settings['show_pagination'] ) {
-                    echo '<div class="hajimi-column-pagination"></div>';
+                    echo '<div class="hajimi-column-pagination hajimi-pagination-'.$unique_id.'"></div>';
                 }
             echo '</div>';
         }
