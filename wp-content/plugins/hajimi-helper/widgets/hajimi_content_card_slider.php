@@ -403,7 +403,7 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'label' => esc_html__( 'Sub Title', 'hajimi' ),
+				'label' => esc_html__( 'Content', 'hajimi' ),
 				'name' => 'column_subtitle_typography',
 				'selector' => '{{WRAPPER}} .hajimi-content-column-slider .column-body',
 			]
