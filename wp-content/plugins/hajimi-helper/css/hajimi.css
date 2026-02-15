@@ -647,6 +647,9 @@ button.hajimi-back2top.button-circle {
     left: 50%;
     transform: translateX(-50%);
 }
+.hajimi-content-column-slider .hajimi-column-pagination {
+    margin-top: 2.25rem;
+}
 .hajimi-animated-fancytext {
     display: flex;
     flex-wrap: nowrap;
