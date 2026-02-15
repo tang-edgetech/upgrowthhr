@@ -68,9 +68,6 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
 					],
 				],
 				'default' => 'left',
-				'laptop_default' => 'left',
-				'tablet_default' => 'left',
-				'mobile_default' => 'left',
 				'toggle' => true,
 				'selectors' => [
 					'{{WRAPPER}} .hajimi-content-column-slider .column-header .column-title' => 'text-align: {{VALUE}};',
