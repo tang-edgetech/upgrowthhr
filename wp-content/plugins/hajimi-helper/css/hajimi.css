@@ -725,6 +725,9 @@ button.hajimi-back2top.button-circle {
     top: 0;
     left: 0;
 }
+.hajimi-media-pagination {
+    margin-top: 2rem!important;
+}
 @media (max-width: 767px) {
     .hajimi-navigation {
         padding: 1rem 1.25rem;
