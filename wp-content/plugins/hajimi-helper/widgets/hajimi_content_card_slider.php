@@ -49,6 +49,36 @@ class Hajimi_Content_Card_Slider extends \Elementor\Widget_Base {
         );
 
 		$this->add_responsive_control(
+			'column_header_align',
+			[
+				'label' => esc_html__( 'Alignment', 'hajimi' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'hajimi' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'hajimi' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'hajimi' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'left',
+				'laptop_default' => 'left',
+				'tablet_default' => 'left',
+				'mobile_default' => 'left',
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .hajimi-content-column-slider .column-header .column-title' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
 			'slides_per_view',
 			[
 				'type' => \Elementor\Controls_Manager::SLIDER,
