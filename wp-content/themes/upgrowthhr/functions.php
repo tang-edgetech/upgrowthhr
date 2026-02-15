@@ -657,7 +657,12 @@ function ug_testimonial_listing($atts) {
 				$rev_id = get_the_ID();
 				$rev_title = get_the_title();
 				$rev_designation = get_field('designation');
-				$rev_content = get_field('content');
+				if( has_excerpt() ) {
+					$rev_content = get_the_excerpt();
+				}
+				else {
+					$rev_content = wp_trim_words( get_field('content'), 40, '...' );
+				}
 				$rev_permalink = get_permalink();
 			?>
 				<div class="rev-item rev-item-<?= $rev_id;?>" id="rev-item-<?= $rev_id;?>">
