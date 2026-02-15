@@ -640,6 +640,9 @@ button.hajimi-back2top.button-circle {
     gap: 3.125rem;
     height: 100%;
 }
+.hajimi-content-column-slider .column-header .column-title {
+    min-height: 2lh;
+}
 .elementor-widget-hajimi_animated_fancytext .hajimi-animated-fancytext {
     left: 50%;
     transform: translateX(-50%);
