@@ -280,7 +280,7 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
 				'language' => 'html',
 				'rows' => 20,
                 'condition' => [
-                    'media_type' => 'youtube',
+                    'media_type' => 'embed',
                 ],
 			]
 		);
