@@ -324,7 +324,7 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
         $autoplayTimeout = $settings['autoplay_timeout'];
         $speed = $settings['speed'];
         $settings_speed = ' data-autoplay="'.$autoplay.'" data-autoplay-timeout="'.$autoplayTimeout.'" data-speed="'.$speed.'"';
-        echo '<div class="hajimi-media-slider type-'.$type.' media-type-'.$slide['embed_code'].'"'.$setting_loop.$setting_space_between.$settings_slidesperview.$settings_speed.'>';
+        echo '<div class="hajimi-media-slider type-'.$type.'"'.$setting_loop.$setting_space_between.$settings_slidesperview.$settings_speed.'>';
         if ( ! empty( $settings['slides'] ) ) {
             echo '<div class="swiper">';
                 echo '<div class="swiper-wrapper">';
@@ -366,7 +366,7 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
                         }
                     } elseif ( $slide['media_type'] === 'embed' && ! empty( $slide['embed_code'] ) ) {
                         $embed_code = $slide['embed_code'];
-                        echo '<div class="swiper-slide"><div class="swiper-slide-inner">'.$embed_code.'</div></div>';
+                        echo '<div class="swiper-slide media-type-'.$slide['embed_code'].'"><div class="swiper-slide-inner">'.$embed_code.'</div></div>';
                     }
 
                 }
