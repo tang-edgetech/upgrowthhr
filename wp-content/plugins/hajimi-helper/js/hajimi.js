@@ -403,6 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $index = $index + 1;
         var $slider = $(this);
         var $swiperEl = $slider.find('.swiper')[0];
+        var $unique_id = $slider.attr('data-element-id');
 
         if (!$swiperEl) return;
 
@@ -440,12 +441,12 @@ document.addEventListener('DOMContentLoaded', function() {
             } : false,
 
             navigation: {
-                prevEl: $slider.find('.column-nav-prev')[0],
-                nextEl: $slider.find('.column-nav-next')[0],
+                prevEl: $slider.find('.nav-'+$unique_id+'-prev')[0],
+                nextEl: $slider.find('.nav-'+$unique_id+'-next')[0],
             },
 
             pagination: {
-                el: $slider.find('.hajimi-column-pagination')[0],
+                el: $slider.find('.hajimi-pagination-'+$unique_id)[0],
                 clickable: true,
             },
 
