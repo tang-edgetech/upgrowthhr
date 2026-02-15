@@ -809,6 +809,9 @@ table, .table {
 .ug-team-listing.style-style-2 .ug-team-pagination .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
     background-color: #fff;
 }
+.swiper .swiper-slide .instagram-media {
+    min-height: 600px!important;
+}
 @media (max-width: 767px) {
     .error-404.not-found {
         padding-left: 1.5rem;
