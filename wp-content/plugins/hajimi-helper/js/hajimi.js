@@ -305,71 +305,93 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        $('.hajimi-content-column-slider').each(function() {
-            var $slider = $(this),
-                $swiper = $slider.find('.swiper'),
-                $loop = $slider.attr('data-loop'),
-                $speed = $slider.data('speed'),
-                $autoplay = parseInt($slider.data('autoplay')) === 1,
-                $autoplayTimeout = $slider.data('autoplay-timeout');
-            var spaceDesktop = parseInt($slider.data('space')) || 0;
-            var pppDesktop   = parseInt($slider.data('ppp')) || 1;
+        function initHajimiColumnSlider($scope) {
+            $scope.find('.hajimi-content-column-slider').each(function () {
+                var $slider  = $(this);
+                var $swiper  = $slider.find('.swiper');
 
-            var spaceLaptop  = parseInt($slider.data('space-laptop')) || spaceDesktop;
-            var spaceTablet  = parseInt($slider.data('space-tablet')) || spaceLaptop;
-            var spaceMobile  = parseInt($slider.data('space-mobile')) || spaceTablet;
-
-            var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
-            var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
-            var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
-
-            new Swiper($swiper[0], {
-                slidesPerView: 3.5,
-                spaceBetween: 24,
-                loop: $loop,
-                speed: $speed,
-                autoplay: $autoplay ? {
-                    delay: $autoplayTimeout,
-                    disableOnInteraction: false
-                } : false,
-                navigation: {
-                    prevEl: '.column-nav-prev',
-                    nextEl: '.column-nav-next',
-                },
-                pagination: {
-                    el: '.hajimi-column-pagination',
-                    clickable: true,
-                },
-                breakpoints: {
-                    0: {
-                        slidesPerView: pppMobile,
-                        spaceBetween: spaceMobile,
-                        slidesOffsetBefore: 24,
-                        slidesOffsetAfter: 24,
-                    },
-                    768: {
-                        slidesPerView: pppTablet,
-                        spaceBetween: spaceTablet,
-                        slidesOffsetBefore: 0,
-                        slidesOffsetAfter: 0,
-                    },
-                    1200: {
-                        slidesPerView: pppLaptop,
-                        spaceBetween: spaceLaptop,
-                        slidesOffsetBefore: 0,
-                        slidesOffsetAfter: 0,
-                    },
-                    1600: {
-                        slidesPerView: pppDesktop,
-                        spaceBetween: spaceDesktop,
-                        slidesOffsetBefore: 0,
-                        slidesOffsetAfter: 0,
-                    }
+                if ($swiper.hasClass('swiper-initialized')) {
+                    return;
                 }
+
+                var loop = String($slider.data('loop')) === 'true';
+                var speed = parseInt($slider.data('speed')) || 600;
+
+                var autoplayEnabled = parseInt($slider.data('autoplay')) === 1;
+                var autoplayDelay   = parseInt($slider.data('autoplay-timeout')) || 3000;
+
+                var spaceDesktop = parseInt($slider.data('space')) || 0;
+                var pppDesktop   = parseInt($slider.data('ppp')) || 1;
+
+                var spaceLaptop  = parseInt($slider.data('space-laptop')) || spaceDesktop;
+                var spaceTablet  = parseInt($slider.data('space-tablet')) || spaceLaptop;
+                var spaceMobile  = parseInt($slider.data('space-mobile')) || spaceTablet;
+
+                var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
+                var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
+                var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
+
+                new Swiper($swiper[0], {
+
+                    slidesPerView: pppDesktop,
+                    spaceBetween: spaceDesktop,
+                    loop: loop,
+                    speed: speed,
+
+                    autoplay: autoplayEnabled ? {
+                        delay: autoplayDelay,
+                        disableOnInteraction: false
+                    } : false,
+                    navigation: {
+                        prevEl: $slider.find('.column-nav-prev')[0],
+                        nextEl: $slider.find('.column-nav-next')[0],
+                    },
+                    pagination: {
+                        el: $slider.find('.hajimi-column-pagination')[0],
+                        clickable: true,
+                    },
+
+                    breakpoints: {
+                        0: {
+                            slidesPerView: pppMobile,
+                            spaceBetween: spaceMobile,
+                            slidesOffsetBefore: 24,
+                            slidesOffsetAfter: 24,
+                        },
+                        768: {
+                            slidesPerView: pppTablet,
+                            spaceBetween: spaceTablet,
+                            slidesOffsetBefore: 0,
+                            slidesOffsetAfter: 0,
+                        },
+                        1200: {
+                            slidesPerView: pppLaptop,
+                            spaceBetween: spaceLaptop,
+                        },
+                        1600: {
+                            slidesPerView: pppDesktop,
+                            spaceBetween: spaceDesktop,
+                        }
+                    }
+
+                });
+
             });
+        }
+
+        $(document).ready(function () {
+            initHajimiColumnSlider($(document));
         });
 
-        
+        if (window.elementorFrontend) {
+            elementorFrontend.hooks.addAction(
+                'frontend/element_ready/global',
+                function ($scope) {
+                    initHajimiColumnSlider($scope);
+                }
+            );
+        }
+
         $('.hajimi-fancy-marquee').each(function () {
             const $marquee = $(this);
             const $track   = $marquee.find('.marquee-track');
