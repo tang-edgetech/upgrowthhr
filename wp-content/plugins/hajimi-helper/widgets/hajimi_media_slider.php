@@ -366,7 +366,7 @@ class Hajimi_Media_Slider extends \Elementor\Widget_Base {
                         }
                     } elseif ( $slide['media_type'] === 'embed' && ! empty( $slide['embed_code'] ) ) {
                         $embed_code = esc_url( $slide['embed_code'] );
-                        echo '<div class="swiper-slide">'.$embed_code.'</div>';
+                        echo '<div class="swiper-slide"><div class="swiper-slide-inner">'.$embed_code.'</div></div>';
                     }
 
                 }
