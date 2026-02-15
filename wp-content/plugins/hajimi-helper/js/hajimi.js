@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
             $swiperEl.swiper.destroy(true, true);
         }
 
-        var loop = String($slider.data('loop')) === 'true';
+        var loop = Number($slider.data('loop') || 0) === 1;
         var speed = parseInt($slider.data('speed')) || 600;
 
         var autoplayEnabled = parseInt($slider.data('autoplay')) === 1;
