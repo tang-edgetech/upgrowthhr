@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     $('.hajimi-menu-overlay').fadeIn();
                 }
                 else {
-                    console.log('Open');
                     $siblings.slideDown();
                 }
             }
@@ -257,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
             var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
             var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
-            console.log('Reverse Dir', $reverse);
+            
             new Swiper($swiper[0], {
                 slidesPerView: 3.5,
                 spaceBetween: 24,
@@ -398,24 +397,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 (function ($) {
-
+    var $index = 0;
     function initHajimiColumnSlider($scope) {
 
         $scope.find('.hajimi-content-column-slider').each(function (index) {
-
+            console.log($index);
+            $index = $index + 1;
             var $slider = $(this);
             var $swiperEl = $slider.find('.swiper')[0];
 
             if (!$swiperEl) return;
 
-            // Destroy existing instance (important for Elementor)
             if ($swiperEl.swiper) {
                 $swiperEl.swiper.destroy(true, true);
             }
-
-            // =====================
-            // Safe Data Parsing
-            // =====================
 
             var loop = String($slider.data('loop')) === 'true';
             var speed = parseInt($slider.data('speed')) || 600;
@@ -433,10 +428,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var pppLaptop    = parseInt($slider.data('ppp-laptop')) || pppDesktop;
             var pppTablet    = parseInt($slider.data('ppp-tablet')) || pppLaptop;
             var pppMobile    = parseInt($slider.data('ppp-mobile')) || pppTablet;
-
-            // =====================
-            // Create Swiper
-            // =====================
 
             var swiperInstance = new Swiper($swiperEl, {
 
@@ -493,13 +484,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             });
 
-            // Store instance
             $swiperEl.swiperInstance = swiperInstance;
 
         });
     }
 
-    // Normal load
     $(window).on('load', function () {
         initHajimiColumnSlider($(document));
     });
