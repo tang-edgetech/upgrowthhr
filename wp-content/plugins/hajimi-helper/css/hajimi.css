@@ -721,7 +721,7 @@ button.hajimi-back2top.button-circle {
     overflow: hidden;
 }
 .hajimi-media-slider.type-default .media-type-embed .swiper-slide-inner {
-    padding-top: 124.5%;
+    padding-top: 150%;
 }
 .hajimi-media-slider.type-default .media-type-embed .swiper-slide-inner iframe.instagram-media {
     position: absolute;
