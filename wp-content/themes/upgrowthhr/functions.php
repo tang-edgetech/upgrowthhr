@@ -708,6 +708,7 @@ function ug_testimonial_listing($atts) {
 add_shortcode( 'ug_testimonial_listing', 'ug_testimonial_listing' );
 
 function ug_append_modal_if_shortcode_exists() {
+    global $post;
     if ( has_shortcode( $post->post_content, 'ug_testimonial_listing' ) ) {
 
         add_action( 'wp_footer', function () {
