@@ -398,8 +398,8 @@ button.hajimi-back2top.button-circle {
 }
 .hajimi-media-navigation .hajimi-media-nav {
     cursor: pointer;
-    width: 2rem;
-    height: 2rem;
+    width: 3.125rem;
+    height: 3.125rem;
 }
 .hajimi-media-navigation .hajimi-media-nav, .hajimi-media-navigation .hajimi-media-nav:hover {
     border: none;
