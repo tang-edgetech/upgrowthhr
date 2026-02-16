@@ -849,25 +849,27 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
     background-color: #fff;
     width: 100%;
     min-height: 25rem;
-    height: 100%;
-    max-height: calc( 100vh - 6.25rem );
-    overflow-y: scroll;
     max-width: 43.75rem;
     top: 3.125rem;
     margin: 5rem auto 3.125rem;
     transform: translateY(6.25rem);
     transition: all 0.5s ease;
 }
-.ug-modal-inner::-webkit-scrollbar-track {
+.ug-modal-body {
+    height: auto;
+    max-height: calc( 100vh - 6.25rem );
+    overflow-y: scroll;
+}
+.ug-modal-body::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
 	border-radius: 0.625rem;
 	background-color: #F5F5F5;
 }
-.ug-modal-inner::-webkit-scrollbar {
+.ug-modal-body::-webkit-scrollbar {
 	width: 0.625rem;
 	background-color: #F5F5F5;
 }
-.ug-modal-inner::-webkit-scrollbar-thumb {
+.ug-modal-body::-webkit-scrollbar-thumb {
 	border-radius: 0.313rem;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
 	background-color: #4A00DF;
@@ -887,12 +889,16 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
     padding: 0;
     margin: 0;
     cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 1;
 }
 .ug-modal-close:not(:hover) {
     opacity: 0.85;
 }
 .ug-modal-close::before, .ug-modal-close::after {
     content: '';
+    position: absolute;
     display: block;
     width: 2rem;
     height: 1px;
