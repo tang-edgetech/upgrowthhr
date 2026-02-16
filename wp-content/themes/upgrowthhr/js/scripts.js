@@ -214,4 +214,39 @@ jQuery(document).ready(function($) {
             }
         });
     });
+
+    $(document).on('click', '.ug-testimonials .rev-cta > a[data-ug-target]', function(e) {
+        e.preventDefault();
+        if( $('.ug-modal')[0] ) {
+            const $backdrop = $('.ug-modal-backdrop');
+            const $body = $('body');
+            var $this = $(this),
+                $target = $this.attr('data-ug-target');
+            $body.addClass('ug-modal-opened');
+            $backdrop.addClass('active');
+            $($target).addClass('active');
+            setTimeout(function() {
+                $backdrop.addClass('show');
+            }, 150);
+            setTimeout(function() {
+                $($target).addClass('show');
+            }, 250);
+        }
+    });
+
+    $(document).on('click', 'body.ug-modal-opened .ug-modal-backdrop, body.ug-modal-opened button.ug-modal-close', function(e) {
+        e.preventDefault();
+        const $backdrop = $('.ug-modal-backdrop');
+        const $body = $('body');
+        
+        $('.ug-modal.show').removeClass('show');
+        $backdrop.removeClass('show');
+        setTimeout(function() {
+            $('.ug-modal.active').removeClass('active');
+        }, 150);
+        setTimeout(function() {
+            $backdrop.removeClass('active');
+            $body.removeClass('ug-modal-opened');
+        }, 250);
+    });
 });

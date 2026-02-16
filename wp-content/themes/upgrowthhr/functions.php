@@ -656,6 +656,7 @@ function ug_testimonial_listing($atts) {
 				$query->the_post();
 				$rev_id = get_the_ID();
 				$rev_title = get_the_title();
+				$rev_name = get_post_field( 'post_name', $rev_id );
 				$rev_designation = get_field('designation');
 				if( has_excerpt() ) {
 					$rev_content = get_the_excerpt();
@@ -676,7 +677,7 @@ function ug_testimonial_listing($atts) {
 						</div>
 						<div class="rev-body">
 							<div class="rev-content"><?= $rev_content;?></div>
-							<div class="rev-cta"><a href="#" class="btn btn-text"><span>View More</span></a></div>
+							<div class="rev-cta"><a href="#" class="btn btn-text" data-ug-target="#modal-<?= $rev_id;?>" data-ug-toggle="modal"><span>View More</span></a></div>
 						</div>
 					</div>
 				</div>
@@ -705,6 +706,55 @@ function ug_testimonial_listing($atts) {
 	return ob_get_clean();
 }
 add_shortcode( 'ug_testimonial_listing', 'ug_testimonial_listing' );
+
+function ug_append_modal_if_shortcode_exists() {
+    if ( has_shortcode( $post->post_content, 'ug_testimonial_listing' ) ) {
+
+        add_action( 'wp_footer', function () {
+			$args = array(
+				'post_type' => 'testimonial',
+				'post_status' => 'publish',
+				'posts_per_page' => -1,
+			);
+			$testimonial = new WP_Query($args);
+			if( $testimonial->have_posts() ) {
+				?>
+				<div class="ug-modal-backdrop"></div>
+				<?php
+				while( $testimonial->have_posts() ) {
+					$post_id = get_the_ID();
+					$post_name = get_post_field('post_name', $post_id);
+				?>
+				<div class="ug-modal fade" data-testimonial="<?= $post_namel?>" id="#modal-<?= $post_id;?>">
+					<div class="ug-modal-inner">
+						<div class="ug-modal-body">
+							<button type="button" class="ug-modal-close"><span class="d-none hide" aria-hidden="true">Close</span></button>
+							<div class="ug-modal-testimonial">
+								<div class="ug-rev-header">
+									<div class="ug-rev-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>' }?></div>
+									<div class="ug-rev-profile">
+										<div class="ug-rev-title"><?= get_the_title();?></div>
+										<div class="ug-rev-designation"><?= get_field('designation');?></div>
+									</div>
+								</div>
+								<div class="ug-rev-content">
+									<?= get_field('content');?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php
+				}
+				wp_reset_postdata();
+			}
+		?>
+		<?php
+        } );
+
+    }
+}
+add_action( 'wp', 'hajimi_append_modal_ifug_append_modal_if_shortcode_existsshortcode_exists' );
 
 function ug_team_slider($atts) {
     $atts = shortcode_atts([
