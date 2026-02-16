@@ -754,7 +754,7 @@ function ug_append_modal_if_shortcode_exists() {
 
     }
 }
-add_action( 'wp', 'hajimi_append_modal_ifug_append_modal_if_shortcode_existsshortcode_exists' );
+add_action( 'wp', 'ug_append_modal_if_shortcode_exists' );
 
 function ug_team_slider($atts) {
     $atts = shortcode_atts([
