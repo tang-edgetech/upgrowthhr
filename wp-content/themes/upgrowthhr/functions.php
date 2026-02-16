@@ -728,6 +728,7 @@ function ug_append_modal_if_shortcode_exists() {
 				<div class="ug-modal-backdrop"></div>
 				<?php
 				while( $testimonial->have_posts() ) {
+					$testimonial->the_post();
 					$post_id = get_the_ID();
 					$post_name = get_post_field('post_name', $post_id);
 				?>
