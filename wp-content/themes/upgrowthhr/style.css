@@ -915,9 +915,15 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
 .ug-modal-close::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
+.ug-modal-testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 .ug-rev-header {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1rem;
 }
 .ug-rev-header .ug-rev-thumbnail {
@@ -940,6 +946,9 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
     line-height: 1.75rem;
     font-weight: 700;
     color: #4A00DF;
+}
+.ug-rev-content p {
+    margin: 0;
 }
 @media (max-width: 767px) {
     .error-404.not-found {
@@ -1299,6 +1308,9 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
     }
     .ug-team-listing.style-style-2 .team-additional {
         min-width: 45vw;
+    }
+    iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
+        min-height: 450px;
     }
 }
 @media (min-width: 1900px) {
