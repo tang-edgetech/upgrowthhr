@@ -629,7 +629,7 @@ button.hajimi-back2top.button-circle {
     transition-timing-function: linear!important;
 }
 .hajimi-content-column-slider .swiper {
-    padding: 0.5rem;
+    padding: 0.5rem 0;
 }
 .hajimi-content-column-slider .column-item {
     background-color: #fff;
