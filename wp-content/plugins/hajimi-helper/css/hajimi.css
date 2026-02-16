@@ -628,6 +628,9 @@ button.hajimi-back2top.button-circle {
 .hajimi-magic-gallery.type-slider .swiper.swiper-motion-smooth-infinite .swiper-wrapper {
     transition-timing-function: linear!important;
 }
+.hajimi-content-column-slider .swiper {
+    padding: 0.5rem;
+}
 .hajimi-content-column-slider .column-item {
     background-color: #fff;
     box-shadow: 0.125rem 0.125rem 0.5rem rgba(74, 0, 224, 0.2);
