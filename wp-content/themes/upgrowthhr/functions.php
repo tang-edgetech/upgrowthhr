@@ -731,7 +731,7 @@ function ug_append_modal_if_shortcode_exists() {
 							<button type="button" class="ug-modal-close"><span class="d-none hide" aria-hidden="true">Close</span></button>
 							<div class="ug-modal-testimonial">
 								<div class="ug-rev-header">
-									<div class="ug-rev-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>' }?></div>
+									<div class="ug-rev-thumbnail"><?php if( has_post_thumbnail() ) { echo '<img src="'.get_the_post_thumbnail_url().'"/>'; }?></div>
 									<div class="ug-rev-profile">
 										<div class="ug-rev-title"><?= get_the_title();?></div>
 										<div class="ug-rev-designation"><?= get_field('designation');?></div>
