@@ -376,6 +376,7 @@ form input.input-control.wpcf7-phonetext {
     position: absolute;
     top: 100vh;
     left: 0;
+    height: calc( 100% - 100vh );
     background-position: center top;
     background-size: contain;
     background-repeat: space;
