@@ -831,6 +831,9 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
     visibility: hidden;
     transition: all 0.5s ease;
 }
+.ug-modal {
+    z-index: 912;
+}
 .ug-modal.active, .ug-modal-backdrop.active {
     display: block;
 }
@@ -838,7 +841,7 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
     opacity: 1;
     visibility: visible;
 }
-.ug-modal.show {
+.ug-modal.show .ug-modal-inner {
     transform: translateY(0);
 }
 .ug-modal-inner {
@@ -846,12 +849,28 @@ iframe[src*='https://www.youtube.com'], iframe[src*='https://youtu.be'] {
     background-color: #fff;
     width: 100%;
     min-height: 25rem;
+    height: 100%;
+    max-height: calc( 100vh - 6.25rem );
+    overflow-y: scroll;
     max-width: 43.75rem;
     top: 3.125rem;
     margin: 5rem auto 3.125rem;
     transform: translateY(6.25rem);
     transition: all 0.5s ease;
-    z-index: 912;
+}
+.ug-modal-inner::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+	border-radius: 0.625rem;
+	background-color: #F5F5F5;
+}
+.ug-modal-inner::-webkit-scrollbar {
+	width: 0.625rem;
+	background-color: #F5F5F5;
+}
+.ug-modal-inner::-webkit-scrollbar-thumb {
+	border-radius: 0.313rem;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
+	background-color: #4A00DF;
 }
 .ug-modal-body {
     display: block;
