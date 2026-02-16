@@ -709,6 +709,9 @@ add_shortcode( 'ug_testimonial_listing', 'ug_testimonial_listing' );
 
 function ug_append_modal_if_shortcode_exists() {
     global $post;
+    if ( ! $post ) {
+        return;
+    }
     $content = $post->post_content;
     $found = has_shortcode( $content, 'ug_testimonial_listing' );
     if ( $found ) {
@@ -728,7 +731,7 @@ function ug_append_modal_if_shortcode_exists() {
 					$post_id = get_the_ID();
 					$post_name = get_post_field('post_name', $post_id);
 				?>
-				<div class="ug-modal fade" data-testimonial="<?= $post_namel?>" id="#modal-<?= $post_id;?>">
+				<div class="ug-modal fade" data-testimonial="<?= $post_name;?>" id="#modal-<?= $post_id;?>">
 					<div class="ug-modal-inner">
 						<div class="ug-modal-body">
 							<button type="button" class="ug-modal-close"><span class="d-none hide" aria-hidden="true">Close</span></button>
